@@ -1,0 +1,21 @@
+.traitPanel {
+  padding: 1rem;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  
+}
+
+.title {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+}
+
+.listItem {
+  margin-top: 0.25rem;
+}
+
+.trait {
+    font-weight: 600; 
+}

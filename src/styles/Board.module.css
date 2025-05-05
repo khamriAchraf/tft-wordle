@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  overflow: hidden;
+  padding: 1rem;
+  gap: 1.5rem;
+}
+
+.panel {
+  display: flex;
+  margin-bottom: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.board {
+  flex: auto;
+}
+
+.title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+}
+
+.championPoolGrid {
+  display: grid;
+  overflow: auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  max-height: 60vh;
+}
+
+.clear {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #dc2626;
+}
+
+.myBoard {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  min-height: 60vh;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

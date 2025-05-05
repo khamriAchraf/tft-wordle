@@ -1,0 +1,69 @@
+/* src/styles/TraitItem.module.css */
+.item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  
+  .iconWrapper {
+    width: 32px;
+    height: 36px;
+    background-size: contain;
+    background-position: center;
+    border-radius: 4px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-repeat: none;
+  }
+  
+  .icon {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0);
+  }
+  
+  .text {
+    margin-left: 8px;
+    color: #fff;
+  }
+  
+  .header {
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: baseline;
+  }
+  
+  .count {
+    margin-right: 4px;
+  }
+  
+  .hyphen {
+    margin: 0 4px;
+  }
+  
+  .name {
+    font-size: 14px;
+  }
+  
+  .breakpoints {
+    margin-top: 4px;
+    font-size: 12px;
+    display: flex;
+  }
+  
+  .bpActive {
+    color: #fff;
+  }
+  
+  .bpInactive {
+    color: rgba(255, 255, 255, 0.4);
+  }
+  
+  .sep {
+    margin: 0 4px;
+    color: rgba(255, 255, 255, 0.4);
+  }
+  
