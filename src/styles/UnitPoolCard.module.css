@@ -32,3 +32,7 @@
     height: 16px;
     width: 16px;
 }
+
+.traits {
+  display: flex;
+}
