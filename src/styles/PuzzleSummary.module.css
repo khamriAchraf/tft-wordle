@@ -1,0 +1,25 @@
+.summary {
+  display: flex;
+  gap: 32px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+}
+.traitsSection,
+.costSection {
+  flex: 1;
+}
+.traitsSection h2,
+.costSection h2 {
+  font-size: 1.25rem;
+  color: #f0e6d2;
+  margin-bottom: 8px;
+}
+.summary ul {
+  list-style: none;
+  padding: 0;
+  color: #f0e6d2;
+}
+.summary li {
+  margin-bottom: 4px;
+}

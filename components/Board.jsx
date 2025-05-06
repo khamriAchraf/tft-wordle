@@ -6,6 +6,7 @@ import styles from '@/styles/Board.module.css'
 import UnitPool from './UnitPool';
 import BoardUnitCard from './BoardUnitCard';
 import MyBoard from './MyBoard';
+import PuzzleSummary from './PuzzleSummary';
 
 const Board = () => {
     const { units, team, addUnit, removeUnit, activeTraits } = useBoard();
@@ -19,7 +20,8 @@ const Board = () => {
 
             {/* Traits Panel */}
             <div className={styles.traits}>
-                <TraitPanel activeTraits={activeTraits} /> 
+                <TraitPanel activeTraits={activeTraits} />
+                <PuzzleSummary />
             </div>
 
             {/* Current Team */}
