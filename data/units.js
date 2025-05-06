@@ -2,7 +2,8 @@
 // TFT Set 10 (Remix Rumble) champions with sprite coordinates
 const units = [
   { id: 1, name: "Ahri", cost: 4, traits: ["kda", "spellweaver"], image: { sprite: "tft-champion0.png", x: 0, y: 0, w: 48, h: 48 } },
-  { id: 2, name: "Akali", cost: 4, traits: ["kda", "breakout"], image: { sprite: "tft-champion0.png", x: 48, y: 0, w: 48, h: 48 } },
+  { id: 2, name: "Akali", cost: 4, traits: ["kda", "executioner", "breakout"], image: { sprite: "tft-champion0.png", x: 48, y: 0, w: 48, h: 48 } },
+  { id: 200, name: "Akali_TrueDamage", cost: 4, traits: ["truedamage", "executioner", "breakout"], image: { sprite: "tft-champion1.png", x: 384, y: 96, w: 48, h: 48 } },
   { id: 3, name: "Amumu", cost: 3, traits: ["emo", "guardian"], image: { sprite: "tft-champion0.png", x: 96, y: 0, w: 48, h: 48 } },
   { id: 4, name: "Annie", cost: 1, traits: ["emo", "spellweaver"], image: { sprite: "tft-champion0.png", x: 144, y: 0, w: 48, h: 48 } },
   { id: 5, name: "Aphelios", cost: 2, traits: ["heartsteel", "rapidfire"], image: { sprite: "tft-champion0.png", x: 192, y: 0, w: 48, h: 48 } },

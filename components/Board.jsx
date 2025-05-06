@@ -5,6 +5,7 @@ import TraitPanel from './TraitPanel';
 import styles from '@/styles/Board.module.css'
 import UnitPool from './UnitPool';
 import BoardUnitCard from './BoardUnitCard';
+import MyBoard from './MyBoard';
 
 const Board = () => {
     const { units, team, addUnit, removeUnit, activeTraits } = useBoard();
@@ -22,28 +23,7 @@ const Board = () => {
             </div>
 
             {/* Current Team */}
-            <div className={styles.board}>
-                <div className={styles.panel}>
-                    <h1 className={styles.title}>Your Team</h1>
-                    <button className={styles.clear} onClick={() => team.forEach(removeUnit)}>
-                        Clear All
-                    </button>
-                </div>
-                <div className={styles.myBoard}>
-                    {team.length === 0 ? (
-                        <p className="italic">No units selected</p>
-                    ) : (
-                        team.map((unit) => (
-                            <BoardUnitCard
-                                key={unit.id}
-                                unit={unit}
-                                onAction={removeUnit}
-                                actionLabel="Remove"
-                            />
-                        ))
-                    )}
-                </div>
-            </div>
+            <MyBoard />
         </div>
     );
 }

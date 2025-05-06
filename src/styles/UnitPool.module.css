@@ -4,11 +4,10 @@
   padding: 0.5rem;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: saturate(100%) blur(5px);
-  border: 1px solid white;
 }
 
 .panel {
-    width: 400px;
+  width: 400px;
 }
 
 .title {
@@ -20,8 +19,8 @@
 .grid {
   display: grid;
   overflow: hidden;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
 }
 
 .icon {
@@ -42,4 +41,40 @@
   gap: 5px;
   margin-bottom: 10px;
   margin-top: 10px;
+}
+
+/* Search bar styling */
+.searchContainer {
+  position: relative;
+  width: 100%;
+  max-width: 240px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px 32px 8px 12px;
+  border-width: 2px;
+  border-style: solid;
+  border-image: linear-gradient(to top, #796645, #c1b49a) 1;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #f0e6d2;
+  font-size: 14px;
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: #f0e6d2;
+  opacity: 0.7;
+}
+
+/* Optional clear icon styling */
+.clearIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  filter: invert(1);
 }

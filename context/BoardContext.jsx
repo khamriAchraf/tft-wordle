@@ -9,6 +9,7 @@ export function BoardProvider({ children }) {
   const [team, setTeam] = useState([]);
 
   const addUnit = (unit) => {
+    if (team.length >= 12) return;
     if (!team.some((u) => u.id === unit.id)) {
       setTeam((prev) => [...prev, unit]);
     }
