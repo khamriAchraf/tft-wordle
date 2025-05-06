@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import { BoardProvider } from "../../contexts/BoardContext";
+import { BoardProvider } from "../../context/BoardContext";
 
 export default function App({ Component, pageProps }) {
   return (

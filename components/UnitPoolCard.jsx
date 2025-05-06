@@ -1,6 +1,6 @@
 // src/components/UnitPoolCard.jsx
 import React from 'react';
-import { useBoard } from '../contexts/BoardContext';
+import { useBoard } from '../context/BoardContext';
 import styles from '@/styles/UnitPoolCard.module.css';
 
 const costBorderColors = {
@@ -22,6 +22,7 @@ export default function UnitPoolCard({ unit }) {
     const { sprite, x, y, w, h } = unit.image;
 
     const borderColor = costBorderColors[unit.cost] || '#000';
+    // TODO : Get image from https://rerollcdn.com/characters/Skin/10/AkaliTrueDamage.png
 
     return (
         <div

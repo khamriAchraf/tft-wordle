@@ -1,9 +1,10 @@
 import React from 'react'
-import { useBoard } from '../contexts/BoardContext';
+import { useBoard } from '../context/BoardContext';
 import UnitCard from './UnitCard';
 import TraitPanel from './TraitPanel';
 import styles from '@/styles/Board.module.css'
 import UnitPool from './UnitPool';
+import BoardUnitCard from './BoardUnitCard';
 
 const Board = () => {
     const { units, team, addUnit, removeUnit, activeTraits } = useBoard();
@@ -33,7 +34,7 @@ const Board = () => {
                         <p className="italic">No units selected</p>
                     ) : (
                         team.map((unit) => (
-                            <UnitCard
+                            <BoardUnitCard
                                 key={unit.id}
                                 unit={unit}
                                 onAction={removeUnit}

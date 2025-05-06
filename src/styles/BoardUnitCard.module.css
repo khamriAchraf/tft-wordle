@@ -1,0 +1,44 @@
+/* src/styles/BoardUnitCard.module.css */
+.card {
+    position: relative;
+    width: 256px;
+    height: 128px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: transform 0.1s ease-in-out;
+  }
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .traitOverlay {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+  
+  .traitIcon {
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .nameBar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2px 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+  }
+  

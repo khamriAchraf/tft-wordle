@@ -1,7 +1,7 @@
 // src/components/UnitPool.jsx
 import React, { useState } from 'react';
 import styles from '@/styles/UnitPool.module.css';
-import { useBoard } from '../contexts/BoardContext';
+import { useBoard } from '../context/BoardContext';
 import { traits as traitData } from '../data/traits';
 import UnitPoolCard from './UnitPoolCard';
 
