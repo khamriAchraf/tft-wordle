@@ -3,7 +3,6 @@ import React from 'react';
 import { useBoard } from '../context/BoardContext';
 import BoardUnitCard from './BoardUnitCard';
 import styles from '@/styles/MyBoard.module.css';
-import PuzzleSummary from './PuzzleSummary';
 
 export default function MyBoard() {
   const { team, removeUnit } = useBoard();

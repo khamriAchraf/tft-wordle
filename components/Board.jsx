@@ -21,7 +21,6 @@ const Board = () => {
             {/* Traits Panel */}
             <div className={styles.traits}>
                 <TraitPanel activeTraits={activeTraits} />
-                <PuzzleSummary />
             </div>
 
             {/* Current Team */}

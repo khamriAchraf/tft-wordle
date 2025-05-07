@@ -4,10 +4,8 @@ import { PuzzleProvider } from "../../context/PuzzleContext";
 
 export default function App({ Component, pageProps }) {
   return (
-    <PuzzleProvider>
       <BoardProvider>
         <Component {...pageProps} />
       </BoardProvider>
-    </PuzzleProvider>
   );
 }
