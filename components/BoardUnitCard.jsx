@@ -46,7 +46,7 @@ export default function BoardUnitCard({ unit }) {
             <div className={styles.item}>
               <div
                 className={styles.iconWrapper}
-                style={{ backgroundImage: `url(/images/traits/inactive.png)` }}
+                style={{ backgroundImage: `url(/images/traits/traitbg.png)` }}
               >
                 <img
                   src={`/images/traits/${tid}.png`}
