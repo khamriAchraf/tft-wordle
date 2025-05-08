@@ -1,11 +1,13 @@
 import "@/styles/globals.css";
 import { BoardProvider } from "../../context/BoardContext";
-import { PuzzleProvider } from "../../context/PuzzleContext";
+import { GameProvider } from "../../context/GameContext";
 
 export default function App({ Component, pageProps }) {
   return (
-      <BoardProvider>
+    <BoardProvider>
+      <GameProvider>
         <Component {...pageProps} />
-      </BoardProvider>
+      </GameProvider>
+    </BoardProvider>
   );
 }

@@ -7,6 +7,7 @@ import UnitPool from "./UnitPool";
 import BoardUnitCard from "./BoardUnitCard";
 import MyBoard from "./MyBoard";
 import PuzzleSummary from "./PuzzleSummary";
+import GameProgress from "./GameProgress";
 
 const Board = () => {
   const { units, team, addUnit, removeUnit, activeTraits } = useBoard();
@@ -17,14 +18,18 @@ const Board = () => {
       <div className={styles.championPool}>
         <UnitPool />
       </div>
+      <div>
+        {/* Current Team */}
+        <MyBoard />
 
-      {/* Current Team */}
-      <MyBoard />
-
+        <GameProgress />
+        
       {/* Traits Panel */}
-      <div className={styles.traits}>
+      {/* <div className={styles.traits}>
         <TraitPanel activeTraits={activeTraits} />
+      </div> */}
       </div>
+
     </div>
   );
 };

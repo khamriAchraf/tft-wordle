@@ -1,3 +1,4 @@
+
 // src/components/PuzzleSummary.jsx
 import React from 'react';
 import { usePuzzle } from '../context/PuzzleContext';

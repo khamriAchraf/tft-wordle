@@ -1,5 +1,3 @@
-// src/data/units.js
-// TFT Set 10 (Remix Rumble) champions with sprite coordinates
 const units = [
   { id: 1, name: "Ahri", cost: 4, traits: ["kda", "spellweaver"], image: { sprite: "tft-champion0.png", x: 0, y: 0, w: 48, h: 48 } },
   { id: 2, name: "Akali", cost: 4, traits: ["kda", "executioner", "breakout"], image: { sprite: "tft-champion0.png", x: 48, y: 0, w: 48, h: 48 } },

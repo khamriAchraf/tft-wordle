@@ -1,8 +1,8 @@
 // src/components/TraitPanel.jsx
-import React from 'react';
-import styles from '@/styles/TraitPanel.module.css';
-import TraitItem from './TraitItem';
-import { traits as traitData } from '../data/traits';
+import React from "react";
+import styles from "@/styles/TraitPanel.module.css";
+import TraitItem from "./TraitItem";
+import { traits as traitData } from "../data/traits";
 
 const tierOrder = {
   prismatic: 0,
@@ -14,6 +14,7 @@ const tierOrder = {
 };
 
 const TraitPanel = ({ activeTraits }) => {
+  
   // Build and sort trait entries
   const sortedTraits = Object.entries(activeTraits)
     .map(([id, { count }]) => {
@@ -23,7 +24,7 @@ const TraitPanel = ({ activeTraits }) => {
       breakpoints.forEach((bp, idx) => {
         if (count >= bp) tierIndex = idx;
       });
-      const tierName = tierIndex >= 0 ? def.tiers[tierIndex] : 'inactive';
+      const tierName = tierIndex >= 0 ? def.tiers[tierIndex] : "inactive";
       const name = def ? def.name : id.charAt(0).toUpperCase() + id.slice(1);
       return { id, count, name, tierName };
     })
