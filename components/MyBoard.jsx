@@ -29,7 +29,7 @@ export default function MyBoard() {
               <BoardUnitCard unit={unit} />
             ) : (
               <div className={styles.placeholder}>
-                <span className={styles.slotNumber}>{idx + 1}</span>
+                <img src="/images/helmet.png" alt="Gold" />
               </div>
             )}
           </div>

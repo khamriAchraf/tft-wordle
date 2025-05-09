@@ -1,6 +1,5 @@
 .card {
   display: flex;
-  padding: 0.5rem;
   flex-direction: column;
   align-items: center;
   border-width: 1px;
@@ -12,6 +11,12 @@
   border-style: solid;
   border-image: linear-gradient(to top, #bfa54f, #fbffff) 1;
 }
+
+.sprite {
+  height: 100%;
+  width: 100%;
+}
+
 
 .unitName {
   font-size: 0.75rem;

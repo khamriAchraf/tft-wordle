@@ -23,13 +23,12 @@ const Board = () => {
         <MyBoard />
 
         <GameProgress />
-        
-      {/* Traits Panel */}
-      {/* <div className={styles.traits}>
+
+        {/* Traits Panel */}
+        {/* <div className={styles.traits}>
         <TraitPanel activeTraits={activeTraits} />
       </div> */}
       </div>
-
     </div>
   );
 };

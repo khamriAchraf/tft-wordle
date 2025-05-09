@@ -1,8 +1,10 @@
 /* src/styles/GameProgress.module.css */
-.panel {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+/* GameProgress.module.css */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 16px;
   }
   
   .item {

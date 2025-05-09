@@ -12,7 +12,7 @@ const compositions = [
     {
         id: 'kda-spellweaver',
         name: 'K/DA Spellweaver',
-        units: [1, 4, 2, 200, 3],      // Ahri, Annie, Akali, Akali_TrueDamage, Amumu
+        units: [1, 4, 2, 3],      // Ahri, Annie, Akali, Akali_TrueDamage, Amumu
         headliner: { unitId: 1, traitId: 'kda' },
     },
     {
