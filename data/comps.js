@@ -10,24 +10,29 @@
  */
 const compositions = [
     {
-        id: 'kda-spellweaver',
-        name: 'K/DA Spellweaver',
-        units: [1, 4, 2, 3],      // Ahri, Annie, Akali, Akali_TrueDamage, Amumu
-        headliner: { unitId: 1, traitId: 'kda' },
+        id: 'sounds-valor',
+        name: 'Sounds Of Valor',
+        units: [35, 8, 47, 28, 49, 22, 60, 21],       // Amumu, Annie, Ahri, Aphelios, Akali
+        headliner: { unitId: 35, traitId: '8bit' },
     },
     {
-        id: 'heartsteel-rapidfire',
-        name: 'Heartsteel Rapidfire',
-        units: [5, 2, 4, 3, 1],       // Aphelios, Akali, Annie, Amumu, Ahri
-        headliner: { unitId: 5, traitId: 'heartsteel' },
+        id: 'kda-all-out',
+        name: 'K/DA All Out',
+        units: [1, 2, 10, 30, 38, 59, 23, 24],       // Amumu, Annie, Ahri, Aphelios, Akali
+        headliner: { unitId: 2, traitId: 'kda' },
     },
     {
-        id: 'emo-guardian',
-        name: 'Emo Guardian',
-        units: [3, 4, 1, 5, 2],       // Amumu, Annie, Ahri, Aphelios, Akali
-        headliner: { unitId: 3, traitId: 'emo' },
+        id: 'country-roads',
+        name: 'Country Roads',
+        units: [36, 39, 44, 45, 42, 3, 56],       // Amumu, Annie, Ahri, Aphelios, Akali
+        headliner: { unitId: 36, traitId: 'country' },
     },
-    // …add more compositions as desired
+    {
+        id: 'edmoshing',
+        name: 'EDMoshing',
+        units: [52, 16, 51, 27, 54, 39, 49, 6],       // Amumu, Annie, Ahri, Aphelios, Akali
+        headliner: { unitId: 16, traitId: 'edm' },
+    },
 ];
 
 export default compositions;

@@ -29,7 +29,7 @@ const units = [
   { id: 27, name: "Lux", cost: 3, traits: ["edm", "dazzler"], image: { sprite: "tft-champion0.png", x: 288, y: 96, w: 48, h: 48 } },
   { id: 28, name: "Mordekaiser", cost: 3, traits: ["pentakill", "sentinel"], image: { sprite: "tft-champion0.png", x: 336, y: 96, w: 48, h: 48 } },
   { id: 29, name: "Nami", cost: 1, traits: ["disco", "dazzler"], image: { sprite: "tft-champion0.png", x: 384, y: 96, w: 48, h: 48 } },
-  { id: 30, name: "Neeko", cost: 3, traits: ["kda", "superfan","guardian"], image: { sprite: "tft-champion0.png", x: 432, y: 96, w: 48, h: 48 } },
+  { id: 30, name: "Neeko", cost: 3, traits: ["kda", "superfan", "guardian"], image: { sprite: "tft-champion0.png", x: 432, y: 96, w: 48, h: 48 } },
   { id: 31, name: "Olaf", cost: 1, traits: ["pentakill", "bruiser"], image: { sprite: "tft-champion1.png", x: 144, y: 96, w: 48, h: 48 } },
   { id: 32, name: "Pantheon", cost: 2, traits: ["punk", "guardian"], image: { sprite: "tft-champion1.png", x: 0, y: 0, w: 48, h: 48 } },
   { id: 33, name: "Poppy", cost: 4, traits: ["emo", "mosher"], image: { sprite: "tft-champion1.png", x: 48, y: 0, w: 48, h: 48 } },
@@ -48,7 +48,7 @@ const units = [
   { id: 46, name: "Vi", cost: 1, traits: ["punk", "mosher"], image: { sprite: "tft-champion1.png", x: 192, y: 48, w: 48, h: 48 } },
   { id: 47, name: "Viego", cost: 4, traits: ["pentakill", "edgelord"], image: { sprite: "tft-champion1.png", x: 240, y: 48, w: 48, h: 48 } },
   { id: 48, name: "Yasuo", cost: 1, traits: ["truedamage", "edgelord"], image: { sprite: "tft-champion1.png", x: 288, y: 48, w: 48, h: 48 } },
-  { id: 49, name: "Yone", cost: 4, traits: ["heartsteel", "edgelord"], image: { sprite: "tft-champion1.png", x: 336, y: 48, w: 48, h: 48 } },
+  { id: 49, name: "Yone", cost: 3, traits: ["heartsteel", "edgelord"], image: { sprite: "tft-champion1.png", x: 336, y: 48, w: 48, h: 48 } },
   { id: 50, name: "Yorick", cost: 5, traits: ["pentakill", "guardian"], image: { sprite: "tft-champion1.png", x: 384, y: 48, w: 48, h: 48 } },
   { id: 51, name: "Zac", cost: 4, traits: ["edm", "bruiser"], image: { sprite: "tft-champion1.png", x: 432, y: 48, w: 48, h: 48 } },
   { id: 52, name: "Zed", cost: 4, traits: ["edm", "crowddiver"], image: { sprite: "tft-champion1.png", x: 0, y: 96, w: 48, h: 48 } },
@@ -57,7 +57,9 @@ const units = [
   { id: 56, name: "Tahm Kench", cost: 1, traits: ["country", "bruiser"], image: { sprite: "tft-champion1.png", x: 192, y: 96, w: 48, h: 48 } },
   { id: 57, name: "Twisted Fate", cost: 4, traits: ["disco", "dazzler"], image: { sprite: "tft-champion1.png", x: 240, y: 96, w: 48, h: 48 } },
   { id: 58, name: "K'Sante", cost: 1, traits: ["heartsteel", "sentinel"], image: { sprite: "tft-champion1.png", x: 288, y: 96, w: 48, h: 48 } },
-  { id: 59, name: "Kai'Sa", cost: 2, traits: ["kda", "bigshot"], image: { sprite: "tft-champion1.png", x: 336, y: 96, w: 48, h: 48 } }
+  { id: 59, name: "Kai'Sa", cost: 2, traits: ["kda", "bigshot"], image: { sprite: "tft-champion1.png", x: 336, y: 96, w: 48, h: 48 } },
+  { id: 60, name: "Garen", cost: 2, traits: ["8bit", "sentinel"], image: { sprite: "tft-champion1.png", x: 336, y: 96, w: 48, h: 48 } }
+
 ];
 
 export default units;

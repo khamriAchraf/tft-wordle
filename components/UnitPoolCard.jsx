@@ -24,6 +24,10 @@ export default function UnitPoolCard({ unit }) {
   const borderColor = costBorderColors[unit.cost] || "#000";
   // TODO : Get image from https://rerollcdn.com/characters/Skin/10/AkaliTrueDamage.png
 
+  const formatUnitName = (name) => {
+    return name.replace(' ', '').replace("'", '').replace('KaiSa', 'Kaisa').replace('Akali', 'AkaliKDA').replace('AkaliKDA_TrueDamage', 'AkaliTrueDamage');
+  }
+
   return (
     <div
       className={`${styles.card} ${selected ? styles.selected : ""}`}
@@ -37,7 +41,7 @@ export default function UnitPoolCard({ unit }) {
         }}
       >
         <img
-          src={`https://rerollcdn.com/characters/Skin/10/${unit.name}.png`}
+          src={`https://rerollcdn.com/characters/Skin/10/${formatUnitName(unit.name)}.png`}
           className={styles.sprite}
           alt=""
         />

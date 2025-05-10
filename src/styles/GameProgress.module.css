@@ -1,51 +1,105 @@
 /* src/styles/GameProgress.module.css */
 /* GameProgress.module.css */
 
+.gameContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.costGrid {
+  padding: 0.5rem;
+  background-color: #1a1c21;
+  border-width: 2px;
+  border-style: solid;
+  border-image: linear-gradient(to top, #553d20, #272019) 1;
+}
+
 .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 16px;
-  }
-  
-  .item {
-    display: grid;
-    grid-template-columns: auto 1fr 1fr auto;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .icon {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .label {
-    color: #ffffff;
-    font-weight: 500;
-    font-size: 14px;
-  }
-  
-  .barContainer {
-    position: relative;
-    width: 100%;
-    height: 6px;
-    background-color: #2d2d2d;
-    border-radius: 3px;
-    overflow: hidden;
-  }
-  
-  .barFill {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background-color: #facc15; /* gold fill */
-    border-radius: 3px;
-  }
-  
-  .ratio {
-    color: #a0a0a0;
-    font-size: 12px;
-    white-space: nowrap;
-  }
-  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  padding: 0.5rem;
+  flex: auto;
+  background-color: #1a1c21;
+  border-width: 2px;
+  border-style: solid;
+  border-image: linear-gradient(to top, #553d20, #272019) 1;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.label {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.barContainer {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background-color: #2d2d2d;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.barFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #facc15; /* gold fill */
+  border-radius: 3px;
+}
+
+.ratio {
+  color: #a0a0a0;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* Cost distribution grid */
+.costGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.costItem {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 8px;
+  text-align: center;
+}
+
+.costLabel {
+  display: block;
+  font-size: 12px;
+  color: #f0e6d2;
+  margin-bottom: 4px;
+}
+
+.costRatio {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.goldIcon {
+  height: 16px;
+  width: 16px;
+}

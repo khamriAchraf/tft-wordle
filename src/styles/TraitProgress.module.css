@@ -1,80 +1,128 @@
 /* src/styles/TraitProgress.module.css */
 .item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-  }
-  
-  .iconWrapper {
-    width: 32px;
-    height: 32px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .icon {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .text {
-    display: flex;
-    align-items: baseline;
-    gap: 4px;
-    flex-shrink: 0;
-  }
-  
-  .count {
-    font-weight: bold;
-    font-size: 14px;
-    color: #f0e6d2;
-  }
-  
-  .name {
-    font-size: 14px;
-    color: #ffffff;
-  }
-  
-  .progressContainer {
-    flex-grow: 1;
-    margin: 0 8px;
-  }
-  
-  .progressBar {
-    position: relative;
-    width: 100%;
-    height: 6px;
-    background-color: #2d2d2d;
-    border-radius: 3px;
-    overflow: hidden;
-  }
-  
-  .fill {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background-color: #eab308;
-    border-radius: 3px;
-  }
-  
-  .tick {
-    position: absolute;
-    top: 0;
-    width: 2px;
-    height: 100%;
-    background-color: #777777;
-    transform: translateX(-1px);
-  }
-  
-  .ratio {
-    font-size: 12px;
-    color: #a0a0a0;
-    white-space: nowrap;
-  }
-  
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  justify-content: flex-start;
+}
+
+.iconWrapper {
+  height: 48px;
+  width: 48px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  width: 100%;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.sliderContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 0.25rem;
+  height: 1rem;
+  width: 100%;
+}
+
+.slider {
+  width: 100%;
+  height: 100%;
+}
+
+.count {
+  font-weight: bold;
+  font-size: 14px;
+  color: #f0e6d2;
+}
+
+.name {
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.ratio {
+  font-size: 12px;
+  color: #a0a0a0;
+  white-space: nowrap;
+}
+
+/* Slider styling using Mantine classNames */
+.sliderRoot {
+  flex-grow: 1;
+  margin: 0 8px;
+}
+
+.m_c9ade57f::before {
+  background-color: #484b50 !important;
+}
+
+.m_b7b0423a {
+  background-color: red !important;
+}
+
+.sliderTrack::before {
+  height: 1rem;
+  border-radius: 3px;
+  background-color: #484b50 !important;
+}
+
+.sliderBarYellow {
+  background-color: #cab561;
+  height: 1rem;
+  border-radius: 3px;
+}
+
+.sliderBarGreen {
+  background-color: #2cb65f;
+  height: 1rem;
+  border-radius: 3px;
+}
+
+.sliderBarRed {
+  background-color: #f04747;
+  height: 1rem;
+  border-radius: 3px;
+}
+
+.sliderMarkWrapper {
+  /* Ensure marks are visible atop track */
+  z-index: 99;
+}
+
+.sliderMark {
+  width: 2px;
+  height: 1rem;
+  background-color: red;
+  transform: translateX(-1px);
+}
+
+.sliderThumb {
+  display: none;
+}
+
+.item.dimmed {
+  opacity: 0.4;
+}
