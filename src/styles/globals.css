@@ -43,3 +43,16 @@ a {
     color-scheme: dark;
   }
 }
+
+.mantine-Modal-header {
+  background: linear-gradient(to top, #08131c, #08121b);
+}
+
+.mantine-Modal-body {
+  background: linear-gradient(to top, #081c2a, #08131c);
+  overflow: visible;
+}
+
+.mantine-Modal-content {
+  overflow: visible;
+}
