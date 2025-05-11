@@ -91,26 +91,31 @@ export default function GameProgress() {
         ))}
       </div>
       {/* Cost Distribution */}
-      <div className={styles.costGrid}>
-        {[1, 2, 3, 4, 5].map((cost) => (
-          <div
-            key={cost}
-            className={styles.costItem}
-            style={{ backgroundColor: costColors[cost], opacity: costDistribution[cost] ? 1 : 0.1 }}
-          >
-            <span className={styles.costLabel}>
-              <img
-                src={`/images/gold.png`}
-                alt="Gold"
-                className={styles.goldIcon}
-              />{" "}
-              {cost}
-            </span>
-            <span className={styles.costRatio}>
-              {boardCostDist[cost] || 0}/{costDistribution[cost] || 0}
-            </span>
-          </div>
-        ))}
+      <div className={styles.costGridParent}>
+        <div className={styles.costGrid}>
+          {[1, 2, 3, 4, 5].map((cost) => (
+            <div
+              key={cost}
+              className={styles.costItem}
+              style={{
+                backgroundColor: costColors[cost],
+                opacity: costDistribution[cost] ? 1 : 0.1,
+              }}
+            >
+              <span className={styles.costLabel}>
+                <img
+                  src={`/images/gold.png`}
+                  alt="Gold"
+                  className={styles.goldIcon}
+                />{" "}
+                {cost}
+              </span>
+              <span className={styles.costRatio}>
+                {boardCostDist[cost] || 0}/{costDistribution[cost] || 0}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

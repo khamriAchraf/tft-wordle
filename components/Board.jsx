@@ -18,11 +18,13 @@ const Board = () => {
       <div className={styles.championPool}>
         <UnitPool />
       </div>
-      <div>
+      <div className={styles.board}>
         {/* Current Team */}
         <MyBoard />
 
-        <GameProgress />
+        <div className={styles.gameProgress}>
+          <GameProgress />
+        </div>
 
         {/* Traits Panel */}
         {/* <div className={styles.traits}>

@@ -12,27 +12,179 @@ const compositions = [
     {
         id: 'sounds-valor',
         name: 'Sounds Of Valor',
-        units: [35, 8, 47, 28, 49, 22, 60, 21],       // Amumu, Annie, Ahri, Aphelios, Akali
-        headliner: { unitId: 35, traitId: '8bit' },
+        units: ['riven', 'caitlyn', 'viego', 'mordekaiser', 'yone', 'kayn', 'garen', 'kayle'],
+        headliner: { unitId: 'riven', traitId: '8bit' },
     },
     {
         id: 'kda-all-out',
         name: 'K/DA All Out',
-        units: [1, 2, 10, 30, 38, 59, 23, 24],       // Amumu, Annie, Ahri, Aphelios, Akali
-        headliner: { unitId: 2, traitId: 'kda' },
+        units: ['ahri', 'akali', 'ekko', 'neeko', 'seraphine', 'kaisa', 'kennen', 'lillia'],
+        headliner: { unitId: 'akali', traitId: 'kda' },
     },
     {
         id: 'country-roads',
         name: 'Country Roads',
-        units: [36, 39, 44, 45, 42, 3, 56],       // Amumu, Annie, Ahri, Aphelios, Akali
-        headliner: { unitId: 36, traitId: 'country' },
+        units: ['samira', 'sett', 'urgot', 'amumu', 'vex', 'thresh', 'tahmkench'],
+        headliner: { unitId: 'samira', traitId: 'country' },
     },
     {
         id: 'edmoshing',
         name: 'EDMoshing',
-        units: [52, 16, 51, 27, 54, 39, 49, 6],       // Amumu, Annie, Ahri, Aphelios, Akali
-        headliner: { unitId: 16, traitId: 'edm' },
+        units: ['zed', 'jax', 'zac', 'lux', 'missfortune', 'sett', 'yone', 'bard'],
+        headliner: { unitId: 'jax', traitId: 'edm' },
     },
+    {
+        id: 'giants',
+        name: 'GIANTS',
+        units: [
+            'akali',
+            'ekko',
+            'senna',
+            'caitlyn',
+            'qiyana',
+            'neeko',
+            'kennen',
+            'lillia'
+        ],
+        headliner: { unitId: 'senna', traitId: 'truedamage' }
+    },
+    {
+        id: 'high-notes',
+        name: 'High Notes',
+        units: [
+            'seraphine',
+            'ahri',
+            'ekko',
+            'neeko',
+            'akali',
+            'lulu',
+            'kennen',
+            'lillia',
+        ],
+        headliner: { unitId: 'seraphine', traitId: 'spellweaver' }
+    },
+    {
+        id: 'penta-kayle',
+        name: 'Penta-Kayle',
+        units: [
+            'kayle',
+            'yorick',
+            'karthus',
+            'viego',
+            'mordekaiser',
+            'illaoi',
+            'gnar',
+            'olaf'
+        ],
+        headliner: { unitId: 'kayle', traitId: 'edgelord' }
+    },
+    {
+        id: 'grammy-nominees',
+        name: 'Grammy Nominees',
+        units: [
+            'illaoi',
+            'lucian',
+            'ezreal',
+            'yorick',
+            'jhin',
+            'kayn',
+            'thresh',
+            'missfortune',
+            'sett'
+        ],
+        headliner: { unitId: 'ezreal', traitId: 'bigshot' }
+    },
+    {
+        id: 'pentakali',
+        name: 'PentAkali',
+        units: [
+            'akali',
+            'karthus',
+            'viego',
+            'mordekaiser',
+            'yorick',
+            'neeko',
+            'gnar',
+            'lillia'
+        ],
+        headliner: { unitId: 'viego', traitId: 'pentakill' }
+    },
+    {
+        id: 'jazz-jam',
+        name: 'Jazz Jam',
+        units: [
+            'missfortune',
+            'bard',
+            'ekko',
+            'neeko',
+            'lucian',
+            'kaisa',
+            'kennen',
+            'lillia'
+        ],
+        headliner: { unitId: 'missfortune', traitId: 'jazz' }
+    },
+    {
+        id: 'panic-at-the-disco',
+        name: 'Panic! At the Disco',
+        units: [
+            'blitzcrank',
+            'twistedfate',
+            'sona',
+            'ziggs',
+            'illaoi',
+            'lux',
+            'gragas',
+            'nami',
+            'taric'
+        ],
+        headliner: { unitId: 'twistedfate', traitId: 'disco' }
+    },
+    {
+        id: 'ad-flex',
+        name: 'AD Flex',
+        units: [
+            'ezreal',
+            'zac',
+            'illaoi',
+            'jhin',
+            'missfortune',
+            'sett',
+            'gragas',
+            'olaf'
+        ],
+        headliner: { unitId: 'ezreal', traitId: 'bigshot' }
+    },
+    {
+        id: 'zaun-182',
+        name: 'Zaun 182',
+        units: [
+            'jinx',
+            'amumu',
+            'pantheon',
+            'twitch',
+            'thresh',
+            'neeko',
+            'vex',
+            'vi'
+        ],
+        headliner: { unitId: 'jinx', traitId: 'rapidfire' }
+    },
+    {
+        id: 'laser-show',
+        name: 'Laser Show',
+        units: [
+            'lux',
+            'zac',
+            'zed',
+            'illaoi',
+            'ziggs',
+            'sett',
+            'gragas',
+            'jax'
+        ],
+        headliner: { unitId: 'lux', traitId: 'edm' }
+    }
 ];
 
 export default compositions;

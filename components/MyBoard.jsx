@@ -5,7 +5,7 @@ import BoardUnitCard from './BoardUnitCard';
 import styles from '@/styles/MyBoard.module.css';
 
 export default function MyBoard() {
-  const { team, removeUnit } = useBoard();
+  const { team, removeUnit, mistakes } = useBoard();
 
   // Create an array of 12 slots, filling with team units or null
   const slots = Array.from({ length: 12 }, (_, i) => team[i] || null);
@@ -14,6 +14,9 @@ export default function MyBoard() {
     <div className={styles.board}>
       <div className={styles.panel}>
         <h1 className={styles.title}>Your Team</h1>
+        <p className={styles.mistakes}>
+          {mistakes} Mistakes
+        </p>
         <button
           className={styles.clear}
           onClick={() => team.forEach(removeUnit)}

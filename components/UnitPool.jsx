@@ -163,13 +163,15 @@ export default function UnitPool() {
         ) : (
           sortedTraits.map((trait) => (
             <div key={trait.id} className={styles.section}>
-              <div className={styles.header}>
-                <img
-                  src={`/images/traits/${trait.id}.png`}
-                  alt={trait.name}
-                  className={styles.traitIcon}
-                />
-                {trait.name}{" "}
+              <div className={styles.traitGroupHeader}>
+                <div className={styles.headerText}>
+                  <img
+                    src={`/images/traits/${trait.id}.png`}
+                    alt={trait.name}
+                    className={styles.traitIcon}
+                  />
+                  {trait.name}{" "}
+                </div>
                 <button
                   className={styles.addAllButton}
                   onClick={() => addAllTrait(trait.id)}

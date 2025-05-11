@@ -7,6 +7,7 @@ const BoardContext = createContext();
 export function BoardProvider({ children }) {
   const [team, setTeam] = useState([]);
   const [headliner, setHeadliner] = useState(null);
+  const  [mistakes, setMistakes] = useState(0);
   // headliner shape: { unitId, traitId } or null
 
   const addUnit = (unit) => {
@@ -17,6 +18,7 @@ export function BoardProvider({ children }) {
   };
 
   const removeUnit = (unit) => {
+    setMistakes((prev) => prev + 1);
     setTeam((prev) => prev.filter((u) => u.id !== unit.id));
     if (headliner?.unitId === unit.id) {
       setHeadliner(null);
@@ -66,6 +68,7 @@ export function BoardProvider({ children }) {
         units,
         headliner,
         selectHeadliner,
+        mistakes,
       }}
     >
       {children}

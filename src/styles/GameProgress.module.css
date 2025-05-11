@@ -10,24 +10,33 @@
   gap: 1rem;
 }
 
+.costGridParent {
+  padding: 0px;
+  background-color: #735d30;
+  border-width: 1px;
+  border-style: solid; 
+  border-color: #0e0f0e;
+}
+
 .costGrid {
   padding: 0.5rem;
-  background-color: #1a1c21;
+  background-color: #040d15;
   border-width: 2px;
   border-style: solid;
-  border-image: linear-gradient(to top, #553d20, #272019) 1;
+  border-color: #574727;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 16px;
-  padding: 0.5rem;
+  padding: 0.75rem;
   flex: auto;
-  background-color: #1a1c21;
+  background-color: #040d15;
   border-width: 2px;
   border-style: solid;
-  border-image: linear-gradient(to top, #553d20, #272019) 1;
+  border-color: #574727;
+  border-bottom: 0;
 }
 
 .item {

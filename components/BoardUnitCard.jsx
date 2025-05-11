@@ -30,8 +30,18 @@ export default function BoardUnitCard({ unit }) {
         border: `4px solid ${bgColor}`,
         borderBottom: "none",
       }}
-      onClick={() => removeUnit(unit)}
     >
+      <img
+        src={`/images/delete.png`}
+        alt={name}
+        className={`${styles.deleteIcon}`}
+        style={{ backgroundColor: bgColor }}
+        onClick={(e) => {
+          e.stopPropagation();
+          removeUnit(unit);
+        }}
+      />
+
       {/* Trait icons overlay */}
       <div className={styles.traitOverlay}>
         {unit.traits.map((tid) => {
@@ -43,7 +53,13 @@ export default function BoardUnitCard({ unit }) {
             headliner?.unitId === unit.id && headliner.traitId === tid;
 
           return (
-            <div className={styles.item}>
+            <div
+              className={styles.item}
+              onClick={(e) => {
+                e.stopPropagation();
+                selectHeadliner(unit.id, tid);
+              }}
+            >
               <div
                 className={styles.iconWrapper}
                 style={{ backgroundImage: `url(/images/traits/traitbg.png)` }}
@@ -52,12 +68,8 @@ export default function BoardUnitCard({ unit }) {
                   src={`/images/traits/${tid}.png`}
                   alt={name}
                   className={`${styles.traitIcon} ${
-                    isHL ? styles.headliner : ''
+                    isHL ? styles.headliner : ""
                   }`}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    selectHeadliner(unit.id, tid);
-                  }}
                 />
               </div>
               <div className={styles.text}>
