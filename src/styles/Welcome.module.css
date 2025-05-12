@@ -1,24 +1,36 @@
 .button {
-  font-family: "Beaufort";
-  text-transform: uppercase;
-  font-size: 18px;
-  color: #f0e6d2;
-  padding: 0.75rem 2rem;
-  border: 3px solid transparent;
+  position: relative;        /* make pseudos position relative to the button */
+  display: inline-block;
+  padding: 6px 16px;
   background: #1e2328;
-  border-image: linear-gradient(#08abac, #01698b) 1;
-  transition: all ease 0.5s;
+  color:    #c1bba6;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  /* draw top + side borders from your gradient, but hide the bottom */
+  border: 2px solid;
+  border-image: linear-gradient(to top,   #7a5c28, #c8aa6d) 1;
+  border-bottom: none;
+  font-weight: 600;
+  box-shadow: inset 0 0 5px #091118;
+  transition: box-shadow 0.2s ease-in-out;
 }
 
 .button:hover {
-  background-image: url("/images/btn.jpg");
-  background-position: center center;
-  background-size: cover;
-  box-shadow: 0 0 10px 4px rgba(192, 252, 253, 0.4),
-    inset 0 0 5px 2px rgba(192, 252, 253, 0.3);
-  border: 3px solid rgba(192, 252, 253, 0.75);
-  cursor: pointer;
+  /* on hover, flip the gradient direction */
+  box-shadow: inset 0 0 10px #c8aa6d;
 }
 
-.buttonGroup {
+.button::before,
+.button::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;      /* nudge it just below the button’s bottom edge */
+  width: 2px;       /* make them wider */
+  height: 12px;       /* make them taller */
+  background: #785a28; /* your gold tone */
 }
+
+.button::before { left: -5px; }   /* inset from the left corner */
+.button::after  { right: -5px; }  /* inset from the right corner */

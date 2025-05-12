@@ -25,10 +25,7 @@ const Welcome = ({ context, id, innerProps }) => {
       </ul>
       <Group justify="center" className={styles.buttonGroup}>
         <button className={styles.button} onClick={() => context.closeModal(id)}>
-          Start Without Music
-        </button>
-        <button className={styles.button} onClick={() => context.closeModal(id)}>
-          Start With Music
+          Start
         </button>
       </Group>
     </>
