@@ -3,6 +3,7 @@ import React from "react";
 import { useBoard } from "../context/BoardContext";
 import styles from "@/styles/BoardUnitCard.module.css";
 import { traits as traitData } from "../data/traits";
+import { useGame } from "../context/GameContext";
 
 // Map cost to name-bar background color
 const costColors = {
@@ -15,6 +16,7 @@ const costColors = {
 
 export default function BoardUnitCard({ unit }) {
   const { removeUnit, headliner, selectHeadliner } = useBoard();
+  const { composition } = useGame();
   const { cost, name } = unit;
   const bgColor = costColors[cost] || "#000";
   // Full unit image filename in public folder
@@ -22,9 +24,13 @@ export default function BoardUnitCard({ unit }) {
     .replace(" ", "")
     .replace("'", "")}.TFT_Set10.png`;
 
+  console.log("headliner:",headliner);
+  console.log("unid:", unit.id);
+
   return (
     <div
-      className={styles.card}
+      className={`${styles.card} ${headliner?.unitId === unit.id ? styles.headliner : ""
+        }`}
       style={{
         backgroundImage: `url(/${imgFilename})`,
         border: `4px solid ${bgColor}`,
@@ -62,18 +68,17 @@ export default function BoardUnitCard({ unit }) {
             >
               <div
                 className={styles.iconWrapper}
-                style={{ backgroundImage: `url(/images/traits/traitbg.png)` }}
+                style={{ backgroundImage: `url(/images/traits/${isHL ? 'headliner' : 'traitbg'}.png)` }}
               >
                 <img
                   src={`/images/traits/${tid}.png`}
                   alt={name}
-                  className={`${styles.traitIcon} ${
-                    isHL ? styles.headliner : ""
-                  }`}
+                  className={`${styles.traitIcon}
+                    }`}
                 />
               </div>
               <div className={styles.text}>
-                <span className={styles.name}>{traitName}</span>
+                <span>{traitName}</span>
               </div>
             </div>
           );

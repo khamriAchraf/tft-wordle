@@ -5,15 +5,40 @@
   gap: 16px;
 }
 
-.panel {
+.boardHeader {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
 }
 
+.boardControls {
+  flex: 3;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+}
+
+.appControls {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+
 .title {
-  font-size: 1.5rem;
   font-weight: bold;
+}
+
+.clearIcon {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+
 }
 
 .clear {
@@ -23,10 +48,10 @@
   border-image: linear-gradient(to top, #796645, #c1b49a) 1;
   color: #c1bba6;
   box-shadow: inset 0 0 10px black;
-  padding: 8px 24px;
+  padding: 6px 16px;
   font-size: 1rem;
   cursor: pointer;
-  transition: all 0.1s ease-in-out;
+  font-weight: bold;
 }
 
 .clear:hover {

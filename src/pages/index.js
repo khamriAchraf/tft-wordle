@@ -2,51 +2,95 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
-import { modals, useModals } from '@mantine/modals';
-import styles from '@/styles/Home.module.css';
-import Board from '../../components/Board';
-import { useGame } from '../../context/GameContext';
-import { useEffect, useRef } from 'react';
+import { modals, useModals } from "@mantine/modals";
+import styles from "@/styles/Home.module.css";
+import Board from "../../components/Board";
+import { useGame } from "../../context/GameContext";
+import { useEffect, useRef } from "react";
+import { useBoard } from "../../context/BoardContext";
 
 const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
 });
 
 export default function Home() {
   const { isSolved } = useGame();
+  const { mistakes, resetMistakes } = useBoard();
   const welcomeShownRef = useRef(false);
   const hasAlerted = useRef(false);
 
   // Welcome modal: show once per user
   useEffect(() => {
-    const shown = localStorage.getItem('welcomeShown');
-    if (shown && !welcomeShownRef.current) {
+    const shown = localStorage.getItem("welcomeShown");
+    if (!shown && !welcomeShownRef.current) {
       welcomeShownRef.current = true;
-      modals.openContextModal({ modal: 'welcome', title: 'Welcome', size: 'lg' });
-      localStorage.setItem('welcomeShown', 'true');
+      modals.openContextModal({
+        modal: "welcome",
+        size: "lg",
+      });
+      localStorage.setItem("welcomeShown", "true");
     }
   }, [modals]);
 
-  // Puzzle solved alert, once per puzzle
   useEffect(() => {
     if (isSolved && !hasAlerted.current) {
       hasAlerted.current = true;
-      alert('🎉 Congratulations! You’ve cleared the puzzle! 🎉');
+
+      let rating;
+      if (mistakes === 0) rating = "S";
+      else if (mistakes === 1) rating = "A";
+      else if (mistakes === 2) rating = "B";
+      else if (mistakes <= 4) rating = "C";
+      else rating = "D";
+
+      const ratingKey = "ratingCounts";
+      const storedRatings = JSON.parse(localStorage.getItem(ratingKey) || "{}");
+      storedRatings[rating] = (storedRatings[rating] || 0) + 1;
+      localStorage.setItem(ratingKey, JSON.stringify(storedRatings));
+
+      const playedKey = "playedCount";
+      const prevPlayed = parseInt(localStorage.getItem(playedKey) || "0", 10);
+      const newPlayed = prevPlayed + 1;
+      localStorage.setItem(playedKey, newPlayed);
+
+      const streakKey = "currentStreak";
+      const maxKey = "maxStreak";
+      const prevStreak = parseInt(localStorage.getItem(streakKey) || "0", 10);
+      const newStreak = prevStreak + 1;
+      localStorage.setItem(streakKey, newStreak);
+      const prevMax = parseInt(localStorage.getItem(maxKey) || "0", 10);
+      const newMax = Math.max(prevMax, newStreak);
+      localStorage.setItem(maxKey, newMax);
+
+      resetMistakes();
+
+      modals.openContextModal({
+        modal: "endGame",
+        innerProps: { rating, mistakes },
+      });
     }
   }, [isSolved]);
+
+  useEffect(() => {
+    modals.openContextModal({
+      modal: "endGame",
+    });
+  }, []);
 
   return (
     <>
       <Head>
         <title>TFT Remix Rumble Puzzle</title>
       </Head>
-      <main className={`${styles.main} ${geistSans.variable} ${geistMono.variable}`}>
+      <main
+        className={`${styles.main} ${geistSans.variable} ${geistMono.variable}`}
+      >
         <Board />
       </main>
     </>

@@ -1,6 +1,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --progress-size-md: 1rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -44,21 +45,34 @@ a {
   }
 }
 
+.mantine-Modal-close {
+  border-bottom-color: transparent !important;
+}
+
 .mantine-Modal-header {
-  background: linear-gradient(to top, #08131c, #08121b);
-  border: 2px solid #785a28;
-  border-bottom: 0;
+  display: none;
 }
 
 .mantine-Modal-body {
   background: linear-gradient(to top, #081c2a, #08131c);
   overflow: visible;
+  padding-top: 16px;
   padding-bottom: 0;
   border: 2px solid #785a28;
-  border-top: 0;
-
 }
 
 .mantine-Modal-content {
   overflow: visible;
+}
+
+.mantine-Progress-root {
+  background-color: transparent !important;
+}
+
+.mantine-CloseButton-root:hover {
+  background-color: transparent;
+}
+
+.m_1b7284a3 {
+  background-color: transparent !important;
 }

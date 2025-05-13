@@ -3,6 +3,11 @@ import React from 'react';
 import { useBoard } from '../context/BoardContext';
 import BoardUnitCard from './BoardUnitCard';
 import styles from '@/styles/MyBoard.module.css';
+import { useGame } from '../context/GameContext';
+import { Text } from '@mantine/core';
+import { GiBroom } from "react-icons/gi";
+import { RiDeleteBack2Fill } from "react-icons/ri";
+import { modals } from '@mantine/modals';
 
 export default function MyBoard() {
   const { team, removeUnit, mistakes } = useBoard();
@@ -12,17 +17,42 @@ export default function MyBoard() {
 
   return (
     <div className={styles.board}>
-      <div className={styles.panel}>
-        <h1 className={styles.title}>Your Team</h1>
-        <p className={styles.mistakes}>
-          {mistakes} Mistakes
-        </p>
-        <button
-          className={styles.clear}
-          onClick={() => team.forEach(removeUnit)}
-        >
-          Clear All
-        </button>
+      <div className={styles.boardHeader}>
+        <div className={styles.boardControls}>
+
+          <button
+            className={styles.clear}
+            onClick={() => team.forEach(removeUnit)}
+          >
+            Clear
+          </button>
+          <div>
+            <Text size='xl' className={styles.title}>My Board</Text>
+            <p className={styles.mistakes}>
+              <Text size="xs">Mistakes: {mistakes}</Text>
+            </p>
+          </div>
+        </div>
+        <div className={styles.appControls}>
+
+          <button
+            className={styles.clear}
+            onClick={() => modals.openContextModal({
+              modal: "stats",
+            })}
+          >
+            Stats
+          </button>
+          
+          <button
+            className={styles.clear}
+            onClick={() => modals.openContextModal({
+              modal: "welcome",
+            })}
+          >
+            How to Play
+          </button>
+        </div>
       </div>
 
       <div className={styles.grid}>

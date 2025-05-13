@@ -8,27 +8,30 @@ import { traits as traitData } from "../data/traits";
 const GameContext = createContext();
 
 export function GameProvider({ children }) {
-  // Initialize with a random composition from the pool
   const [composition, setComposition] = useState(
     compositions[Math.floor(Math.random() * compositions.length)]
   );
 
-  // Pick a new random composition
+  const [ratingsCount, setRatingsCount] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('ratingsCount')) || { S: 0, A: 0, B: 0, C: 0, D: 0 };
+    } catch {
+      return { S: 0, A: 0, B: 0, C: 0, D: 0 };
+    }
+  });
+
   const pickRandomComposition = () => {
     const comp = compositions[Math.floor(Math.random() * compositions.length)];
     setComposition(comp);
   };
 
-  // Pick composition by its ID
   const pickCompositionById = (id) => {
     const comp = compositions.find((c) => c.id === id);
     if (comp) setComposition(comp);
   };
 
-  // Pull in the current board & headliner from BoardContext
   const { team, headliner: boardHeadliner } = useBoard();
 
-  // Compute cost distribution of the target composition
   const costDistribution = useMemo(() => {
     const dist = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
     composition.units.forEach((unitId) => {
@@ -38,17 +41,13 @@ export function GameProvider({ children }) {
     return dist;
   }, [composition]);
 
-  // Determine if the player has solved the composition
   const isSolved = useMemo(() => {
-    // 1. Same number of units
     if (team.length !== composition.units.length) return false;
 
-    // 2. Same unit IDs (order-agnostic)
     const targetIds = [...composition.units].sort();
     const boardIds = [...team.map((u) => u.id)].sort();
     if (targetIds.some((id, i) => id !== boardIds[i])) return false;
 
-    // 3. Headliner must match exactly (or both null)
     if (composition.headliner) {
       if (
         !boardHeadliner ||
@@ -66,19 +65,16 @@ export function GameProvider({ children }) {
 
   const compositionActiveTraits = useMemo(() => {
     const counts = {};
-    // count each trait on the target comp
     composition.units.forEach((unitId) => {
       const u = units.find((x) => x.id === unitId);
       u.traits.forEach((t) => {
         counts[t] = (counts[t] || 0) + 1;
       });
     });
-    // apply headliner bonus if set
     if (composition.headliner) {
       counts[composition.headliner.traitId] =
         (counts[composition.headliner.traitId] || 0) + 1;
     }
-    // map into { id: { name, count } }
     return Object.entries(counts).reduce((acc, [id, count]) => {
       const def = traitData.find((t) => t.id === id);
       acc[id] = { name: def?.name || id, count };

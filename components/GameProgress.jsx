@@ -33,7 +33,6 @@ export default function GameProgress() {
     ...Object.keys(activeTraits),
   ]);
 
-  console.log(costDistribution);
 
   const entries = Array.from(allIds)
     .map((id) => {

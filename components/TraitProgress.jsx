@@ -21,7 +21,6 @@ export default function TraitProgress({ id, name, target, current, dimmed }) {
     value: i + 1,
     label: "",
   }));
-  console.log(name, marks, 0, target);
 
   const barClass =
     current < target

@@ -1,14 +1,14 @@
-import React, { createContext, useContext, useState, useMemo } from "react";
-import units from "../data/units";
-import { traits as traitData } from "../data/traits";
+// src/context/BoardContext.jsx
+import React, { createContext, useContext, useState, useMemo } from 'react';
+import units from '../data/units';
+import { traits as traitData } from '../data/traits';
 
 const BoardContext = createContext();
 
 export function BoardProvider({ children }) {
   const [team, setTeam] = useState([]);
+  const [mistakes, setMistakes] = useState(0);
   const [headliner, setHeadliner] = useState(null);
-  const  [mistakes, setMistakes] = useState(0);
-  // headliner shape: { unitId, traitId } or null
 
   const addUnit = (unit) => {
     if (team.length >= 12) return;
@@ -18,6 +18,7 @@ export function BoardProvider({ children }) {
   };
 
   const removeUnit = (unit) => {
+    // **increment mistakes here**, no GameContext needed
     setMistakes((prev) => prev + 1);
     setTeam((prev) => prev.filter((u) => u.id !== unit.id));
     if (headliner?.unitId === unit.id) {
@@ -25,12 +26,11 @@ export function BoardProvider({ children }) {
     }
   };
 
+  const resetMistakes = () => setMistakes(0);
+
   const selectHeadliner = (unitId, traitId) => {
-    // ensure unit is on board and has that trait
     const u = team.find((x) => x.id === unitId);
     if (!u || !u.traits.includes(traitId)) return;
-
-    // toggle headliner: remove if clicking same, otherwise set new
     if (headliner?.unitId === unitId && headliner?.traitId === traitId) {
       setHeadliner(null);
     } else {
@@ -43,17 +43,12 @@ export function BoardProvider({ children }) {
     team.forEach((unit) =>
       unit.traits.forEach((t) => (counts[t] = (counts[t] || 0) + 1))
     );
-
-    // apply headliner bonus
     if (headliner) {
       counts[headliner.traitId] = (counts[headliner.traitId] || 0) + 1;
     }
-
-    // build final map
     return Object.entries(counts).reduce((acc, [id, count]) => {
       const def = traitData.find((t) => t.id === id);
-      const name = def ? def.name : id;
-      acc[id] = { name, count };
+      acc[id] = { name: def ? def.name : id, count };
       return acc;
     }, {});
   }, [team, headliner]);
@@ -62,13 +57,14 @@ export function BoardProvider({ children }) {
     <BoardContext.Provider
       value={{
         team,
+        mistakes,
+        resetMistakes,
         addUnit,
         removeUnit,
         activeTraits,
         units,
         headliner,
         selectHeadliner,
-        mistakes,
       }}
     >
       {children}
@@ -78,6 +74,6 @@ export function BoardProvider({ children }) {
 
 export function useBoard() {
   const ctx = useContext(BoardContext);
-  if (!ctx) throw new Error("useBoard must be inside <BoardProvider>");
+  if (!ctx) throw new Error('useBoard must be inside <BoardProvider>');
   return ctx;
 }
