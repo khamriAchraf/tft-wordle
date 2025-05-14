@@ -1,13 +1,13 @@
 // src/components/MyBoard.jsx
-import React from 'react';
-import { useBoard } from '../context/BoardContext';
-import BoardUnitCard from './BoardUnitCard';
-import styles from '@/styles/MyBoard.module.css';
-import { useGame } from '../context/GameContext';
-import { Text } from '@mantine/core';
+import React from "react";
+import { useBoard } from "../context/BoardContext";
+import BoardUnitCard from "./BoardUnitCard";
+import styles from "@/styles/MyBoard.module.css";
+import { useGame } from "../context/GameContext";
+import { Text } from "@mantine/core";
 import { GiBroom } from "react-icons/gi";
 import { RiDeleteBack2Fill } from "react-icons/ri";
-import { modals } from '@mantine/modals';
+import { modals } from "@mantine/modals";
 
 export default function MyBoard() {
   const { team, removeUnit, mistakes } = useBoard();
@@ -19,7 +19,6 @@ export default function MyBoard() {
     <div className={styles.board}>
       <div className={styles.boardHeader}>
         <div className={styles.boardControls}>
-
           <button
             className={styles.clear}
             onClick={() => team.forEach(removeUnit)}
@@ -27,28 +26,31 @@ export default function MyBoard() {
             Clear
           </button>
           <div>
-            <Text size='xl' className={styles.title}>My Board</Text>
-            <p className={styles.mistakes}>
-              <Text size="xs">Mistakes: {mistakes}</Text>
-            </p>
+            <Text size="xl" className={styles.title}>
+              My Board
+            </Text>
+            <Text size="xs">Mistakes: {mistakes}</Text>
           </div>
         </div>
         <div className={styles.appControls}>
-
           <button
             className={styles.clear}
-            onClick={() => modals.openContextModal({
-              modal: "stats",
-            })}
+            onClick={() =>
+              modals.openContextModal({
+                modal: "stats",
+              })
+            }
           >
             Stats
           </button>
-          
+
           <button
             className={styles.clear}
-            onClick={() => modals.openContextModal({
-              modal: "welcome",
-            })}
+            onClick={() =>
+              modals.openContextModal({
+                modal: "welcome",
+              })
+            }
           >
             How to Play
           </button>
@@ -62,7 +64,7 @@ export default function MyBoard() {
               <BoardUnitCard unit={unit} />
             ) : (
               <div className={styles.placeholder}>
-                <img src="/images/helmet.png" alt="Gold" />
+                <img className={styles.helmet} src="/images/helmet.png" alt="Gold" />
               </div>
             )}
           </div>

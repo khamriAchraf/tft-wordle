@@ -14,7 +14,7 @@
   padding: 0px;
   background-color: #735d30;
   border-width: 1px;
-  border-style: solid; 
+  border-style: solid;
   border-color: #0e0f0e;
 }
 
@@ -32,10 +32,15 @@
   gap: 16px;
   padding: 0.75rem;
   flex: auto;
-  background-color: #040d15;
+  background: #070707;
+  background: radial-gradient(
+    circle,
+    rgba(7, 7, 7, 1) 0%,
+    rgba(26, 26, 26, 1) 100%
+  );
   border-width: 2px;
   border-style: solid;
-  border-color: #574727;
+  border-color: #fff;
   border-bottom: 0;
 }
 

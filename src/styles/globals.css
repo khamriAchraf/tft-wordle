@@ -22,7 +22,8 @@ body {
 
 body {
   color: #f0e6d2;
-  background: var(--background);
+  background: #070707;
+  background: radial-gradient(circle, #0a0a0a 0%,#0a0a0a 50%, #171717 100%);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -75,4 +76,57 @@ a {
 
 .m_1b7284a3 {
   background-color: transparent !important;
+}
+
+.bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -9;
+}
+
+.scrolling-strip {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background-repeat: repeat-x;
+}
+
+.scrolling-strip.remix {
+  height: 194px;
+  background-image: url("/images/remix.png");
+  animation: scroll-left 60s linear infinite;
+}
+
+.scrolling-strip.rumble {
+  height: 154px;
+  background-image: url("/images/rumble.png");
+  animation: scroll-right 60s linear infinite;
+}
+
+@keyframes scroll-left {
+  from {
+    background-position: 0 center;
+  }
+  to {
+    background-position: -928px center;
+  }
+}
+@keyframes scroll-right {
+  from {
+    background-position: 0 center;
+  }
+  to {
+    background-position: 908px center;
+  }
+}
+
+.thingies {
+  position: absolute;
+  top: 0;
+  right: 50px;
+  z-index: -1;
 }
