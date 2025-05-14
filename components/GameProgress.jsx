@@ -98,7 +98,7 @@ export default function GameProgress() {
               className={styles.costItem}
               style={{
                 backgroundColor: costColors[cost],
-                opacity: costDistribution[cost] ? 1 : 0.1,
+                opacity: costDistribution[cost] ? 1 : 0.3,
               }}
             >
               <span className={styles.costLabel}>

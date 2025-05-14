@@ -1,5 +1,3 @@
-// src/data/comps.js
-
 /**
  * A pool of target compositions for the game to choose from.
  * Each composition includes:

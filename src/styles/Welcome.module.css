@@ -1,37 +1,22 @@
 .button {
+  margin-top: 0rem;
   position: relative;
   display: inline-block;
   padding: 6px 16px;
-  background: #1e2328;
-  color:    #c1bba6;
+  background: black;
+  color: #fff;
   font-size: 1rem;
   text-align: center;
   cursor: pointer;
   text-transform: uppercase;
   border: 2px solid;
-  border-image: linear-gradient(to top,   #7a5c28, #c8aa6d) 1;
+  border-image: linear-gradient(to top, #be136c, #fd8957) 1;
   border-bottom: none;
   font-weight: 600;
-  box-shadow: inset 0 0 5px #091118;
-  transition: box-shadow 0.2s ease-in-out;
 }
 
 .button:hover {
-  box-shadow: inset 0 0 30px #c8aa6d;
 }
-
-.button::before,
-.button::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  width: 2px;
-  height: 12px;
-  background: #785a28;
-}
-
-.button::before { left: -5px; }
-.button::after  { right: -5px; }
 
 .header {
   display: flex;

@@ -8,6 +8,9 @@ import { Text } from "@mantine/core";
 import { GiBroom } from "react-icons/gi";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import { modals } from "@mantine/modals";
+import { IoStatsChartSharp } from "react-icons/io5";
+import { IoMdHelpCircle } from "react-icons/io";
+import { IoMdSettings } from "react-icons/io";
 
 export default function MyBoard() {
   const { team, removeUnit, mistakes } = useBoard();
@@ -23,7 +26,7 @@ export default function MyBoard() {
             className={styles.clear}
             onClick={() => team.forEach(removeUnit)}
           >
-            Clear
+            <img src={`/images/clear.png`} className={`${styles.clearIcon}`} />
           </button>
           <div>
             <Text size="xl" className={styles.title}>
@@ -37,11 +40,21 @@ export default function MyBoard() {
             className={styles.clear}
             onClick={() =>
               modals.openContextModal({
+                modal: "settings",
+              })
+            }
+          >
+            <IoMdSettings className={styles.clearIcon} />
+          </button>
+          <button
+            className={styles.clear}
+            onClick={() =>
+              modals.openContextModal({
                 modal: "stats",
               })
             }
           >
-            Stats
+            <IoStatsChartSharp className={styles.clearIcon} />
           </button>
 
           <button
@@ -52,7 +65,7 @@ export default function MyBoard() {
               })
             }
           >
-            How to Play
+            <IoMdHelpCircle className={styles.clearIcon} />
           </button>
         </div>
       </div>
@@ -64,7 +77,11 @@ export default function MyBoard() {
               <BoardUnitCard unit={unit} />
             ) : (
               <div className={styles.placeholder}>
-                <img className={styles.helmet} src="/images/helmet.png" alt="Gold" />
+                <img
+                  className={styles.helmet}
+                  src="/images/helmet.png"
+                  alt="Gold"
+                />
               </div>
             )}
           </div>

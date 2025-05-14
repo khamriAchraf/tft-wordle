@@ -9,6 +9,7 @@ import EndGame from "../../modals/EndGame";
 import Stats from "../../modals/Stats";
 import { useEffect, useState } from "react";
 import Head from "next/head";
+import Settings from "../../modals/Settings";
 
 const theme = createTheme({
   /** Put your mantine theme override here */
@@ -66,7 +67,7 @@ export default function App({ Component, pageProps }) {
       <div style={{ position: 'relative', zIndex: 1 }}>
         <MantineProvider theme={theme}>
           <ModalsProvider
-            modals={{ welcome: Welcome, endGame: EndGame, stats: Stats }}
+            modals={{ welcome: Welcome, endGame: EndGame, stats: Stats, settings: Settings }}
             modalProps={{ centered: true }}
           >
             <BoardProvider>
