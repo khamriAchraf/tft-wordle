@@ -13,7 +13,7 @@ import { IoMdHelpCircle } from "react-icons/io";
 import { IoMdSettings } from "react-icons/io";
 
 export default function MyBoard() {
-  const { team, removeUnit, mistakes } = useBoard();
+  const { team, removeUnit, mistakes, clearBoard, toggleHardMode } = useBoard();
 
   // Create an array of 12 slots, filling with team units or null
   const slots = Array.from({ length: 12 }, (_, i) => team[i] || null);
@@ -40,7 +40,8 @@ export default function MyBoard() {
             className={styles.clear}
             onClick={() =>
               modals.openContextModal({
-                modal: "settings",
+                modal: 'settings',
+                innerProps: { clearBoard, toggleHardMode },
               })
             }
           >

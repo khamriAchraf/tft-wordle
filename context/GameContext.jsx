@@ -1,37 +1,37 @@
 // src/context/GameContext.jsx
-import React, { createContext, useContext, useState, useMemo } from "react";
-import compositions from "../data/comps";
-import { useBoard } from "./BoardContext";
-import units from "../data/units";
-import { traits as traitData } from "../data/traits";
+import React, { createContext, useContext, useState, useMemo } from 'react';
+import compositions from '../data/comps';
+import { useBoard } from './BoardContext';
+import units from '../data/units';
+import { traits as traitData } from '../data/traits';
 
 const GameContext = createContext();
 
 export function GameProvider({ children }) {
-  const [composition, setComposition] = useState(
-    compositions[Math.floor(Math.random() * compositions.length)]
-  );
+  // Determine today’s puzzle index based on fixed reference date
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const reference = new Date(2025, 0, 1);
+  const diff = today.getTime() - reference.getTime();
+  const daysSince = Math.floor(diff / 86400000);
+  const idx = ((daysSince % compositions.length) + compositions.length) % compositions.length;
 
-  const [ratingsCount, setRatingsCount] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem('ratingsCount')) || { S: 0, A: 0, B: 0, C: 0, D: 0 };
-    } catch {
-      return { S: 0, A: 0, B: 0, C: 0, D: 0 };
-    }
-  });
+  // Composition of the day (users share the same puzzle)
+  const [composition, setComposition] = useState(() => compositions[idx]);
 
-  const pickRandomComposition = () => {
-    const comp = compositions[Math.floor(Math.random() * compositions.length)];
-    setComposition(comp);
-  };
-
+  // Optional manual overrides
   const pickCompositionById = (id) => {
     const comp = compositions.find((c) => c.id === id);
     if (comp) setComposition(comp);
   };
+  const pickRandomComposition = () => {
+    const rand = Math.floor(Math.random() * compositions.length);
+    setComposition(compositions[rand]);
+  };
 
-  const { team, headliner: boardHeadliner } = useBoard();
+  const { team, headliner } = useBoard();
 
+  // Cost distribution for the target composition
   const costDistribution = useMemo(() => {
     const dist = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
     composition.units.forEach((unitId) => {
@@ -41,28 +41,27 @@ export function GameProvider({ children }) {
     return dist;
   }, [composition]);
 
+  // Check if board matches the daily composition
   const isSolved = useMemo(() => {
     if (team.length !== composition.units.length) return false;
-
     const targetIds = [...composition.units].sort();
     const boardIds = [...team.map((u) => u.id)].sort();
     if (targetIds.some((id, i) => id !== boardIds[i])) return false;
-
     if (composition.headliner) {
       if (
-        !boardHeadliner ||
-        boardHeadliner.unitId !== composition.headliner.unitId ||
-        boardHeadliner.traitId !== composition.headliner.traitId
+        !headliner ||
+        headliner.unitId !== composition.headliner.unitId ||
+        headliner.traitId !== composition.headliner.traitId
       ) {
         return false;
       }
-    } else if (boardHeadliner) {
+    } else if (headliner) {
       return false;
     }
-
     return true;
-  }, [team, boardHeadliner, composition]);
+  }, [team, headliner, composition]);
 
+  // Active trait totals for the target composition
   const compositionActiveTraits = useMemo(() => {
     const counts = {};
     composition.units.forEach((unitId) => {
@@ -86,9 +85,8 @@ export function GameProvider({ children }) {
     <GameContext.Provider
       value={{
         composition,
-        setComposition,
-        pickRandomComposition,
         pickCompositionById,
+        pickRandomComposition,
         costDistribution,
         isSolved,
         compositions,
@@ -102,8 +100,6 @@ export function GameProvider({ children }) {
 
 export function useGame() {
   const ctx = useContext(GameContext);
-  if (!ctx) {
-    throw new Error("useGame must be used within a GameProvider");
-  }
+  if (!ctx) throw new Error('useGame must be used within a GameProvider');
   return ctx;
 }

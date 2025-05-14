@@ -21,9 +21,17 @@ const geistMono = Geist_Mono({
 
 export default function Home() {
   const { isSolved } = useGame();
-  const { mistakes, resetMistakes } = useBoard();
+  const {
+    mistakes,
+    resetMistakes,
+    team,
+    headliner,
+    solvedToday,
+    markSolved,
+    dateKey,
+  } = useBoard();
   const welcomeShownRef = useRef(false);
-  const hasAlerted = useRef(false);
+  const alertedRef = useRef(false);
 
   // Welcome modal: show once per user
   useEffect(() => {
@@ -39,9 +47,8 @@ export default function Home() {
   }, [modals]);
 
   useEffect(() => {
-    if (isSolved && !hasAlerted.current) {
-      hasAlerted.current = true;
-
+    if (isSolved && !solvedToday) {
+      alertedRef.current = true;
       let rating;
       if (mistakes === 0) rating = "S";
       else if (mistakes === 1) rating = "A";
@@ -69,18 +76,24 @@ export default function Home() {
       localStorage.setItem(maxKey, newMax);
 
       resetMistakes();
-
+      markSolved();
       modals.openContextModal({
         modal: "endGame",
         innerProps: { rating, mistakes },
       });
     }
-  }, [isSolved]);
+  }, [isSolved, solvedToday]);
 
   useEffect(() => {
-    modals.openContextModal({
-      modal: "endGame",
-    });
+    if (solvedToday && !alertedRef.current) {
+      alertedRef.current = true;
+      const raw = localStorage.getItem(`todayResult_${dateKey}`);
+      const { rating, mistakes } = JSON.parse(raw || "{}");
+      modals.openContextModal({
+        modal: "endGame",
+        innerProps: { rating, mistakes },
+      });
+    }
   }, []);
 
   return (

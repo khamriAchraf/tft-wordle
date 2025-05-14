@@ -1,0 +1,36 @@
+.button {
+  margin-top: 0rem;
+  position: relative;
+  display: inline-block;
+  padding: 6px 16px;
+  background: black;
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  border: 2px solid;
+  border-image: linear-gradient(to top, #be136c, #fea14b) 1;
+  border-bottom: none;
+  font-weight: 600;
+}
+
+.button:hover {
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+}
+
+.title {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.content {
+  padding-bottom: 24px;
+}

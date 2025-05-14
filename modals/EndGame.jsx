@@ -30,41 +30,20 @@ export default function EndGame({ context, id, innerProps }) {
   return (
     <Stack spacing="xl" className={styles.container}>
       <div className={styles.header}>
+        <div />
+        <Text size="lg" className={styles.title}>Great Stuff!</Text>
         <CloseButton onClick={() => context.closeModal(id)} />
       </div>
-      <Center>
-        <Stack align="center" justify="center" spacing="md">
-          <FaGrinStars className={styles.congratsIcon} />
-          <Text size="xl" weight={700}>
-            Congratulations!
-          </Text>
-        </Stack>
-      </Center>
-      <Group justify="center" className={styles.stats}>
+      <Group justify="center" className={styles.content}>
         <div>
           <Text align="center" size="lg" weight={700}>
             {played}
           </Text>
           <Text size="sm">Played</Text>
         </div>
-        <div>
-          <Text align="center" size="lg" weight={700}>
-            {currentStreak}
-          </Text>
-          <Text size="sm">Current Streak</Text>
-        </div>
-        <div>
-          <Text align="center" size="lg" weight={700}>
-            {maxStreak}
-          </Text>
-          <Text size="sm">Max Streak</Text>
-        </div>
       </Group>
 
       <div className={styles.distribution}>
-        <Text weight={500} mb="xs">
-          Rating Distribution
-        </Text>
         {RATINGS.map((r) => {
           const count = ratingCounts[r] || 0;
           const pct = Math.round((count / maxCount) * 100);
