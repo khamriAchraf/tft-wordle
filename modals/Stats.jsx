@@ -1,7 +1,7 @@
 // src/components/EndGame.jsx
 import React, { useMemo } from 'react';
-import { Button, Center, Group, Text, Progress, Stack } from '@mantine/core';
-import styles from '@/styles/EndGame.module.css';
+import { Button, Center, Group, Text, Progress, Stack, CloseButton } from '@mantine/core';
+import styles from '@/styles/Stats.module.css';
 
 const RATINGS = ['S', 'A', 'B', 'C', 'D'];
 
@@ -17,21 +17,15 @@ export default function Stats({ context, id, innerProps }) {
 
     return (
         <Stack spacing="xl" className={styles.container}>
-            <Center>
-                <Text size="xl" weight={700}>Stats</Text>
-            </Center>
-            <Group justify="center" className={styles.stats}>
+            <div className={styles.header}>
+                <div />
+                <Text size="lg" className={styles.title}>Statistics</Text>
+                <CloseButton onClick={() => context.closeModal(id)} />
+            </div>
+            <Group justify="center" align='center' className={styles.content}>
                 <div>
                     <Text align="center" size="lg" weight={700}>{played}</Text>
                     <Text size="sm">Played</Text>
-                </div>
-                <div>
-                    <Text align="center" size="lg" weight={700}>{currentStreak}</Text>
-                    <Text size="sm">Current Streak</Text>
-                </div>
-                <div>
-                    <Text align="center" size="lg" weight={700}>{maxStreak}</Text>
-                    <Text size="sm">Max Streak</Text>
                 </div>
             </Group>
 

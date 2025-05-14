@@ -1,5 +1,5 @@
 // src/components/UnitPoolCard.jsx
-import React from "react";
+import React, { useEffect } from "react";
 import { useBoard } from "../context/BoardContext";
 import styles from "@/styles/UnitPoolCard.module.css";
 
@@ -12,7 +12,7 @@ const costBorderColors = {
 };
 
 export default function UnitPoolCard({ unit }) {
-  const { team, addUnit, removeUnit } = useBoard();
+  const { team, addUnit, removeUnit, hardMode } = useBoard();
   const selected = team.some((u) => u.id === unit.id);
 
   const handleClick = () => {
@@ -27,6 +27,10 @@ export default function UnitPoolCard({ unit }) {
   const formatUnitName = (name) => {
     return name.replace(' ', '').replace("'", '').replace('KaiSa', 'Kaisa').replace('Akali', 'AkaliKDA').replace('AkaliKDA_TrueDamage', 'AkaliTrueDamage');
   }
+
+  useEffect(() => {
+    const saved = localStorage.getItem('hardMode') === 'true';
+  }, []);
 
   return (
     <div
@@ -48,7 +52,7 @@ export default function UnitPoolCard({ unit }) {
       </div>
 
       {/* Trait icons */}
-      <div className={styles.traits}>
+      {!hardMode && <div className={styles.traits}>
         {unit.traits.map((tid) => (
           <img
             key={tid}
@@ -57,7 +61,8 @@ export default function UnitPoolCard({ unit }) {
             className={styles.traitIcon}
           />
         ))}
-      </div>
+      </div>}
+
 
       {/* Unit name */}
       <div className={styles.unitName}>{unit.name}</div>

@@ -10,7 +10,7 @@
   cursor: pointer;
   text-transform: uppercase;
   border: 2px solid;
-  border-image: linear-gradient(to top, #be136c, #fd8957) 1;
+  border-image: linear-gradient(to top, #be136c, #fea14b) 1;
   border-bottom: none;
   font-weight: 600;
 }

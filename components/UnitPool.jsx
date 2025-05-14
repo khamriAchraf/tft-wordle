@@ -7,7 +7,7 @@ import UnitPoolCard from "./UnitPoolCard";
 import { HiMiniChevronUpDown } from "react-icons/hi2";
 
 export default function UnitPool() {
-  const { units, team, addUnit } = useBoard();
+  const { units, team, addUnit, hardMode } = useBoard();
   const [groupBy, setGroupBy] = useState("cost");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -39,9 +39,9 @@ export default function UnitPool() {
     : [];
   const traitMatches = query
     ? traitData.filter(
-        (t) =>
-          t.name.toLowerCase().includes(query) && traitBuckets[t.id]?.length
-      )
+      (t) =>
+        t.name.toLowerCase().includes(query) && traitBuckets[t.id]?.length
+    )
     : [];
 
   const addAllTrait = (traitId) => {
@@ -51,7 +51,7 @@ export default function UnitPool() {
   return (
     <div className={styles.panel}>
       <h1 className={styles.title}>Unit Pool</h1>
-      <div className={styles.poolHeader}>
+      {!hardMode && <div className={styles.poolHeader}>
         {/* Search bar */}
         <div className={styles.searchContainer}>
           <input
@@ -74,7 +74,8 @@ export default function UnitPool() {
           </select>
           <HiMiniChevronUpDown className={styles.selectIcon} />
         </div>
-      </div>
+      </div>}
+
 
       <div className={styles.pool}>
         {/* Search results take priority */}

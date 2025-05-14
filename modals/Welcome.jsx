@@ -21,7 +21,11 @@ const Welcome = ({ context, id, innerProps }) => {
           </li>
         </ul>
       </div>
-
+      <Group className={styles.content} justify="center">
+        <Text color="#888" align="center" size="sm">
+        This website is a fan-made project and is not affiliated with, endorsed by, or sponsored by Riot Games or Teamfight Tactics. All trademarks are property of their respective owners. No copyright infringement is intended.
+        </Text>
+      </Group>
       <Group justify="center" className={styles.buttonGroup}>
         <button className={styles.button} onClick={() => context.closeModal(id)}>
           Play

@@ -1,14 +1,55 @@
 // src/context/BoardContext.jsx
-import React, { createContext, useContext, useState, useMemo } from 'react';
+import React, { createContext, useContext, useState, useMemo, useEffect } from 'react';
 import units from '../data/units';
 import { traits as traitData } from '../data/traits';
 
 const BoardContext = createContext();
 
 export function BoardProvider({ children }) {
-  const [team, setTeam] = useState([]);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const dateKey = today.toISOString().slice(0, 10); // "2025-05-14"
+
+  const [solvedToday, setSolvedToday] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return localStorage.getItem(`solved_${dateKey}`) === 'true';
+  });
+
+  const [team, setTeam] = useState(() => {
+    if (typeof window === 'undefined') return [];
+    if (!solvedToday) return [];
+    const raw = localStorage.getItem(`todayBoard_${dateKey}`);
+    if (!raw) return [];
+    try {
+      const { teamIds } = JSON.parse(raw);
+      return teamIds.map((id) => units.find((u) => u.id === id)).filter(Boolean);
+    } catch {
+      return [];
+    }
+  });
+  const [headliner, setHeadliner] = useState(() => {
+    if (typeof window === 'undefined') return null;
+    if (!solvedToday) return null;
+    const raw = localStorage.getItem(`todayBoard_${dateKey}`);
+    if (!raw) return null;
+    try {
+      const { headliner } = JSON.parse(raw);
+      return headliner;
+    } catch {
+      return null;
+    }
+  });
   const [mistakes, setMistakes] = useState(0);
-  const [headliner, setHeadliner] = useState(null);
+  const [hardMode, setHardMode] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return localStorage.getItem('hardMode') === 'true';
+  });
+  const toggleHardMode = (value) => setHardMode(value);
+
+
+
+
+
 
   const addUnit = (unit) => {
     if (team.length >= 12) return;
@@ -24,6 +65,12 @@ export function BoardProvider({ children }) {
     if (headliner?.unitId === unit.id) {
       setHeadliner(null);
     }
+  };
+
+  const clearBoard = () => {
+    setTeam([]);
+    setMistakes(0);
+    setHeadliner(null);
   };
 
   const resetMistakes = () => setMistakes(0);
@@ -53,6 +100,23 @@ export function BoardProvider({ children }) {
     }, {});
   }, [team, headliner]);
 
+  // whenever the board actually becomes “solved”, snap a copy to localStorage
+  useEffect(() => {
+    if (solvedToday) {
+      const payload = {
+        teamIds: team.map((u) => u.id),
+        headliner,
+      };
+      localStorage.setItem(`todayBoard_${dateKey}`, JSON.stringify(payload));
+    }
+  }, [solvedToday, dateKey]);
+
+  // expose a way to mark “solved”
+  const markSolved = () => {
+    localStorage.setItem(`solved_${dateKey}`, 'true');
+    setSolvedToday(true);
+  };
+
   return (
     <BoardContext.Provider
       value={{
@@ -65,6 +129,12 @@ export function BoardProvider({ children }) {
         units,
         headliner,
         selectHeadliner,
+        clearBoard,
+        hardMode,
+        toggleHardMode,
+        solvedToday,
+        markSolved,
+        dateKey,
       }}
     >
       {children}

@@ -8,22 +8,17 @@
   justify-content: space-between;
   margin-top: 1rem;
   gap: 1rem;
-}
-
-.costGridParent {
-  padding: 0px;
-  background-color: #735d30;
-  border-width: 1px;
-  border-style: solid; 
-  border-color: #0e0f0e;
+  background: radial-gradient(
+    circle,
+    rgba(7, 7, 7, 1) 0%,
+    rgba(26, 26, 26, 1) 100%
+  );
+  border-radius: 0.6rem;
 }
 
 .costGrid {
   padding: 0.5rem;
-  background-color: #040d15;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #574727;
+  padding-top: 1rem;
 }
 
 .grid {
@@ -32,11 +27,7 @@
   gap: 16px;
   padding: 0.75rem;
   flex: auto;
-  background-color: #040d15;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #574727;
-  border-bottom: 0;
+  border-right: 1px solid #444;
 }
 
 .item {
