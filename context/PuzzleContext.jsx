@@ -1,8 +1,8 @@
 // src/context/PuzzleContext.jsx
 import React, { createContext, useContext, useState, useMemo, useRef, useEffect } from 'react';
-import { comps } from '../data/comps';
-import units from '../data/units';
-import { traits as traitData } from '../data/traits';
+import { comps } from '../data/remix-rumble/comps';
+import units from '../data/remix-rumble/units';
+import { traits as traitData } from '../data/remix-rumble/traits';
 import { useBoard } from './BoardContext';
 
 const PuzzleContext = createContext();

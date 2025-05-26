@@ -1,6 +1,6 @@
 // src/components/TraitProgress.jsx
 import React from "react";
-import { traits as traitData } from "../data/traits";
+import { traits as traitData } from "../data/remix-rumble/traits";
 import styles from "@/styles/TraitProgress.module.css";
 import { Slider } from "@mantine/core";
 

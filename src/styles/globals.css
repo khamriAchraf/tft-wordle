@@ -144,3 +144,9 @@ option {
   background-color: black;
   border-radius: 0;
 }
+
+@media (max-width: 768px) {
+  body {
+    overflow: auto !important;
+  }
+}

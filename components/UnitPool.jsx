@@ -2,10 +2,12 @@
 import React, { useState } from "react";
 import styles from "@/styles/UnitPool.module.css";
 import { useBoard } from "../context/BoardContext";
-import { traits as traitData } from "../data/traits";
+import { traits as traitData } from "../data/remix-rumble/traits";
 import UnitPoolCard from "./UnitPoolCard";
 import { HiMiniChevronUpDown } from "react-icons/hi2";
-
+import { IoIosArrowDropleftCircle, IoMdArrowDropleft, IoMdReturnLeft } from "react-icons/io";
+import { Tooltip } from "@mantine/core";
+import Link from "next/link";
 export default function UnitPool() {
   const { units, team, addUnit, hardMode } = useBoard();
   const [groupBy, setGroupBy] = useState("cost");
@@ -50,7 +52,18 @@ export default function UnitPool() {
 
   return (
     <div className={styles.panel}>
-      <h1 className={styles.title}>Unit Pool</h1>
+      <div className={styles.header}>
+        <Tooltip label="Return to Set Selection">
+          <Link href="/"><button
+            className={styles.return}
+          >
+            <IoMdArrowDropleft className={styles.returnIcon} />
+          </button></Link>
+
+        </Tooltip>
+
+        <h1 className={styles.title}>Unit Pool</h1></div>
+
       {!hardMode && <div className={styles.poolHeader}>
         {/* Search bar */}
         <div className={styles.searchContainer}>

@@ -3,7 +3,7 @@ import React from "react";
 import { useGame } from "../context/GameContext";
 import { useBoard } from "../context/BoardContext";
 import TraitProgress from "./TraitProgress";
-import { traits as traitData } from "../data/traits";
+import { traits as traitData } from "../data/remix-rumble/traits";
 import styles from "@/styles/GameProgress.module.css";
 
 const tierOrder = {

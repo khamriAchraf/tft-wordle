@@ -1,111 +1,59 @@
-// pages/index.js
-import Head from "next/head";
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-import { modals, useModals } from "@mantine/modals";
+/* eslint-disable @next/next/no-img-element */
+import React from "react";
 import styles from "@/styles/Home.module.css";
-import Board from "../../components/Board";
-import { useGame } from "../../context/GameContext";
-import { useEffect, useRef } from "react";
-import { useBoard } from "../../context/BoardContext";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import { Text } from "@mantine/core";
+import { BoardProvider } from "../../context/BoardContext";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export default function Home() {
-  const { isSolved } = useGame();
-  const {
-    mistakes,
-    resetMistakes,
-    team,
-    headliner,
-    solvedToday,
-    markSolved,
-    dateKey,
-  } = useBoard();
-  const welcomeShownRef = useRef(false);
-  const alertedRef = useRef(false);
-
-  // Welcome modal: show once per user
-  useEffect(() => {
-    const shown = localStorage.getItem("welcomeShown");
-    if (!shown && !welcomeShownRef.current) {
-      welcomeShownRef.current = true;
-      modals.openContextModal({
-        modal: "welcome",
-        size: "lg",
-      });
-      localStorage.setItem("welcomeShown", "true");
-    }
-  }, [modals]);
-
-  useEffect(() => {
-    if (isSolved && !solvedToday) {
-      alertedRef.current = true;
-      let rating;
-      if (mistakes === 0) rating = "S";
-      else if (mistakes === 1) rating = "A";
-      else if (mistakes === 2) rating = "B";
-      else if (mistakes <= 4) rating = "C";
-      else rating = "D";
-
-      const ratingKey = "ratingCounts";
-      const storedRatings = JSON.parse(localStorage.getItem(ratingKey) || "{}");
-      storedRatings[rating] = (storedRatings[rating] || 0) + 1;
-      localStorage.setItem(ratingKey, JSON.stringify(storedRatings));
-
-      const playedKey = "playedCount";
-      const prevPlayed = parseInt(localStorage.getItem(playedKey) || "0", 10);
-      const newPlayed = prevPlayed + 1;
-      localStorage.setItem(playedKey, newPlayed);
-
-      const streakKey = "currentStreak";
-      const maxKey = "maxStreak";
-      const prevStreak = parseInt(localStorage.getItem(streakKey) || "0", 10);
-      const newStreak = prevStreak + 1;
-      localStorage.setItem(streakKey, newStreak);
-      const prevMax = parseInt(localStorage.getItem(maxKey) || "0", 10);
-      const newMax = Math.max(prevMax, newStreak);
-      localStorage.setItem(maxKey, newMax);
-
-      resetMistakes();
-      markSolved();
-      modals.openContextModal({
-        modal: "endGame",
-        innerProps: { rating, mistakes },
-      });
-    }
-  }, [isSolved, solvedToday]);
-
-  useEffect(() => {
-    if (solvedToday && !alertedRef.current) {
-      alertedRef.current = true;
-      const raw = localStorage.getItem(`todayResult_${dateKey}`);
-      const { rating, mistakes } = JSON.parse(raw || "{}");
-      modals.openContextModal({
-        modal: "endGame",
-        innerProps: { rating, mistakes },
-      });
-    }
-  }, []);
+const Home = () => {
+  const { router } = useRouter();
 
   return (
-    <>
-      <Head>
-        <title>TFT Remix Rumble Puzzle</title>
-      </Head>
-      <main
-        className={`${styles.main} ${geistSans.variable} ${geistMono.variable}`}
-      >
-        <Board />
-      </main>
-    </>
+    <div className={styles.home}>
+      <div className={styles.container}>
+        <Text size="xl" align="center">
+          Pick a set to start
+        </Text>
+      </div>
+      <div className={styles.left}>
+        <Link href="/cybercity">
+          <img
+            className={styles.background}
+            src="/images/cybercity-bg.jpg"
+            alt=""
+          />
+          <img
+            className={styles.leftLogo}
+            src="/images/set-14-logo.avif"
+            alt=""
+          />
+        </Link>
+      </div>
+      <div className={styles.right}>
+        <Link href="/remix-rumble">
+          <img
+            className={styles.background}
+            src="/images/remix-rumble-bg.jpg"
+            alt=""
+          />
+          <img
+            className={styles.rightLogo}
+            src="/images/set-10-logo.png"
+            alt=""
+          />
+        </Link>
+      </div>
+      <div className={styles.disclaimer}>
+        <Text color="#888" size="sm">
+          This website is a fan-made project and is not affiliated with,
+          endorsed by, or sponsored by Riot Games or Teamfight Tactics. All
+          trademarks are property of their respective owners. No copyright
+          infringement is intended.
+        </Text>
+      </div>
+    </div>
   );
-}
+};
+
+export default Home;

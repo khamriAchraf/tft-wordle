@@ -1,13 +1,18 @@
 // src/context/GameContext.jsx
 import React, { createContext, useContext, useState, useMemo } from 'react';
-import compositions from '../data/comps';
+import compositions from '../data/remix-rumble/comps';
 import { useBoard } from './BoardContext';
-import units from '../data/units';
-import { traits as traitData } from '../data/traits';
+import unitsRemix from '../data/remix-rumble/units';
+import traitsRemix from '../data/remix-rumble/traits';
+import unitsCyber from '../data/cybercity/units';
+import traitsCyber from '../data/cybercity/traits';
 
 const GameContext = createContext();
 
-export function GameProvider({ children }) {
+export function GameProvider({ setKey = '10', children }) {
+  const units = setKey === '14' ? unitsCyber : unitsRemix;
+  const traitData = setKey === '14' ? traitsCyber : traitsRemix;
+  console.log(units);
   // Determine today’s puzzle index based on fixed reference date
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -65,8 +70,10 @@ export function GameProvider({ children }) {
   const compositionActiveTraits = useMemo(() => {
     const counts = {};
     composition.units.forEach((unitId) => {
+      console.log("zzzzzz", unitId);
       const u = units.find((x) => x.id === unitId);
-      u.traits.forEach((t) => {
+      console.log("zzzzzz", unitId);
+      u?.traits.forEach((t) => {
         counts[t] = (counts[t] || 0) + 1;
       });
     });
@@ -75,7 +82,7 @@ export function GameProvider({ children }) {
         (counts[composition.headliner.traitId] || 0) + 1;
     }
     return Object.entries(counts).reduce((acc, [id, count]) => {
-      const def = traitData.find((t) => t.id === id);
+      const def = traitData?.find((t) => t.id === id);
       acc[id] = { name: def?.name || id, count };
       return acc;
     }, {});

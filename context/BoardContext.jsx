@@ -1,11 +1,15 @@
 // src/context/BoardContext.jsx
 import React, { createContext, useContext, useState, useMemo, useEffect } from 'react';
-import units from '../data/units';
-import { traits as traitData } from '../data/traits';
+import unitsRemix from '../data/remix-rumble/units';
+import traitsRemix from '../data/remix-rumble/traits';
+import unitsCyber from '../data/cybercity/units';
+import traitsCyber from '../data/cybercity/traits';
 
 const BoardContext = createContext();
 
-export function BoardProvider({ children }) {
+export function BoardProvider({ setKey = '10', children }) {
+  const units = setKey === '14' ? unitsCyber : unitsRemix;
+  const traitData = setKey === '14' ? traitsCyber : traitsRemix;
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const dateKey = today.toISOString().slice(0, 10); // "2025-05-14"
@@ -94,7 +98,7 @@ export function BoardProvider({ children }) {
       counts[headliner.traitId] = (counts[headliner.traitId] || 0) + 1;
     }
     return Object.entries(counts).reduce((acc, [id, count]) => {
-      const def = traitData.find((t) => t.id === id);
+      const def = traitData?.find((t) => t.id === id);
       acc[id] = { name: def ? def.name : id, count };
       return acc;
     }, {});
@@ -135,6 +139,7 @@ export function BoardProvider({ children }) {
         solvedToday,
         markSolved,
         dateKey,
+        setKey,
       }}
     >
       {children}

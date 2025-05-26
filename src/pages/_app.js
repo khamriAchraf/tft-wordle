@@ -70,11 +70,8 @@ export default function App({ Component, pageProps }) {
             modals={{ welcome: Welcome, endGame: EndGame, stats: Stats, settings: Settings }}
             modalProps={{ centered: true }}
           >
-            <BoardProvider>
-              <GameProvider>
+            
                 <Component {...pageProps} />
-              </GameProvider>
-            </BoardProvider>
           </ModalsProvider>
         </MantineProvider>
       </div>

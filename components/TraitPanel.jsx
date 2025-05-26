@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "@/styles/TraitPanel.module.css";
 import TraitItem from "./TraitItem";
-import { traits as traitData } from "../data/traits";
+import { traits as traitData } from "../data/remix-rumble/traits";
 
 const tierOrder = {
   prismatic: 0,

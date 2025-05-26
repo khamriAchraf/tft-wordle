@@ -1,6 +1,6 @@
 // src/components/TraitItem.jsx
 import React from 'react';
-import { traits as traitData } from '../data/traits';
+import { traits as traitData } from '../data/remix-rumble/traits';
 import styles from '@/styles/TraitItem.module.css';
 
 export default function TraitItem({ id, count }) {

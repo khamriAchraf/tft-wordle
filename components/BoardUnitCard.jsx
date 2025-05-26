@@ -2,7 +2,7 @@
 import React from "react";
 import { useBoard } from "../context/BoardContext";
 import styles from "@/styles/BoardUnitCard.module.css";
-import { traits as traitData } from "../data/traits";
+import { traits as traitData } from "../data/remix-rumble/traits";
 import { useGame } from "../context/GameContext";
 
 // Map cost to name-bar background color
@@ -15,12 +15,12 @@ const costColors = {
 };
 
 export default function BoardUnitCard({ unit }) {
-  const { removeUnit, headliner, selectHeadliner } = useBoard();
+  const { removeUnit, headliner, selectHeadliner, setKey } = useBoard();
   const { composition } = useGame();
   const { cost, name } = unit;
   const bgColor = costColors[cost] || "#000";
   // Full unit image filename in public folder
-  const imgFilename = `images/units/TFT10_${name
+  const imgFilename = `images/units/TFT${setKey}_${name
     .replace(" ", "")
     .replace("'", "")}.TFT_Set10.png`;
 
