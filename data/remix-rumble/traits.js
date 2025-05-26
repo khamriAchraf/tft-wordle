@@ -5,16 +5,6 @@ export const traits = [
     breakpoints: [3, 5, 7, 10],
     tiers: ["bronze", "silver", "gold", "prismatic"],
     image: "/images/traits/kda.png",
-    early_tracks: [
-      "kda_early_drums.aac",
-      "kda_early_main.aac",
-      "kda_early_secondary.aac",
-    ],
-    late_tracks: [
-      "kda_late_drums.aac",
-      "kda_late_main.aac",
-      "kda_late_secondary.aac",
-    ],
   },
   {
     id: "truedamage",
@@ -22,16 +12,6 @@ export const traits = [
     breakpoints: [2, 4, 6, 9],
     tiers: ["bronze", "silver", "gold", "prismatic"],
     image: "/images/traits/truedamage.png",
-    early_tracks: [
-      "truedamage_early_drums.aac",
-      "truedamage_early_main.aac",
-      "truedamage_early_secondary.aac",
-    ],
-    late_tracks: [
-      "truedamage_late_drums.aac",
-      "truedamage_late_main.aac",
-      "truedamage_late_secondary.aac",
-    ],
   },
   {
     id: "heartsteel",
@@ -39,16 +19,6 @@ export const traits = [
     breakpoints: [3, 5, 7, 10],
     tiers: ["bronze", "silver", "gold", "prismatic"],
     image: "/images/traits/heartsteel.png",
-    early_tracks: [
-      "heartsteel_early_drums.aac",
-      "heartsteel_early_main.aac",
-      "heartsteel_early_secondary.aac",
-    ],
-    late_tracks: [
-      "heartsteel_late_drums.aac",
-      "heartsteel_late_main.aac",
-      "heartsteel_late_secondary.aac",
-    ],
   },
   {
     id: "pentakill",

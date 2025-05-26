@@ -22,10 +22,7 @@ export default function BoardUnitCard({ unit }) {
   // Full unit image filename in public folder
   const imgFilename = `images/units/TFT${setKey}_${name
     .replace(" ", "")
-    .replace("'", "")}.TFT_Set10.png`;
-
-  console.log("headliner:",headliner);
-  console.log("unid:", unit.id);
+    .replace("'", "")}.TFT_Set${setKey}.png`;
 
   return (
     <div

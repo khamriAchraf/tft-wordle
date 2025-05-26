@@ -1,11 +1,20 @@
 // src/components/TraitProgress.jsx
 import React from "react";
-import { traits as traitData } from "../data/remix-rumble/traits";
+import {traits as traitsRemix} from "../data/remix-rumble/traits";
+import {traits as traitsCyber} from "../data/cybercity/traits";
 import styles from "@/styles/TraitProgress.module.css";
 import { Slider } from "@mantine/core";
 
-export default function TraitProgress({ id, name, target, current, dimmed }) {
-  const def = traitData.find((t) => t.id === id);
+export default function TraitProgress({
+  id,
+  name,
+  target,
+  current,
+  dimmed,
+  setKey,
+}) {
+  const traitData = setKey === "14" ? traitsCyber : traitsRemix;
+  const def = traitData?.find((t) => t.id === id);
   const breakpoints = def?.breakpoints || [];
   const tiers = def?.tiers || [];
 
@@ -15,6 +24,7 @@ export default function TraitProgress({ id, name, target, current, dimmed }) {
     if (target >= bp) tierIndex = idx;
   });
   const tierName = tierIndex >= 0 ? tiers[tierIndex] : "inactive";
+  console.log("tierName", traitsRemix);
   const bgUrl = `/images/traits/${tierName}.png`;
   // Generate marks for every step 1..target
   const marks = Array.from({ length: target }, (_, i) => ({
@@ -36,7 +46,7 @@ export default function TraitProgress({ id, name, target, current, dimmed }) {
         style={{ backgroundImage: `url(${bgUrl})` }}
       >
         <img
-          src={`/images/traits/${id}.png`}
+          src={`/images/traits/set${setKey}/${id}.png`}
           alt={name}
           className={styles.icon}
         />
@@ -52,7 +62,7 @@ export default function TraitProgress({ id, name, target, current, dimmed }) {
             className={styles.slider}
             value={current}
             min={0}
-            max={target==0?1:target}
+            max={target == 0 ? 1 : target}
             marks={marks}
             disabled
             step={null}

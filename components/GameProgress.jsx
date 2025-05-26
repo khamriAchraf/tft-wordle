@@ -24,7 +24,7 @@ const costColors = {
 };
 
 export default function GameProgress() {
-  const { compositionActiveTraits, costDistribution } = useGame();
+  const { compositionActiveTraits, costDistribution, setKey } = useGame();
   const { activeTraits, team } = useBoard();
 
   // Combine composition traits and any extra active traits
@@ -86,6 +86,7 @@ export default function GameProgress() {
             target={target}
             current={current}
             dimmed={isExtra}
+            setKey={setKey}
           />
         ))}
       </div>

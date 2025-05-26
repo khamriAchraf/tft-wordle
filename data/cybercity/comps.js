@@ -12,14 +12,16 @@ const compositions = [
     name: "Guardsman",
     units: [
       "aphelios",
-      "missfortune",
+      "jinx",
       "xayah",
       "jhin",
       "leona",
-      "raast",
-      "jarvaniv",
+      "rhaast",
+      "jarvan",
       "braum",
-      "aurora",
+      "aurora"
     ],
   },
 ]
+
+export default compositions;

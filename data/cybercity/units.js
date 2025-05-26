@@ -17,7 +17,7 @@ export const units = [
   { id: "gragas", name: "Gragas", cost: 3, traits: ["divinicorp","bruiser"] },
   { id: "graves", name: "Graves", cost: 2, traits: ["goldenox","executioner"] },
   { id: "illaoi", name: "Illaoi", cost: 2, traits: ["animasquad","bastion"] },
-  { id: "jarvaniv", name: "Jarvan IV", cost: 3, traits: ["goldenox","vanguard","slayer"] },
+  { id: "jarvan", name: "Jarvan IV", cost: 3, traits: ["goldenox","vanguard","slayer"] },
   { id: "jax", name: "Jax", cost: 1, traits: ["exotech","bastion"] },
   { id: "jhin", name: "Jhin", cost: 2, traits: ["exotech","marksman","dynamo"] },
   { id: "jinx", name: "Jinx", cost: 3, traits: ["streetdemon","marksman"] },

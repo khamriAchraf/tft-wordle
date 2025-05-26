@@ -6,13 +6,17 @@ import unitsRemix from '../data/remix-rumble/units';
 import traitsRemix from '../data/remix-rumble/traits';
 import unitsCyber from '../data/cybercity/units';
 import traitsCyber from '../data/cybercity/traits';
+import compsRemix from '../data/remix-rumble/comps';
+import compsCyber from '../data/cybercity/comps';
+
 
 const GameContext = createContext();
 
 export function GameProvider({ setKey = '10', children }) {
   const units = setKey === '14' ? unitsCyber : unitsRemix;
   const traitData = setKey === '14' ? traitsCyber : traitsRemix;
-  console.log(units);
+  const compositions = setKey === '14' ? compsCyber : compsRemix;
+
   // Determine today’s puzzle index based on fixed reference date
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -69,11 +73,10 @@ export function GameProvider({ setKey = '10', children }) {
   // Active trait totals for the target composition
   const compositionActiveTraits = useMemo(() => {
     const counts = {};
+    console.log("units", composition.units)
     composition.units.forEach((unitId) => {
-      console.log("zzzzzz", unitId);
       const u = units.find((x) => x.id === unitId);
-      console.log("zzzzzz", unitId);
-      u?.traits.forEach((t) => {
+      u.traits.forEach((t) => {
         counts[t] = (counts[t] || 0) + 1;
       });
     });
@@ -98,6 +101,7 @@ export function GameProvider({ setKey = '10', children }) {
         isSolved,
         compositions,
         compositionActiveTraits,
+        setKey
       }}
     >
       {children}
