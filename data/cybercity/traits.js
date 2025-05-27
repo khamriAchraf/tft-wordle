@@ -31,7 +31,7 @@ export const traits = [
     id: "divinicorp",
     name: "Divinicorp",
     breakpoints: [1, 2, 3, 4, 5, 6, 7],
-    tiers: ["1", "2", "3", "4", "5", "6", "7"],
+    tiers: ["bronze", "silver", "silver", "silver", "gold", "gold", "gold"],
     image: "/images/traits/divinicorp.png",
   },
   {

@@ -3,7 +3,8 @@ import React from "react";
 import { useGame } from "../context/GameContext";
 import { useBoard } from "../context/BoardContext";
 import TraitProgress from "./TraitProgress";
-import { traits as traitData } from "../data/remix-rumble/traits";
+import { traits as traitsRemix } from "../data/remix-rumble/traits";
+import { traits as traitsCyber } from "../data/cybercity/traits";
 import styles from "@/styles/GameProgress.module.css";
 
 const tierOrder = {
@@ -25,6 +26,7 @@ const costColors = {
 
 export default function GameProgress() {
   const { compositionActiveTraits, costDistribution, setKey } = useGame();
+  const traitData = setKey === "14" ? traitsCyber : traitsRemix;
   const { activeTraits, team } = useBoard();
 
   // Combine composition traits and any extra active traits
@@ -82,7 +84,7 @@ export default function GameProgress() {
           <TraitProgress
             key={id}
             id={id}
-            name={name}
+            name={traitData.find((t) => t.id === id)?.name}
             target={target}
             current={current}
             dimmed={isExtra}

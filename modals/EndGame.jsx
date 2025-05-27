@@ -70,6 +70,14 @@ export default function EndGame({ context, id, innerProps }) {
         >
           Back to Board
         </button>
+        <div></div>
+        {innerProps.mode === 'daily' && <button
+          className={styles.button}
+          onClick={() => context.closeModal(id)}
+        >
+          Play Endless Mode
+        </button>}
+
       </Center>
     </Stack>
   );

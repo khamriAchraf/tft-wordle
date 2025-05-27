@@ -7,7 +7,7 @@ import traitsCyber from '../data/cybercity/traits';
 
 const BoardContext = createContext();
 
-export function BoardProvider({ setKey = '10', children }) {
+export function BoardProvider({ setKey = '10', mode = 'daily', children }) {
   const units = setKey === '14' ? unitsCyber : unitsRemix;
   const traitData = setKey === '14' ? traitsCyber : traitsRemix;
   const today = new Date();
@@ -16,13 +16,13 @@ export function BoardProvider({ setKey = '10', children }) {
 
   const [solvedToday, setSolvedToday] = useState(() => {
     if (typeof window === 'undefined') return false;
-    return localStorage.getItem(`solved_${dateKey}`) === 'true';
+    return localStorage.getItem(`${setKey}_solved_${dateKey}`) === 'true';
   });
 
   const [team, setTeam] = useState(() => {
     if (typeof window === 'undefined') return [];
     if (!solvedToday) return [];
-    const raw = localStorage.getItem(`todayBoard_${dateKey}`);
+    const raw = localStorage.getItem(`${setKey}_todayBoard_${dateKey}`);
     if (!raw) return [];
     try {
       const { teamIds } = JSON.parse(raw);
@@ -34,7 +34,7 @@ export function BoardProvider({ setKey = '10', children }) {
   const [headliner, setHeadliner] = useState(() => {
     if (typeof window === 'undefined') return null;
     if (!solvedToday) return null;
-    const raw = localStorage.getItem(`todayBoard_${dateKey}`);
+    const raw = localStorage.getItem(`${setKey}_todayBoard_${dateKey}`);
     if (!raw) return null;
     try {
       const { headliner } = JSON.parse(raw);
@@ -106,19 +106,21 @@ export function BoardProvider({ setKey = '10', children }) {
 
   // whenever the board actually becomes “solved”, snap a copy to localStorage
   useEffect(() => {
-    if (solvedToday) {
+    if (mode === 'daily' && solvedToday) {
       const payload = {
         teamIds: team.map((u) => u.id),
         headliner,
       };
-      localStorage.setItem(`todayBoard_${dateKey}`, JSON.stringify(payload));
+      localStorage.setItem(`${setKey}_todayBoard_${dateKey}`, JSON.stringify(payload));
     }
   }, [solvedToday, dateKey]);
 
   // expose a way to mark “solved”
   const markSolved = () => {
-    localStorage.setItem(`solved_${dateKey}`, 'true');
-    setSolvedToday(true);
+    if (mode === 'daily') {
+      localStorage.setItem(`${setKey}_solved_${dateKey}`, 'true');
+      setSolvedToday(true);
+    }
   };
 
   return (
@@ -140,6 +142,7 @@ export function BoardProvider({ setKey = '10', children }) {
         markSolved,
         dateKey,
         setKey,
+        mode,
       }}
     >
       {children}

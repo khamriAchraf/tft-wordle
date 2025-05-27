@@ -113,3 +113,17 @@
     text-align: center;
   }
 }
+
+.modePicker {
+  position: absolute;
+  bottom: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #081925;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+

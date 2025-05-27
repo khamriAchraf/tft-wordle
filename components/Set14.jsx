@@ -8,6 +8,7 @@ import { useEffect, useRef } from "react";
 import { useGame } from "../context/GameContext";
 import { useBoard } from "../context/BoardContext";
 import Board from "./Board";
+import Set14Background from "./Set14Background";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -29,6 +30,7 @@ export default function Set14() {
         solvedToday,
         markSolved,
         dateKey,
+        setKey,
     } = useBoard();
     const welcomeShownRef = useRef(false);
     const alertedRef = useRef(false);
@@ -87,7 +89,7 @@ export default function Set14() {
     useEffect(() => {
         if (solvedToday && !alertedRef.current) {
             alertedRef.current = true;
-            const raw = localStorage.getItem(`todayResult_${dateKey}`);
+            const raw = localStorage.getItem(`${setKey}_todayResult_${dateKey}`);
             const { rating, mistakes } = JSON.parse(raw || "{}");
             modals.openContextModal({
                 modal: "endGame",
@@ -101,6 +103,7 @@ export default function Set14() {
             <Head>
                 <title>TFT Cybercity Puzzle</title>
             </Head>
+            <Set14Background />
             <main
                 className={`${styles.main} ${geistSans.variable} ${geistMono.variable}`}
             >

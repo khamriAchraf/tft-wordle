@@ -23,8 +23,8 @@ const geistMono = Geist_Mono({
 export default function Home() {
   return (
     <>
-      <BoardProvider setKey="10" mode="daily">
-        <GameProvider setKey="10" mode="daily">
+      <BoardProvider setKey="10" mode="endless">
+        <GameProvider setKey="10" mode="endless">
           <Set10 />
         </GameProvider>
       </BoardProvider>

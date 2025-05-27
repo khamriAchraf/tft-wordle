@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { Text } from "@mantine/core";
 import { BoardProvider } from "../../context/BoardContext";
+import HomeLeft from "../../components/HomeLeft";
+import HomeRight from "../../components/HomeRight";
 
 const Home = () => {
   const { router } = useRouter();
@@ -16,34 +18,9 @@ const Home = () => {
           Pick a set to start
         </Text>
       </div>
-      <div className={styles.left}>
-        <Link href="/cybercity">
-          <img
-            className={styles.background}
-            src="/images/cybercity-bg.jpg"
-            alt=""
-          />
-          <img
-            className={styles.leftLogo}
-            src="/images/set-14-logo.avif"
-            alt=""
-          />
-        </Link>
-      </div>
-      <div className={styles.right}>
-        <Link href="/remix-rumble">
-          <img
-            className={styles.background}
-            src="/images/remix-rumble-bg.jpg"
-            alt=""
-          />
-          <img
-            className={styles.rightLogo}
-            src="/images/set-10-logo.png"
-            alt=""
-          />
-        </Link>
-      </div>
+      <HomeLeft />
+      
+      <HomeRight />
       <div className={styles.disclaimer}>
         <Text color="#888" size="sm">
           This website is a fan-made project and is not affiliated with,

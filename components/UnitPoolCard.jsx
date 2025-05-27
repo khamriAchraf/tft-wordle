@@ -1,7 +1,8 @@
 // src/components/UnitPoolCard.jsx
 import React, { useEffect } from "react";
 import { useBoard } from "../context/BoardContext";
-import styles from "@/styles/UnitPoolCard.module.css";
+import remixStyles from "@/styles/UnitPoolCard.module.css";
+import cyberStyles from "@/styles/cybercity/UnitPoolCard.module.css";
 
 const costBorderColors = {
   1: "#acacac",
@@ -13,6 +14,7 @@ const costBorderColors = {
 
 export default function UnitPoolCard({ unit }) {
   const { team, addUnit, removeUnit, hardMode, setKey } = useBoard();
+  const styles = setKey === '14' ? cyberStyles : remixStyles;
   const selected = team.some((u) => u.id === unit.id);
 
   const handleClick = () => {

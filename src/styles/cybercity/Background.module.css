@@ -1,0 +1,45 @@
+.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #1a1921;
+    width: 100vw;
+    height: 100vh;
+    z-index: -99;
+}
+
+.bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg,
+      transparent, transparent calc(var(--cell-h) - 1px),
+      rgba(0,255,0,0.4) var(--cell-h)
+    ),
+    repeating-linear-gradient(90deg,
+      transparent, transparent calc(var(--cell-w) - 1px),
+      rgba(0,255,0,1) var(--cell-w)
+    );
+  background-size: var(--cell-w) var(--cell-h);
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+/* Sharp grid lines */
+.bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg,
+      transparent, transparent calc(var(--cell-h) - 1px),
+      rgba(0,255,0,0.4) var(--cell-h)
+    ),
+    repeating-linear-gradient(90deg,
+      transparent, transparent calc(var(--cell-w) - 1px),
+      rgba(0,255,0,0.4) var(--cell-w)
+    );
+  background-size: var(--cell-w) var(--cell-h);
+  pointer-events: none;
+}

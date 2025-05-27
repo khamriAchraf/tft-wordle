@@ -9,7 +9,7 @@ import MyBoard from "./MyBoard";
 import PuzzleSummary from "./PuzzleSummary";
 import GameProgress from "./GameProgress";
 
-const Board = () => {
+const Board = ({setHasAlerted}) => {
   const { units, team, addUnit, removeUnit, activeTraits } = useBoard();
 
   return (
@@ -20,7 +20,7 @@ const Board = () => {
       </div>
       <div className={styles.board}>
         {/* Current Team */}
-        <MyBoard />
+        <MyBoard setHasAlerted={setHasAlerted} />
 
         <div className={styles.gameProgress}>
           <GameProgress />

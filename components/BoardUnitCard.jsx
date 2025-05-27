@@ -1,7 +1,8 @@
 // src/components/BoardUnitCard.jsx
 import React from "react";
 import { useBoard } from "../context/BoardContext";
-import styles from "@/styles/BoardUnitCard.module.css";
+import remixStyles from "@/styles/BoardUnitCard.module.css";
+import cyberStyles from "@/styles/cybercity/BoardUnitCard.module.css";
 import { traits as traitData } from "../data/remix-rumble/traits";
 import { useGame } from "../context/GameContext";
 
@@ -16,6 +17,7 @@ const costColors = {
 
 export default function BoardUnitCard({ unit }) {
   const { removeUnit, headliner, selectHeadliner, setKey } = useBoard();
+  const styles = setKey === '14' ? cyberStyles : remixStyles;
   const { composition } = useGame();
   const { cost, name } = unit;
   const bgColor = costColors[cost] || "#000";
@@ -68,7 +70,7 @@ export default function BoardUnitCard({ unit }) {
                 style={{ backgroundImage: `url(/images/traits/${isHL ? 'headliner' : 'traitbg'}.png)` }}
               >
                 <img
-                  src={`/images/traits/${tid}.png`}
+                  src={`/images/traits/set${setKey}/${tid}.png`}
                   alt={name}
                   className={`${styles.traitIcon}
                     }`}

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import { modals, useModals } from "@mantine/modals";
 import styles from "@/styles/Home.module.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useGame } from "../context/GameContext";
 import { useBoard } from "../context/BoardContext";
 import Board from "./Board";
@@ -29,10 +29,12 @@ export default function Set10() {
     solvedToday,
     markSolved,
     dateKey,
+    setKey,
+    mode,
   } = useBoard();
   const welcomeShownRef = useRef(false);
   const alertedRef = useRef(false);
-
+  const [hasAlerted, setHasAlerted] = useState(false);
   // Welcome modal: show once per user
   useEffect(() => {
     const shown = localStorage.getItem("welcomeShown");
@@ -47,7 +49,7 @@ export default function Set10() {
   }, [modals]);
 
   useEffect(() => {
-    if (isSolved && !solvedToday) {
+    if (isSolved && ((mode === 'daily' && !solvedToday) || (mode === 'endless') && !hasAlerted)) {
       alertedRef.current = true;
       let rating;
       if (mistakes === 0) rating = "S";
@@ -74,38 +76,44 @@ export default function Set10() {
       const prevMax = parseInt(localStorage.getItem(maxKey) || "0", 10);
       const newMax = Math.max(prevMax, newStreak);
       localStorage.setItem(maxKey, newMax);
-
-      resetMistakes();
-      markSolved();
+      if (mode === 'daily') {
+        resetMistakes();
+        markSolved();
+      }
+      setHasAlerted(true);
       modals.openContextModal({
         modal: "endGame",
-        innerProps: { rating, mistakes },
+        innerProps: { rating, mistakes, mode },
       });
     }
   }, [isSolved, solvedToday]);
 
   useEffect(() => {
-    if (solvedToday && !alertedRef.current) {
+    alert(isSolved);
+  }, [isSolved]);
+
+  useEffect(() => {
+    if (mode === 'daily' && solvedToday && !alertedRef.current) {
       alertedRef.current = true;
-      const raw = localStorage.getItem(`todayResult_${dateKey}`);
+      const raw = localStorage.getItem(`${setKey}_todayResult_${dateKey}`);
       const { rating, mistakes } = JSON.parse(raw || "{}");
       modals.openContextModal({
         modal: "endGame",
-        innerProps: { rating, mistakes },
+        innerProps: { rating, mistakes,mode },
       });
     }
   }, []);
 
   return (
     <>
-          <Head>
-            <title>TFT Remix Rumble Puzzle</title>
-          </Head>
-          <main
-            className={`${styles.main} ${geistSans.variable} ${geistMono.variable}`}
-          >
-            <Board />
-          </main>
+      <Head>
+        <title>TFT Remix Rumble Puzzle</title>
+      </Head>
+      <main
+        className={`${styles.main} ${geistSans.variable} ${geistMono.variable}`}
+      >
+        <Board setHasAlerted={setHasAlerted} />
+      </main>
     </>
   );
 }
