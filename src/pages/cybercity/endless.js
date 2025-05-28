@@ -8,14 +8,14 @@ import { useEffect, useRef } from "react";
 import Board from "../../../components/Board";
 import { GameProvider, useGame } from "../../../context/GameContext";
 import { BoardProvider, useBoard } from "../../../context/BoardContext";
-import Set10 from "../../../components/Set10";
+import Set14 from "../../../components/Set14";
 
 export default function Home() {
   return (
     <>
-      <BoardProvider setKey="10" mode="endless">
-        <GameProvider setKey="10" mode="endless">
-          <Set10 />
+      <BoardProvider setKey="14" mode="endless">
+        <GameProvider setKey="14" mode="endless">
+          <Set14 />
         </GameProvider>
       </BoardProvider>
     </>

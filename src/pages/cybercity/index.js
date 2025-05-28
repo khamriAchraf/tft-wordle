@@ -10,21 +10,12 @@ import { GameProvider, useGame } from "../../../context/GameContext";
 import { BoardProvider, useBoard } from "../../../context/BoardContext";
 import Set14 from "../../../components/Set14";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export default function Home() {
   return (
     <>
-      <BoardProvider setKey="14">
-        <GameProvider setKey="14">
+      <BoardProvider setKey="14" mode="daily">
+        <GameProvider setKey="14" mode="daily">
           <Set14 />
         </GameProvider>
       </BoardProvider>

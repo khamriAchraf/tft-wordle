@@ -10,16 +10,6 @@ import { GameProvider, useGame } from "../../../context/GameContext";
 import { BoardProvider, useBoard } from "../../../context/BoardContext";
 import Set10 from "../../../components/Set10";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export default function Home() {
   return (
     <>

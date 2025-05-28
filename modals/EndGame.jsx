@@ -11,6 +11,7 @@ import {
 } from "@mantine/core";
 import styles from "@/styles/EndGame.module.css";
 import { FaGrinStars } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 const RATINGS = ["S", "A", "B", "C", "D"];
 
@@ -27,11 +28,21 @@ export default function EndGame({ context, id, innerProps }) {
   }, []);
   const maxCount = Math.max(...RATINGS.map((r) => ratingCounts[r] || 0), 1);
 
+  const router = useRouter();
+
+  const handleClick = () => {
+    context.closeModal(id);
+    const targetUrl = `${router.asPath.replace(/\/$/, "")}/endless`;
+    router.push(targetUrl);
+  };
+
   return (
     <Stack spacing="xl" className={styles.container}>
       <div className={styles.header}>
         <div />
-        <Text size="lg" className={styles.title}>Great Stuff!</Text>
+        <Text size="lg" className={styles.title}>
+          Great Stuff!
+        </Text>
         <CloseButton onClick={() => context.closeModal(id)} />
       </div>
       <Group justify="center" className={styles.content}>
@@ -71,13 +82,11 @@ export default function EndGame({ context, id, innerProps }) {
           Back to Board
         </button>
         <div></div>
-        {innerProps.mode === 'daily' && <button
-          className={styles.button}
-          onClick={() => context.closeModal(id)}
-        >
-          Play Endless Mode
-        </button>}
-
+        {innerProps.mode === "daily" && (
+          <button className={styles.button} onClick={handleClick}>
+            Play Endless Mode
+          </button>
+        )}
       </Center>
     </Stack>
   );

@@ -1,7 +1,7 @@
 // src/components/TraitProgress.jsx
 import React from "react";
-import {traits as traitsRemix} from "../data/remix-rumble/traits";
-import {traits as traitsCyber} from "../data/cybercity/traits";
+import { traits as traitsRemix } from "../data/remix-rumble/traits";
+import { traits as traitsCyber } from "../data/cybercity/traits";
 import styles from "@/styles/TraitProgress.module.css";
 import { Slider } from "@mantine/core";
 
@@ -24,7 +24,6 @@ export default function TraitProgress({
     if (target >= bp) tierIndex = idx;
   });
   const tierName = tierIndex >= 0 ? tiers[tierIndex] : "inactive";
-  console.log("tierName", traitsRemix);
   const bgUrl = `/images/traits/${tierName}.png`;
   // Generate marks for every step 1..target
   const marks = Array.from({ length: target }, (_, i) => ({

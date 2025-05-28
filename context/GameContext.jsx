@@ -1,32 +1,27 @@
 // src/context/GameContext.jsx
-import React, { createContext, useContext, useState, useMemo } from 'react';
-import unitsRemix from '../data/remix-rumble/units';
-import traitsRemix from '../data/remix-rumble/traits';
-import compsRemix from '../data/remix-rumble/comps';
-import unitsCyber from '../data/cybercity/units';
-import traitsCyber from '../data/cybercity/traits';
-import compsCyber from '../data/cybercity/comps';
-import { useBoard } from './BoardContext';
+import React, { createContext, useContext, useState, useMemo } from "react";
+import unitsRemix from "../data/remix-rumble/units";
+import traitsRemix from "../data/remix-rumble/traits";
+import compsRemix from "../data/remix-rumble/comps";
+import unitsCyber from "../data/cybercity/units";
+import traitsCyber from "../data/cybercity/traits";
+import compsCyber from "../data/cybercity/comps";
+import { useBoard } from "./BoardContext";
 
 const GameContext = createContext();
 
-export function GameProvider({
-  setKey = '10',
-  mode = 'daily',
-  children,
-}) {
-  const units = setKey === '14' ? unitsCyber : unitsRemix;
-  const traitData = setKey === '14' ? traitsCyber : traitsRemix;
-  const comps = setKey === '14' ? compsCyber : compsRemix;
+export function GameProvider({ setKey, mode, children }) {
+  const units = setKey === "14" ? unitsCyber : unitsRemix;
+  const traitData = setKey === "14" ? traitsCyber : traitsRemix;
+  const comps = setKey === "14" ? compsCyber : compsRemix;
   // pull in current board state
   const { team, headliner, clearBoard } = useBoard();
 
-  const getRandomComp = () =>
-    comps[Math.floor(Math.random() * comps.length)];
+  const getRandomComp = () => comps[Math.floor(Math.random() * comps.length)];
 
   // choose initial composition
   const [composition, setComposition] = useState(() => {
-    if (mode === 'endless') {
+    if (mode === "endless") {
       clearBoard();
       return getRandomComp();
     }
@@ -37,8 +32,7 @@ export function GameProvider({
     const daysSince = Math.floor(
       (today.getTime() - reference.getTime()) / 86400000
     );
-    const idx =
-      ((daysSince % comps.length) + comps.length) % comps.length;
+    const idx = ((daysSince % comps.length) + comps.length) % comps.length;
     return comps[idx];
   });
 
@@ -48,10 +42,11 @@ export function GameProvider({
     if (comp) setComposition(comp);
   };
   const pickRandomComposition = () => {
-    setComposition(getRandomComp());
+    const available = comps.filter((c) => c.id !== composition.id);
+    if (available.length === 0) return;
+    const next = available[Math.floor(Math.random() * available.length)];
+    setComposition(next);
   };
-
-
 
   // build cost distribution of target
   const costDistribution = useMemo(() => {
@@ -90,7 +85,7 @@ export function GameProvider({
       u.traits.forEach((t) => (counts[t] = (counts[t] || 0) + 1));
     });
     // headliner bonus only for set 10
-    if (setKey === '10' && composition.headliner) {
+    if (setKey === "10" && composition.headliner) {
       const t = composition.headliner.traitId;
       counts[t] = (counts[t] || 0) + 1;
     }
@@ -125,7 +120,7 @@ export function GameProvider({
 export function useGame() {
   const ctx = useContext(GameContext);
   if (!ctx) {
-    throw new Error('useGame must be used within a GameProvider');
+    throw new Error("useGame must be used within a GameProvider");
   }
   return ctx;
 }

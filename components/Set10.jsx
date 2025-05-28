@@ -49,7 +49,14 @@ export default function Set10() {
   }, [modals]);
 
   useEffect(() => {
-    if (isSolved && ((mode === 'daily' && !solvedToday) || (mode === 'endless') && !hasAlerted)) {
+    console.log("isSolved", isSolved);
+    console.log("solvedToday", solvedToday);
+    console.log("hasAlerted", hasAlerted);
+    if (
+      isSolved &&
+      ((mode === "daily" && !solvedToday) ||
+        (mode === "endless" && !hasAlerted))
+    ) {
       alertedRef.current = true;
       let rating;
       if (mistakes === 0) rating = "S";
@@ -76,7 +83,7 @@ export default function Set10() {
       const prevMax = parseInt(localStorage.getItem(maxKey) || "0", 10);
       const newMax = Math.max(prevMax, newStreak);
       localStorage.setItem(maxKey, newMax);
-      if (mode === 'daily') {
+      if (mode === "daily") {
         resetMistakes();
         markSolved();
       }
@@ -88,18 +95,16 @@ export default function Set10() {
     }
   }, [isSolved, solvedToday]);
 
-  useEffect(() => {
-    alert(isSolved);
-  }, [isSolved]);
+  useEffect(() => {}, [isSolved]);
 
   useEffect(() => {
-    if (mode === 'daily' && solvedToday && !alertedRef.current) {
+    if (mode === "daily" && solvedToday && !alertedRef.current) {
       alertedRef.current = true;
       const raw = localStorage.getItem(`${setKey}_todayResult_${dateKey}`);
       const { rating, mistakes } = JSON.parse(raw || "{}");
       modals.openContextModal({
         modal: "endGame",
-        innerProps: { rating, mistakes,mode },
+        innerProps: { rating, mistakes, mode },
       });
     }
   }, []);
