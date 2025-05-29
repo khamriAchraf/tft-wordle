@@ -2,7 +2,8 @@
 import React from "react";
 import { useBoard } from "../context/BoardContext";
 import BoardUnitCard from "./BoardUnitCard";
-import styles from "@/styles/MyBoard.module.css";
+import remixStyles from "@/styles/MyBoard.module.css";
+import cyberStyles from "@/styles/cybercity/MyBoard.module.css";
 import { useGame } from "../context/GameContext";
 import { Text } from "@mantine/core";
 import { GiBroom } from "react-icons/gi";
@@ -11,10 +12,13 @@ import { modals } from "@mantine/modals";
 import { IoStatsChartSharp } from "react-icons/io5";
 import { IoMdHelpCircle } from "react-icons/io";
 import { IoMdSettings } from "react-icons/io";
+import { MdClearAll, MdOutlineRefresh } from "react-icons/md";
 
-export default function MyBoard() {
-  const { team, removeUnit, mistakes, clearBoard, toggleHardMode } = useBoard();
-
+export default function MyBoard({ setHasAlerted }) {
+  const { team, removeUnit, mistakes, clearBoard, toggleHardMode, setKey } =
+    useBoard();
+  const { composition, pickRandomComposition, mode } = useGame();
+  const styles = setKey === "14" ? cyberStyles : remixStyles;
   // Create an array of 12 slots, filling with team units or null
   const slots = Array.from({ length: 12 }, (_, i) => team[i] || null);
 
@@ -26,7 +30,7 @@ export default function MyBoard() {
             className={styles.clear}
             onClick={() => team.forEach(removeUnit)}
           >
-            <img src={`/images/clear.png`} className={`${styles.clearIcon}`} />
+            <MdClearAll className={`${styles.clearIcon}`} />
           </button>
           <div>
             <Text size="xl" className={styles.title}>
@@ -35,12 +39,28 @@ export default function MyBoard() {
             <Text size="xs">Mistakes: {mistakes}</Text>
           </div>
         </div>
+        {mode === "endless" && (
+          <div>
+            <button
+              className={styles.refreshButton}
+              onClick={() => {
+                setHasAlerted(false);
+                clearBoard();
+                pickRandomComposition();
+              }}
+            >
+              <MdOutlineRefresh className={styles.refreshIcon} />
+              <Text>Refresh</Text>
+            </button>
+          </div>
+        )}
+
         <div className={styles.appControls}>
           <button
             className={styles.clear}
             onClick={() =>
               modals.openContextModal({
-                modal: 'settings',
+                modal: "settings",
                 innerProps: { clearBoard, toggleHardMode },
               })
             }
@@ -80,7 +100,7 @@ export default function MyBoard() {
               <div className={styles.placeholder}>
                 <img
                   className={styles.helmet}
-                  src="/images/helmet.png"
+                  src={`/images/helmet${setKey === "14" ? "14" : ""}.png`}
                   alt="Gold"
                 />
               </div>

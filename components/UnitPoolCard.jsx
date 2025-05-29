@@ -1,7 +1,8 @@
 // src/components/UnitPoolCard.jsx
 import React, { useEffect } from "react";
 import { useBoard } from "../context/BoardContext";
-import styles from "@/styles/UnitPoolCard.module.css";
+import remixStyles from "@/styles/UnitPoolCard.module.css";
+import cyberStyles from "@/styles/cybercity/UnitPoolCard.module.css";
 
 const costBorderColors = {
   1: "#acacac",
@@ -12,25 +13,39 @@ const costBorderColors = {
 };
 
 export default function UnitPoolCard({ unit }) {
-  const { team, addUnit, removeUnit, hardMode } = useBoard();
+  const { team, addUnit, removeUnit, hardMode, setKey } = useBoard();
+  const styles = setKey === '14' ? cyberStyles : remixStyles;
   const selected = team.some((u) => u.id === unit.id);
 
   const handleClick = () => {
     selected ? removeUnit(unit) : addUnit(unit);
   };
 
-  const { sprite, x, y, w, h } = unit.image;
-
   const borderColor = costBorderColors[unit.cost] || "#000";
-  // TODO : Get image from https://rerollcdn.com/characters/Skin/10/AkaliTrueDamage.png
 
   const formatUnitName = (name) => {
-    return name.replace(' ', '').replace("'", '').replace('KaiSa', 'Kaisa').replace('Akali', 'AkaliKDA').replace('AkaliKDA_TrueDamage', 'AkaliTrueDamage');
-  }
+    if (name.includes("KaiSa")) return "Kaisa";
+    if (name.includes("KaiSa_TrueDamage")) return "KaisaTrueDamage";
+    if (name.includes("AkaliKDA")) return "Akali";
+    if (name.includes("AkaliKDA_TrueDamage")) return "AkaliTrueDamage";
+    if (name.includes("Jarvan IV")) return "jarvan";
+    if (name.includes("Nidalee")) return "nidaleecougar";
+    return name
+      .toLowerCase()
+      .replace(" ", "")
+      .replace("'", "")
+      .replace(".", "");
+  };
 
-  useEffect(() => {
-    const saved = localStorage.getItem('hardMode') === 'true';
-  }, []);
+  const buildImgSource = () => {
+    return `https://raw.communitydragon.org/${
+      setKey === "14" ? "pbe" : "latest"
+    }/game/assets/characters/tft${setKey}_${formatUnitName(
+      unit.name
+    )}/hud/tft${setKey}_${formatUnitName(unit.name)}_square${
+      setKey === "14" ? ".tft_set14" : ""
+    }.png`;
+  };
 
   return (
     <div
@@ -44,25 +59,22 @@ export default function UnitPoolCard({ unit }) {
           border: `2px solid ${borderColor}`,
         }}
       >
-        <img
-          src={`https://rerollcdn.com/characters/Skin/10/${formatUnitName(unit.name)}.png`}
-          className={styles.sprite}
-          alt=""
-        />
+        <img src={buildImgSource()} className={styles.sprite} alt="" />
       </div>
 
       {/* Trait icons */}
-      {!hardMode && <div className={styles.traits}>
-        {unit.traits.map((tid) => (
-          <img
-            key={tid}
-            src={`/images/traits/${tid}.png`}
-            alt={tid}
-            className={styles.traitIcon}
-          />
-        ))}
-      </div>}
-
+      {!hardMode && (
+        <div className={styles.traits}>
+          {unit.traits.map((tid) => (
+            <img
+              key={tid}
+              src={`/images/traits/set${setKey}/${tid}.png`}
+              alt={tid}
+              className={styles.traitIcon}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Unit name */}
       <div className={styles.unitName}>{unit.name}</div>

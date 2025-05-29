@@ -1,0 +1,187 @@
+.section {
+  color: #f8f7e2;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  /* background: radial-gradient(
+    circle,
+    rgba(7, 7, 7, 1) 0%,
+    rgba(26, 26, 26, 1) 100%
+  ); */
+  border-radius: 0.6rem;
+    max-width: 400px;
+}
+
+.panel {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.pool {
+  flex: auto;
+  overflow: auto;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+}
+
+.grid {
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.icon {
+  height: 16px;
+  width: 16px;
+}
+
+.traitIcon {
+  height: 20px;
+  width: 20px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+}
+
+.traitGroupHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.poolHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+/* Search bar styling */
+.searchContainer {
+  position: relative;
+  width: 100%;
+  flex: 4;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px 32px 8px 12px;
+  border: 1px solid #995027;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: saturate(100%) blur(8px);
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: #fff;
+  opacity: 0.7;
+}
+
+.returnIcon {
+  color: #27242a;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  position: relative;
+  top: 4px;
+}
+
+/* Container to size the select */
+.toggleContainer {
+  position: relative;
+  width: 120px; /* adjust to fit your text */
+  margin: 16px 0;
+  background: transparent;
+}
+
+/* The dropdown itself */
+.toggleSelect {
+  position: relative;
+  width: 100%;
+  padding: 8px 32px 8px 12px;
+  font-size: 14px;
+  border: 1px solid #995027;
+  background-color: transparent;
+  backdrop-filter: saturate(100%) blur(8px);
+  color: white;
+  appearance: none; /* remove native arrow */
+  -webkit-appearance: none;
+  outline: none;
+  background-image: url("/images/icons/chevron-down.svg");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+/* Hide IE/Edge default arrow */
+.toggleSelect::-ms-expand {
+  display: none;
+}
+
+.selectIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #c1bba6;
+}
+
+.addAllButton {
+  background: #000;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 4px 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.addAllButton:hover {
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+
+.return {
+  background: #f8f7e2;
+  padding: 2px 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .section {
+    max-width: 100%;
+  }
+}

@@ -5,16 +5,6 @@ export const traits = [
     breakpoints: [3, 5, 7, 10],
     tiers: ["bronze", "silver", "gold", "prismatic"],
     image: "/images/traits/kda.png",
-    early_tracks: [
-      "kda_early_drums.aac",
-      "kda_early_main.aac",
-      "kda_early_secondary.aac",
-    ],
-    late_tracks: [
-      "kda_late_drums.aac",
-      "kda_late_main.aac",
-      "kda_late_secondary.aac",
-    ],
   },
   {
     id: "truedamage",
@@ -22,16 +12,6 @@ export const traits = [
     breakpoints: [2, 4, 6, 9],
     tiers: ["bronze", "silver", "gold", "prismatic"],
     image: "/images/traits/truedamage.png",
-    early_tracks: [
-      "truedamage_early_drums.aac",
-      "truedamage_early_main.aac",
-      "truedamage_early_secondary.aac",
-    ],
-    late_tracks: [
-      "truedamage_late_drums.aac",
-      "truedamage_late_main.aac",
-      "truedamage_late_secondary.aac",
-    ],
   },
   {
     id: "heartsteel",
@@ -39,16 +19,6 @@ export const traits = [
     breakpoints: [3, 5, 7, 10],
     tiers: ["bronze", "silver", "gold", "prismatic"],
     image: "/images/traits/heartsteel.png",
-    early_tracks: [
-      "heartsteel_early_drums.aac",
-      "heartsteel_early_main.aac",
-      "heartsteel_early_secondary.aac",
-    ],
-    late_tracks: [
-      "heartsteel_late_drums.aac",
-      "heartsteel_late_main.aac",
-      "heartsteel_late_secondary.aac",
-    ],
   },
   {
     id: "pentakill",
@@ -56,16 +26,6 @@ export const traits = [
     breakpoints: [3, 5, 7, 10],
     tiers: ["bronze", "silver", "gold", "prismatic"],
     image: "/images/traits/pentakill.png",
-    early_tracks: [
-      "pentakill_early_drums.aac",
-      "pentakill_early_main.aac",
-      "pentakill_early_secondary.aac",
-    ],
-    late_tracks: [
-      "pentakill_late_drums.aac",
-      "pentakill_late_main.aac",
-      "pentakill_late_secondary.aac",
-    ],
   },
   {
     id: "8bit",
@@ -73,8 +33,6 @@ export const traits = [
     breakpoints: [2, 4, 6],
     tiers: ["bronze", "silver", "gold"],
     image: "/images/traits/8bit.png",
-    early_tracks: ["8bit_early_drums.aac", "8bit_early_main.aac"],
-    late_tracks: ["8bit_late_drums.aac", "8bit_late_main.aac"],
   },
   {
     id: "country",
@@ -82,8 +40,6 @@ export const traits = [
     breakpoints: [3, 5, 7],
     tiers: ["bronze", "silver", "gold"],
     image: "/images/traits/country.png",
-    early_tracks: ["country_early_drums.aac", "country_early_main.aac"],
-    late_tracks: ["country_late_drums.aac", "country_late_main.aac"],
   },
   {
     id: "disco",
@@ -91,8 +47,6 @@ export const traits = [
     breakpoints: [3, 4, 5, 6],
     tiers: ["bronze", "silver", "gold", "gold"],
     image: "/images/traits/disco.png",
-    early_tracks: ["disco_early_drums.aac", "disco_early_main.aac"],
-    late_tracks: ["disco_late_drums.aac", "disco_late_main.aac"],
   },
   {
     id: "edm",
@@ -100,8 +54,6 @@ export const traits = [
     breakpoints: [2, 3, 4, 5],
     tiers: ["bronze", "silver", "gold", "gold"],
     image: "/images/traits/edm.png",
-    early_tracks: ["edm_early_drums.aac", "edm_early_main.aac"],
-    late_tracks: ["edm_late_drums.aac", "edm_late_main.aac"],
   },
   {
     id: "emo",
@@ -109,8 +61,6 @@ export const traits = [
     breakpoints: [2, 4, 6],
     tiers: ["bronze", "silver", "gold"],
     image: "/images/traits/emo.png",
-    early_tracks: ["emo_early_drums.aac", "emo_early_main.aac"],
-    late_tracks: ["emo_late_drums.aac", "emo_late_main.aac"],
   },
   {
     id: "punk",
@@ -118,8 +68,6 @@ export const traits = [
     breakpoints: [2, 4, 6],
     tiers: ["bronze", "silver", "gold"],
     image: "/images/traits/punk.png",
-    early_tracks: ["punk_early_drums.aac", "punk_early_main.aac"],
-    late_tracks: ["punk_late_drums.aac", "punk_late_main.aac"],
   },
   {
     id: "hyperpop",
@@ -127,8 +75,6 @@ export const traits = [
     breakpoints: [1, 2, 3],
     tiers: ["bronze", "silver", "gold"],
     image: "/images/traits/hyperpop.png",
-    early_tracks: ["hyperpop_early_main.aac"],
-    late_tracks: ["hyperpop_late_main.aac", "hyperpop_late_drums.aac"],
   },
   {
     id: "illbeats",
@@ -136,8 +82,6 @@ export const traits = [
     breakpoints: [1],
     tiers: ["unique"],
     image: "/images/traits/illbeats.png",
-    early_tracks: ["illbeats_early_main.aac"],
-    late_tracks: ["illbeats_late_main.aac"],
   },
   {
     id: "jazz",
@@ -145,8 +89,6 @@ export const traits = [
     breakpoints: [2, 3, 4],
     tiers: ["bronze", "silver", "gold"],
     image: "/images/traits/jazz.png",
-    early_tracks: ["jazz_early_main.aac"],
-    late_tracks: ["jazz_late_main.aac"],
   },
   {
     id: "maestro",
@@ -154,8 +96,6 @@ export const traits = [
     breakpoints: [1],
     tiers: ["unique"],
     image: "/images/traits/maestro.png",
-    early_tracks: ["maestro_early_main.aac"],
-    late_tracks: ["maestro_late_main.aac"],
   },
   {
     id: "mixmaster",
@@ -163,8 +103,6 @@ export const traits = [
     breakpoints: [1],
     tiers: ["unique"],
     image: "/images/traits/mixmaster.png",
-    early_tracks: ["mixmaster_early_main.aac"],
-    late_tracks: ["mixmaster_late_main.aac"],
   },
   // ---- classes (same shape as origins) ----
   {
@@ -173,8 +111,6 @@ export const traits = [
     breakpoints: [2, 4, 6],
     tiers: ["bronze", "silver", "gold"],
     image: "/images/traits/bigshot.png",
-    early_tracks: [],
-    late_tracks: [],
   },
   {
     id: "sentinel",
@@ -182,8 +118,6 @@ export const traits = [
     breakpoints: [2, 4, 6],
     tiers: ["bronze", "silver", "gold"],
     image: "/images/traits/sentinel.png",
-    early_tracks: [],
-    late_tracks: [],
   },
   {
     id: "edgelord",
@@ -191,8 +125,6 @@ export const traits = [
     breakpoints: [2, 4, 6],
     tiers: ["bronze", "silver", "gold"],
     image: "/images/traits/edgelord.png",
-    early_tracks: [],
-    late_tracks: [],
   },
   {
     id: "rapidfire",
@@ -200,8 +132,6 @@ export const traits = [
     breakpoints: [2, 4, 6],
     tiers: ["bronze", "silver", "gold"],
     image: "/images/traits/rapidfire.png",
-    early_tracks: [],
-    late_tracks: [],
   },
   {
     id: "bruiser",
@@ -209,8 +139,6 @@ export const traits = [
     breakpoints: [2, 4, 6],
     tiers: ["bronze", "silver", "gold"],
     image: "/images/traits/bruiser.png",
-    early_tracks: [],
-    late_tracks: [],
   },
   {
     id: "crowddiver",
@@ -218,8 +146,6 @@ export const traits = [
     breakpoints: [2, 4, 6],
     tiers: ["bronze", "silver", "gold"],
     image: "/images/traits/crowddiver.png",
-    early_tracks: [],
-    late_tracks: [],
   },
   {
     id: "executioner",
@@ -227,8 +153,6 @@ export const traits = [
     breakpoints: [2, 4, 6],
     tiers: ["bronze", "silver", "gold"],
     image: "/images/traits/executioner.png",
-    early_tracks: [],
-    late_tracks: [],
   },
   {
     id: "mosher",
@@ -236,8 +160,6 @@ export const traits = [
     breakpoints: [2, 4, 6],
     tiers: ["bronze", "silver", "gold"],
     image: "/images/traits/mosher.png",
-    early_tracks: [],
-    late_tracks: [],
   },
   {
     id: "guardian",
@@ -245,8 +167,6 @@ export const traits = [
     breakpoints: [2, 4, 6],
     tiers: ["bronze", "silver", "gold"],
     image: "/images/traits/guardian.png",
-    early_tracks: [],
-    late_tracks: [],
   },
   {
     id: "dazzler",
@@ -254,8 +174,6 @@ export const traits = [
     breakpoints: [2, 4, 6],
     tiers: ["bronze", "silver", "gold"],
     image: "/images/traits/dazzler.png",
-    early_tracks: [],
-    late_tracks: [],
   },
   {
     id: "spellweaver",
@@ -263,8 +181,6 @@ export const traits = [
     breakpoints: [2, 4, 6],
     tiers: ["bronze", "silver", "gold"],
     image: "/images/traits/spellweaver.png",
-    early_tracks: [],
-    late_tracks: [],
   },
   {
     id: "wildcard",
@@ -272,8 +188,6 @@ export const traits = [
     breakpoints: [1],
     tiers: ["unique"],
     image: "/images/traits/wildcard.png",
-    early_tracks: [],
-    late_tracks: [],
   },
   {
     id: "breakout",
@@ -281,8 +195,6 @@ export const traits = [
     breakpoints: [1],
     tiers: ["unique"],
     image: "/images/traits/breakout.png",
-    early_tracks: [],
-    late_tracks: [],
   },
   {
     id: "superfan",
@@ -290,7 +202,5 @@ export const traits = [
     breakpoints: [3, 4, 5],
     tiers: ["bronze", "silver", "gold"],
     image: "/images/traits/superfan.png",
-    early_tracks: [],
-    late_tracks: [],
   },
 ];

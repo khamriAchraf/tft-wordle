@@ -1,24 +1,28 @@
 // src/context/BoardContext.jsx
 import React, { createContext, useContext, useState, useMemo, useEffect } from 'react';
-import units from '../data/units';
-import { traits as traitData } from '../data/traits';
+import unitsRemix from '../data/remix-rumble/units';
+import traitsRemix from '../data/remix-rumble/traits';
+import unitsCyber from '../data/cybercity/units';
+import traitsCyber from '../data/cybercity/traits';
 
 const BoardContext = createContext();
 
-export function BoardProvider({ children }) {
+export function BoardProvider({ setKey = '10', mode = 'daily', children }) {
+  const units = setKey === '14' ? unitsCyber : unitsRemix;
+  const traitData = setKey === '14' ? traitsCyber : traitsRemix;
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const dateKey = today.toISOString().slice(0, 10); // "2025-05-14"
 
   const [solvedToday, setSolvedToday] = useState(() => {
     if (typeof window === 'undefined') return false;
-    return localStorage.getItem(`solved_${dateKey}`) === 'true';
+    return localStorage.getItem(`${setKey}_solved_${dateKey}`) === 'true';
   });
 
   const [team, setTeam] = useState(() => {
     if (typeof window === 'undefined') return [];
     if (!solvedToday) return [];
-    const raw = localStorage.getItem(`todayBoard_${dateKey}`);
+    const raw = localStorage.getItem(`${setKey}_todayBoard_${dateKey}`);
     if (!raw) return [];
     try {
       const { teamIds } = JSON.parse(raw);
@@ -30,7 +34,7 @@ export function BoardProvider({ children }) {
   const [headliner, setHeadliner] = useState(() => {
     if (typeof window === 'undefined') return null;
     if (!solvedToday) return null;
-    const raw = localStorage.getItem(`todayBoard_${dateKey}`);
+    const raw = localStorage.getItem(`${setKey}_todayBoard_${dateKey}`);
     if (!raw) return null;
     try {
       const { headliner } = JSON.parse(raw);
@@ -94,7 +98,7 @@ export function BoardProvider({ children }) {
       counts[headliner.traitId] = (counts[headliner.traitId] || 0) + 1;
     }
     return Object.entries(counts).reduce((acc, [id, count]) => {
-      const def = traitData.find((t) => t.id === id);
+      const def = traitData?.find((t) => t.id === id);
       acc[id] = { name: def ? def.name : id, count };
       return acc;
     }, {});
@@ -102,19 +106,21 @@ export function BoardProvider({ children }) {
 
   // whenever the board actually becomes “solved”, snap a copy to localStorage
   useEffect(() => {
-    if (solvedToday) {
+    if (mode === 'daily' && solvedToday) {
       const payload = {
         teamIds: team.map((u) => u.id),
         headliner,
       };
-      localStorage.setItem(`todayBoard_${dateKey}`, JSON.stringify(payload));
+      localStorage.setItem(`${setKey}_todayBoard_${dateKey}`, JSON.stringify(payload));
     }
   }, [solvedToday, dateKey]);
 
   // expose a way to mark “solved”
   const markSolved = () => {
-    localStorage.setItem(`solved_${dateKey}`, 'true');
-    setSolvedToday(true);
+    if (mode === 'daily') {
+      localStorage.setItem(`${setKey}_solved_${dateKey}`, 'true');
+      setSolvedToday(true);
+    }
   };
 
   return (
@@ -135,6 +141,8 @@ export function BoardProvider({ children }) {
         solvedToday,
         markSolved,
         dateKey,
+        setKey,
+        mode,
       }}
     >
       {children}

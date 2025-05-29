@@ -1,17 +1,11 @@
 .section {
   margin-bottom: 0.5rem;
   padding: 0.5rem 1rem;
-  background: #070707;
-  background: radial-gradient(
-    circle,
-    rgba(7, 7, 7, 1) 0%,
-    rgba(26, 26, 26, 1) 100%
-  );
   border-radius: 0.6rem;
+  max-width: 400px;
 }
 
 .panel {
-  width: 400px;
   height: 100%;
   overflow: hidden;
   display: flex;
@@ -50,11 +44,9 @@
 .header {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: flex-start;
-  gap: 5px;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  align-items: center;
+  gap: 16px;
 }
 
 .traitGroupHeader {
@@ -108,15 +100,13 @@
   opacity: 0.7;
 }
 
-.clearIcon {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
+.returnIcon {
+  width: 30px;
+  height: 30px;
   cursor: pointer;
-  filter: invert(1);
+  filter: brightness(0);
+  position: relative;
+  top: 4px;
 }
 
 /* Container to size the select */
@@ -176,4 +166,28 @@
   border: 1px solid #000;
 }
 
+.return {
+  background: rgba(255, 255, 255);
+  backdrop-filter: saturate(100%) blur(8px);
+  border: 2px solid transparent !important;
+  border-image: linear-gradient(
+    to bottom right,
+    #b827fc 0%,
+    #2c90fc 25%,
+    #b8fd33 50%,
+    #fec837 75%,
+    #fd1892 100%
+  ) !important;
+  border-image-slice: 1 !important;
+  color: #161616;
+  padding: 2px 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
 
+@media (max-width: 768px) {
+  .section {
+    max-width: 100%;
+  }
+}

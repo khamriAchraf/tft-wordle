@@ -1,8 +1,16 @@
 // src/components/Settings.jsx
-import React, { useState, useEffect, useRef } from 'react';
-import { Button, Center, CloseButton, Group, Switch, Text, Stack } from '@mantine/core';
-import { useBoard } from '../context/BoardContext';
-import styles from '@/styles/Settings.module.css';
+import React, { useState, useEffect, useRef } from "react";
+import {
+  Button,
+  Center,
+  CloseButton,
+  Group,
+  Switch,
+  Text,
+  Stack,
+} from "@mantine/core";
+import { useBoard } from "../context/BoardContext";
+import styles from "@/styles/Settings.module.css";
 
 export default function Settings({ context, id, innerProps }) {
   const [hardMode, setHardMode] = useState(false);
@@ -10,7 +18,7 @@ export default function Settings({ context, id, innerProps }) {
 
   // Load existing value on first render
   useEffect(() => {
-    const saved = localStorage.getItem('hardMode') === 'true';
+    const saved = localStorage.getItem("hardMode") === "true";
     setHardMode(saved);
     initialRef.current = saved;
   }, []);
@@ -18,14 +26,14 @@ export default function Settings({ context, id, innerProps }) {
   const handleSave = () => {
     const changed = hardMode !== initialRef.current;
     // persist new difficulty flag
-    localStorage.setItem('hardMode', hardMode ? 'true' : 'false');
+    localStorage.setItem("hardMode", hardMode ? "true" : "false");
 
     if (changed) {
       // clear all stats
-      localStorage.removeItem('ratingCounts');
-      localStorage.removeItem('playedCount');
-      localStorage.removeItem('currentStreak');
-      localStorage.removeItem('maxStreak');
+      localStorage.removeItem("ratingCounts");
+      localStorage.removeItem("playedCount");
+      localStorage.removeItem("currentStreak");
+      localStorage.removeItem("maxStreak");
       // clear the board & mistakes
       innerProps.toggleHardMode(hardMode);
       innerProps.clearBoard();
@@ -37,7 +45,9 @@ export default function Settings({ context, id, innerProps }) {
     <Stack spacing="md" className={styles.container}>
       <div className={styles.header}>
         <div />
-        <Text size="lg" className={styles.title}>Settings</Text>
+        <Text size="lg" className={styles.title}>
+          Settings
+        </Text>
         <CloseButton onClick={() => context.closeModal(id)} />
       </div>
 
@@ -59,7 +69,9 @@ export default function Settings({ context, id, innerProps }) {
       </Group>
 
       <Group justify="center" className={styles.buttonGroup}>
-        <button className={styles.button} onClick={handleSave}>Save</button>
+        <button className={styles.button} onClick={handleSave}>
+          Save
+        </button>
       </Group>
     </Stack>
   );

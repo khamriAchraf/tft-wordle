@@ -1,0 +1,109 @@
+/* src/styles/MyBoard.module.css */
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.boardHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.boardControls {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+}
+
+.appControls {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.clearIcon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  color: #27242a;
+  position: relative;
+  top: 4px;
+}
+
+.clear {
+  background: #f8f7e2;
+  padding: 2px 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.refreshButton {
+  display: flex;
+  align-items: center;
+  height: 100% !important;
+  gap: 8px;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+
+.refreshIcon {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0);
+}
+
+.clear:hover {
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
+  row-gap: 10px;
+}
+
+.slot {
+  width: 256px;
+  height: 128px;
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+
+  border: 2px solid transparent !important;
+  border-image: linear-gradient(
+    to bottom right,
+    #539e67 0%,
+    #61a073 25%,
+    #51965c 50%,
+    #4f945b 75%,
+    #0bd33d 100%
+  ) !important;
+  border-image-slice: 1 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: saturate(100%) blur(8px);
+  box-shadow: inset 0 0 8px #39593d;
+}
+
+.helmet {
+  height: 40px;
+  width: auto;
+  font-size: 1rem;
+  opacity: 0.3;
+  font-weight: bold;
+}

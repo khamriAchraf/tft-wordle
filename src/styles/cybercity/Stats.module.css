@@ -1,0 +1,71 @@
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+}
+
+.title {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.content {
+  padding-bottom: 24px;
+}
+
+.stats {
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.distribution {
+  margin-top: 24px;
+}
+
+.distLabel {
+  width: 24px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.distBar {
+  flex: 1;
+  background-color: #333;
+}
+
+.distCount {
+  width: 24px;
+  text-align: left;
+}
+
+.button {
+  margin-top: 1.5rem;
+  position: relative;
+  display: inline-block;
+  padding: 6px 16px;
+  background: black;
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  border: 2px solid;
+  border-image: linear-gradient(to top, #be136c, #fd4f75) 1;
+  border-bottom: none;
+  font-weight: 600;
+}
+
+.button:hover {
+}
+
+.mantine-Progress-root {
+  height: 1rem;
+}
+
+.congratsIcon {
+  height: 48px;
+  width: 48px;
+}

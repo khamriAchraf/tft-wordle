@@ -1,96 +1,115 @@
 // src/context/GameContext.jsx
-import React, { createContext, useContext, useState, useMemo } from 'react';
-import compositions from '../data/comps';
-import { useBoard } from './BoardContext';
-import units from '../data/units';
-import { traits as traitData } from '../data/traits';
+import React, { createContext, useContext, useState, useMemo } from "react";
+import unitsRemix from "../data/remix-rumble/units";
+import traitsRemix from "../data/remix-rumble/traits";
+import compsRemix from "../data/remix-rumble/comps";
+import unitsCyber from "../data/cybercity/units";
+import traitsCyber from "../data/cybercity/traits";
+import compsCyber from "../data/cybercity/comps";
+import { useBoard } from "./BoardContext";
 
 const GameContext = createContext();
 
-export function GameProvider({ children }) {
-  // Determine today’s puzzle index based on fixed reference date
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const reference = new Date(2025, 0, 1);
-  const diff = today.getTime() - reference.getTime();
-  const daysSince = Math.floor(diff / 86400000);
-  const idx = ((daysSince % compositions.length) + compositions.length) % compositions.length;
+export function GameProvider({ setKey, mode, children }) {
+  const units = setKey === "14" ? unitsCyber : unitsRemix;
+  const traitData = setKey === "14" ? traitsCyber : traitsRemix;
+  const comps = setKey === "14" ? compsCyber : compsRemix;
+  // pull in current board state
+  const { team, headliner, clearBoard } = useBoard();
 
-  // Composition of the day (users share the same puzzle)
-  const [composition, setComposition] = useState(() => compositions[idx]);
+  const getRandomComp = () => comps[Math.floor(Math.random() * comps.length)];
 
-  // Optional manual overrides
+  // choose initial composition
+  const [composition, setComposition] = useState(() => {
+    if (mode === "endless") {
+      clearBoard();
+      return getRandomComp();
+    }
+    // daily mode: one puzzle per day
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const reference = new Date(2025, 0, 1);
+    const daysSince = Math.floor(
+      (today.getTime() - reference.getTime()) / 86400000
+    );
+    const idx = ((daysSince % comps.length) + comps.length) % comps.length;
+    return comps[idx];
+  });
+
+  // manual overrides still available
   const pickCompositionById = (id) => {
-    const comp = compositions.find((c) => c.id === id);
+    const comp = comps.find((c) => c.id === id);
     if (comp) setComposition(comp);
   };
   const pickRandomComposition = () => {
-    const rand = Math.floor(Math.random() * compositions.length);
-    setComposition(compositions[rand]);
+    const available = comps.filter((c) => c.id !== composition.id);
+    if (available.length === 0) return;
+    const next = available[Math.floor(Math.random() * available.length)];
+    setComposition(next);
   };
 
-  const { team, headliner } = useBoard();
-
-  // Cost distribution for the target composition
+  // build cost distribution of target
   const costDistribution = useMemo(() => {
     const dist = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
-    composition.units.forEach((unitId) => {
-      const u = units.find((x) => x.id === unitId);
+    composition.units.forEach((uid) => {
+      const u = units.find((x) => x.id === uid);
       if (u) dist[u.cost] += 1;
     });
     return dist;
-  }, [composition]);
+  }, [composition, units]);
 
-  // Check if board matches the daily composition
+  // solved check
   const isSolved = useMemo(() => {
     if (team.length !== composition.units.length) return false;
     const targetIds = [...composition.units].sort();
     const boardIds = [...team.map((u) => u.id)].sort();
     if (targetIds.some((id, i) => id !== boardIds[i])) return false;
+    // only enforce headliner in set 10
     if (composition.headliner) {
-      if (
-        !headliner ||
-        headliner.unitId !== composition.headliner.unitId ||
-        headliner.traitId !== composition.headliner.traitId
-      ) {
-        return false;
-      }
+      return (
+        headliner &&
+        headliner.unitId === composition.headliner.unitId &&
+        headliner.traitId === composition.headliner.traitId
+      );
     } else if (headliner) {
       return false;
     }
     return true;
   }, [team, headliner, composition]);
 
-  // Active trait totals for the target composition
+  // target trait totals
   const compositionActiveTraits = useMemo(() => {
     const counts = {};
-    composition.units.forEach((unitId) => {
-      const u = units.find((x) => x.id === unitId);
-      u.traits.forEach((t) => {
-        counts[t] = (counts[t] || 0) + 1;
-      });
+    composition.units.forEach((uid) => {
+      const u = units.find((x) => x.id === uid);
+      u.traits.forEach((t) => (counts[t] = (counts[t] || 0) + 1));
     });
-    if (composition.headliner) {
-      counts[composition.headliner.traitId] =
-        (counts[composition.headliner.traitId] || 0) + 1;
+    // headliner bonus only for set 10
+    if (setKey === "10" && composition.headliner) {
+      const t = composition.headliner.traitId;
+      counts[t] = (counts[t] || 0) + 1;
     }
     return Object.entries(counts).reduce((acc, [id, count]) => {
-      const def = traitData.find((t) => t.id === id);
+      const def = traitData?.find((t) => t.id === id);
       acc[id] = { name: def?.name || id, count };
       return acc;
     }, {});
-  }, [composition]);
+  }, [composition, traitData, units, setKey]);
 
   return (
     <GameContext.Provider
       value={{
+        // core
         composition,
-        pickCompositionById,
-        pickRandomComposition,
         costDistribution,
         isSolved,
-        compositions,
         compositionActiveTraits,
+        setKey,
+        mode,
+        compositions: comps,
+        // actions
+        pickCompositionById,
+        pickRandomComposition,
       }}
     >
       {children}
@@ -100,6 +119,8 @@ export function GameProvider({ children }) {
 
 export function useGame() {
   const ctx = useContext(GameContext);
-  if (!ctx) throw new Error('useGame must be used within a GameProvider');
+  if (!ctx) {
+    throw new Error("useGame must be used within a GameProvider");
+  }
   return ctx;
 }

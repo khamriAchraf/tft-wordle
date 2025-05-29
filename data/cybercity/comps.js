@@ -1,0 +1,501 @@
+/**
+ * A pool of target compositions for the game to choose from.
+ * Each composition includes:
+ *  - id:       unique string key
+ *  - name:     human-readable label
+ *  - units:    array of unit IDs (must match your units.js ids)
+ *  - headliner: which unit and trait is doubled
+ */
+const compositions = [
+  {
+    id: "guardsman",
+    name: "Guardsman",
+    units: [
+      "aphelios",
+      "jinx",
+      "xayah",
+      "jhin",
+      "leona",
+      "rhaast",
+      "jarvan",
+      "braum",
+      "aurora"
+    ],
+  },
+  {
+    id: "stratamp",
+    name: "Strategist AMP",
+    units: [
+      "nidalee",
+      "ekko",
+      "naafiri",
+      "yuumi",
+      "ziggs",
+      "annie",
+      "neeko",
+      "kobuko",
+      "samira"
+    ],
+  },
+  {
+    id: "bastmorg",
+    name: "Bastion Morgana",
+    units: [
+      "jax",
+      "morgana",
+      "poppy",
+      "shyvana",
+      "elise",
+      "galio",
+      "sejuani",
+      "renekton",
+      "aurora"
+    ],
+  },
+  {
+    id: "vanmorg",
+    name: "Vanguard Morgana",
+    units: [
+      "sylas",
+      "morgana",
+      "vi",
+      "rhaast",
+      "skarner",
+      "braum",
+      "elise",
+      "leona",
+      "aurora"
+    ],
+  },
+  {
+    id: "anima",
+    name: "Anime Squad",
+    units: [
+      "sylas",
+      "seraphine",
+      "illaoi",
+      "jhin",
+      "vayne",
+      "leona",
+      "xayah",
+      "viego",
+      "aurora"
+    ],
+  },
+  {
+    id: "mfdynamo",
+    name: "MF Dynamo",
+    units: [
+      "morgana",
+      "sylas",
+      "darius",
+      "rhaast",
+      "braum",
+      "leona",
+      "elise",
+      "missfortune",
+      "aurora"
+    ],
+  },
+  {
+    id: "mfdynamo",
+    name: "MF Dynamo",
+    units: [
+      "morgana",
+      "sylas",
+      "darius",
+      "rhaast",
+      "braum",
+      "leona",
+      "elise",
+      "missfortune",
+      "aurora"
+    ],
+  },
+  {
+    id: "dynamoelisebraum",
+    name: "Dynamo Elise & Braum",
+    units: [
+      "morgana",
+      "sylas",
+      "darius",
+      "rhaast",
+      "braum",
+      "leona",
+      "elise",
+      "missfortune",
+      "aurora"
+    ],
+  },
+  {
+    id: "dynitro",
+    name: "DYNITRO",
+    units: [
+      "kindred",
+      "nidalee",
+      "jhin",
+      "shyvana",
+      "mordekaiser",
+      "elise",
+      "sejuani",
+      "aurora"
+    ],
+  },
+  {
+    id: "nitrozeri",
+    name: "Nitro Zeri",
+    units: [
+      "kindred",
+      "jax",
+      "jhin",
+      "shyvana",
+      "mordekaiser",
+      "elise",
+      "sejuani",
+      "zeri"
+    ],
+  },
+  {
+    id: "nitroannie",
+    name: "Nitro Annie",
+    units: [
+      "nidalee",
+      "naafiri",
+      "shyvana",
+      "mordekaiser",
+      "elise",
+      "sejuani",
+      "yuumi",
+      "samira",
+      "annie"
+    ],
+  },
+  {
+    id: "nitroVeigar",
+    name: "Nitro Veigar",
+    units: [
+      "nidalee",
+      "kindred",
+      "shyvana",
+      "poppy",
+      "elise",
+      "veigar",
+      "ziggs",
+      "kobuko",
+    ],
+  },
+  {
+    id: "bullettime",
+    name: "Bullet Time",
+    units: [
+      "jax",
+      "darius",
+      "jhin",
+      "twistedfate",
+      "mordekaiser",
+      "missfortune",
+      "sejuani",
+      "zeri",
+    ],
+  },
+  {
+    id: "exozeri",
+    name: "Exotech Zeri",
+    units: [
+      "jax",
+      "kindred",
+      "jhin",
+      "naafiri",
+      "mordekaiser",
+      "varus",
+      "sejuani",
+      "zeri",
+    ],
+  },
+  {
+    id: "DiviniVex",
+    name: "DiviniVex",
+    units: [
+      "morgana",
+      "rhaast",
+      "gragas",
+      "jarvan",
+      "senna",
+      "chogath",
+      "vex",
+      "renekton",
+    ],
+  },
+  {
+    id: "vexotech",
+    name: "Vexotech",
+    units: [
+      "morgana",
+      "mordekaiser",
+      "gragas",
+      "varus",
+      "sejuani",
+      "vex",
+      "renekton",
+      "aurora",
+      "viego"
+    ],
+  },
+  {
+    id: "vexbruisers",
+    name: "Vex bruisers",
+    units: [
+      "morgana",
+      "mordekaiser",
+      "gragas",
+      "varus",
+      "chogath",
+      "vex",
+      "jhin",
+      "kobuko",
+      "urgot"
+    ],
+  },
+  {
+    id: "zeddivinicorp",
+    name: "Divinicorp zed",
+    units: [
+      "drmundo",
+      "rhaast",
+      "gragas",
+      "jarvan",
+      "senna",
+      "zed",
+      "vex",
+      "garen",
+      "renekton",
+    ],
+  },
+  {
+    id: "cypherzeddraven",
+    name: "Cypher Zed Draven",
+    units: [
+      "jax",
+      "galio",
+      "draven",
+      "zeri",
+      "senna",
+      "zed",
+      "sejuani",
+      "renekton",
+    ],
+  },
+  {
+    id: "5cypher",
+    name: "5 Cypher",
+    units: [
+      "jax",
+      "vi",
+      "leblanc",
+      "jarvan",
+      "draven",
+      "galio",
+      "sejuani",
+      "zeri",
+      "zed",
+    ],
+  },
+  {
+    id: "gorilla",
+    name: "Gorilla",
+    units: [
+      "alistar",
+      "seraphine",
+      "drmundo",
+      "zyra",
+      "veigar",
+      "mordekaiser",
+      "brand",
+      "kobuko",
+    ],
+  },
+  {
+    id: "mundomorgana",
+    name: "Mundo Morgana",
+    units: [
+      "alistar",
+      "morgana",
+      "drmundo",
+      "gragas",
+      "chogath",
+      "missfortune",
+      "aurora",
+      "kobuko",
+    ],
+  },
+  {
+    id: "ampnaafiri",
+    name: "AMP Naafiri",
+    units: [
+      "jax",
+      "nidalee",
+      "ekko",
+      "naafiri",
+      "yuumi",
+      "sejuani",
+      "annie",
+      "neeko",
+      "samira"
+    ],
+  },
+  {
+    id: "streetagists",
+    name: "Streetagists",
+    units: [
+      "drmundo",
+      "zyra",
+      "ekko",
+      "jinx",
+      "ziggs",
+      "brand",
+      "kobuko",
+      "neeko",
+      "samira"
+    ],
+  },
+  {
+    id: "techies",
+    name: "Techies",
+    units: [
+      "zyra",
+      "shyvana",
+      "veigar",
+      "fiddlesticks",
+      "mordekaiser",
+      "brand",
+      "seraphine",
+      "neeko",
+      "viego"
+    ],
+  },
+  {
+    id: "cardshark",
+    name: "Card Shark",
+    units: [
+      "shaco",
+      "darius",
+      "rhaast",
+      "twistedfate",
+      "gragas",
+      "braum",
+      "draven",
+      "missfortune",
+    ],
+  },
+  {
+    id: "cyberbossveigar",
+    name: "Cyberboss Veigar",
+    units: [
+      "poppy",
+      "shyvana",
+      "veigar",
+      "mordekaiser",
+      "brand",
+      "neeko",
+      "ziggs",
+      "kobuko",
+    ],
+  },
+  {
+    id: "rengar",
+    name: "rengar",
+    units: [
+      "drmundo",
+      "zyra",
+      "ekko",
+      "jinx",
+      "rengar",
+      "neeko",
+      "vex",
+      "brand",
+    ],
+  },
+  {
+    id: "exec",
+    name: "Exec",
+    units: [
+      "ekko",
+      "rengar",
+      "varus",
+      "neeko",
+      "vex",
+      "urgot",
+    ],
+  },
+  {
+    id: "kogmaw",
+    name: "Kogmaw",
+    units: [
+      "kogmaw",
+      "sylas",
+      "vi",
+      "rhaast",
+      "skarner",
+      "jarvan",
+      "draven",
+      "leona",
+    ],
+  },
+  {
+    id: "vayne",
+    name: "Vayne",
+    units: [
+      "sylas",
+      "rhaast",
+      "vayne",
+      "senna",
+      "jarvan",
+      "leona",
+      "zed"
+    ],
+  },
+  {
+    id: "strategistReroll",
+    name: "Strategist Reroll",
+    units: [
+      "vi",
+      "ekko",
+      "illaoi",
+      "leblanc",
+      "galio",
+      "yuumi",
+      "leona",
+      "neeko"
+    ],
+  },
+  {
+    id: "fiddlesticksbruisers",
+    name: "Fiddlesticks bruisers",
+    units: [
+      "drmundo",
+      "alistar",
+      "gragas",
+      "mordekaiser",
+      "fiddlesticks",
+      "chogath",
+      "kobuko",
+      "urgot"
+    ],
+  },
+  {
+    id: "shacopedweapons",
+    name: "Shaco-ped Weapons",
+    units: [
+      "drmundo",
+      "shaco",
+      "darius",
+      "vayne",
+      "jarvan",
+      "senna",
+      "braum",
+      "zed",
+    ],
+  },
+]
+
+export default compositions;

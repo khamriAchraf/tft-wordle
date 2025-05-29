@@ -192,6 +192,42 @@ const compositions = [
     units: ["lux", "zac", "zed", "illaoi", "ziggs", "sett", "gragas", "jax"],
     headliner: { unitId: "lux", traitId: "edm" },
   },
+  {
+    id: "annie-weavers",
+    name: "Annie Weavers",
+    units: ["kennen", "lillia", "annie", "amumu", "ekko", "lulu", "neeko", "ahri", "ziggs"],
+    headliner: { unitId: "annie", traitId: "spellweaver" },
+  },
+  {
+    id: "emo-annie",
+    name: "Emo Annie",
+    units: [
+      "kennen",
+      "lillia",
+      "annie",
+      "amumu",
+      "ekko",
+      "neeko",
+      "vex",
+      "ahri",
+    ],
+    headliner: { unitId: "annie", traitId: "emo" },
+  },
+  {
+    id: "ahri-sentinels",
+    name: "Ahri Sentinels",
+    units: [
+      "lillia",
+      "garen",
+      "seraphine",
+      "ekko",
+      "mordekaiser",
+      "ahri",
+      "blitzcrank",
+      "sona",
+    ],
+    headliner: { unitId: "blitzcrank", traitId: "sentinel" },
+  },
 ];
 
 export default compositions;
