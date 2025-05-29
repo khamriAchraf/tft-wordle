@@ -2,10 +2,10 @@
   margin-bottom: 0.5rem;
   padding: 0.5rem 1rem;
   border-radius: 0.6rem;
+  max-width: 400px;
 }
 
 .panel {
-  width: 400px;
   height: 100%;
   overflow: hidden;
   display: flex;
@@ -166,7 +166,6 @@
   border: 1px solid #000;
 }
 
-
 .return {
   background: rgba(255, 255, 255);
   backdrop-filter: saturate(100%) blur(8px);
@@ -185,4 +184,10 @@
   font-size: 1rem;
   cursor: pointer;
   font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .section {
+    max-width: 100%;
+  }
 }

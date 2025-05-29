@@ -1,35 +1,59 @@
 import React from "react";
 import { useBoard } from "../context/BoardContext";
-import UnitCard from "./UnitCard";
-import TraitPanel from "./TraitPanel";
-import styles from "@/styles/Board.module.css";
 import UnitPool from "./UnitPool";
-import BoardUnitCard from "./BoardUnitCard";
 import MyBoard from "./MyBoard";
-import PuzzleSummary from "./PuzzleSummary";
 import GameProgress from "./GameProgress";
+import styles from "@/styles/Board.module.css";
+import { Tabs } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 
-const Board = ({setHasAlerted}) => {
+const Board = ({ setHasAlerted }) => {
   const { units, team, addUnit, removeUnit, activeTraits } = useBoard();
+  // Detect mobile screens
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
+  // Mobile layout: tabs for main sections
+  if (isMobile) {
+    return (
+      <Tabs defaultValue="champions">
+        <Tabs.List grow>
+          <Tabs.Tab value="champions">Champions</Tabs.Tab>
+          <Tabs.Tab value="board">Board</Tabs.Tab>
+          <Tabs.Tab value="progress">Progress</Tabs.Tab>
+        </Tabs.List>
+
+        <Tabs.Panel value="champions" pt="xs">
+          <div className={styles.championPool}>
+            <UnitPool />
+          </div>
+        </Tabs.Panel>
+
+        <Tabs.Panel value="board" pt="xs">
+          <div className={styles.board}>
+            <MyBoard setHasAlerted={setHasAlerted} />
+          </div>
+        </Tabs.Panel>
+
+        <Tabs.Panel value="progress" pt="xs">
+          <div className={styles.gameProgress}>
+            <GameProgress />
+          </div>
+        </Tabs.Panel>
+      </Tabs>
+    );
+  }
+
+  // Desktop layout: side-by-side
   return (
     <div className={styles.container}>
-      {/* Champion Pool */}
       <div className={styles.championPool}>
         <UnitPool />
       </div>
       <div className={styles.board}>
-        {/* Current Team */}
         <MyBoard setHasAlerted={setHasAlerted} />
-
         <div className={styles.gameProgress}>
           <GameProgress />
         </div>
-
-        {/* Traits Panel */}
-        {/* <div className={styles.traits}>
-        <TraitPanel activeTraits={activeTraits} />
-      </div> */}
       </div>
     </div>
   );

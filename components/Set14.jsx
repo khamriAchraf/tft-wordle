@@ -88,7 +88,6 @@ export default function Set14() {
         resetMistakes();
         markSolved();
       }
-      alert('this is triggering a modal')
       setHasAlerted(true);
       modals.openContextModal({
         modal: "endGame",
