@@ -15,7 +15,7 @@ const Home = () => {
     <div className={styles.home}>
       <div className={styles.container}>
         <Text size="xl" align="center">
-          Pick a set to start
+          Welcome to TFTYK, Pick a set to start
         </Text>
       </div>
       <HomeLeft />

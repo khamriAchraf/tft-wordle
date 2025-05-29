@@ -69,9 +69,8 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 256px);
-  grid-template-rows: repeat(3, 128px);
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
+  row-gap: 10px;
 }
 
 .slot {

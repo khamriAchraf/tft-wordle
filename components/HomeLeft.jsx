@@ -14,7 +14,7 @@ const HomeLeft = () => {
                 />
                 <img
                     className={styles.leftLogo}
-                    src="/images/set-14-logo.avif"
+                    src="/images/set-14-logo.png"
                     alt=""
                 />
             </Link>

@@ -14,10 +14,11 @@ import { IoMdHelpCircle } from "react-icons/io";
 import { IoMdSettings } from "react-icons/io";
 import { MdClearAll, MdOutlineRefresh } from "react-icons/md";
 
-export default function MyBoard({setHasAlerted}) {
-  const { team, removeUnit, mistakes, clearBoard, toggleHardMode, setKey } = useBoard();
+export default function MyBoard({ setHasAlerted }) {
+  const { team, removeUnit, mistakes, clearBoard, toggleHardMode, setKey } =
+    useBoard();
   const { composition, pickRandomComposition, mode } = useGame();
-  const styles = setKey === '14' ? cyberStyles : remixStyles;
+  const styles = setKey === "14" ? cyberStyles : remixStyles;
   // Create an array of 12 slots, filling with team units or null
   const slots = Array.from({ length: 12 }, (_, i) => team[i] || null);
 
@@ -38,27 +39,28 @@ export default function MyBoard({setHasAlerted}) {
             <Text size="xs">Mistakes: {mistakes}</Text>
           </div>
         </div>
-        {mode === 'endless' && <div>
-          <button
-            className={styles.refreshButton}
-            onClick={() => {
-              setHasAlerted(false);
-              clearBoard();
-              pickRandomComposition();
-            }
-            }
-          >
-            <MdOutlineRefresh className={styles.refreshIcon} />
-            <Text>Refresh</Text>
-          </button>
-        </div>}
+        {mode === "endless" && (
+          <div>
+            <button
+              className={styles.refreshButton}
+              onClick={() => {
+                setHasAlerted(false);
+                clearBoard();
+                pickRandomComposition();
+              }}
+            >
+              <MdOutlineRefresh className={styles.refreshIcon} />
+              <Text>Refresh</Text>
+            </button>
+          </div>
+        )}
 
         <div className={styles.appControls}>
           <button
             className={styles.clear}
             onClick={() =>
               modals.openContextModal({
-                modal: 'settings',
+                modal: "settings",
                 innerProps: { clearBoard, toggleHardMode },
               })
             }
@@ -98,7 +100,7 @@ export default function MyBoard({setHasAlerted}) {
               <div className={styles.placeholder}>
                 <img
                   className={styles.helmet}
-                  src={`/images/helmet${setKey === '14' ? '14' : ''}.png`}
+                  src={`/images/helmet${setKey === "14" ? "14" : ""}.png`}
                   alt="Gold"
                 />
               </div>
@@ -106,6 +108,6 @@ export default function MyBoard({setHasAlerted}) {
           </div>
         ))}
       </div>
-    </div >
+    </div>
   );
 }

@@ -8,7 +8,7 @@ import { Tabs } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
 const Board = ({ setHasAlerted }) => {
-  const { units, team, addUnit, removeUnit, activeTraits } = useBoard();
+  const { units, team, addUnit, removeUnit, activeTraits, setKey } = useBoard();
   // Detect mobile screens
   const isMobile = useMediaQuery("(max-width: 768px)");
 
@@ -17,9 +17,9 @@ const Board = ({ setHasAlerted }) => {
     return (
       <Tabs defaultValue="champions">
         <Tabs.List grow>
-          <Tabs.Tab value="champions">Champions</Tabs.Tab>
+          <Tabs.Tab value="champions">Units</Tabs.Tab>
           <Tabs.Tab value="board">Board</Tabs.Tab>
-          <Tabs.Tab value="progress">Progress</Tabs.Tab>
+          <Tabs.Tab value="progress">Composition</Tabs.Tab>
         </Tabs.List>
 
         <Tabs.Panel value="champions" pt="xs">

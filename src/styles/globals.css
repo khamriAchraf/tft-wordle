@@ -25,7 +25,7 @@ body {
 body {
   color: #fff;
   background: #070707;
-  background: radial-gradient(circle, #0a0a0a 0%, #0a0a0a 50%, #171717 100%);
+  background: radial-gradient(circle, #060606 0%, #141414 50%, #181818 100%);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -151,4 +151,9 @@ option {
   body {
     overflow: auto !important;
   }
+}
+
+.mantine-Tabs-tab {
+  background-color: transparent !important;
+  text-align: center !important;
 }

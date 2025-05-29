@@ -12,7 +12,6 @@ import Head from "next/head";
 import Settings from "../../modals/Settings";
 
 const theme = createTheme({
-  /** Put your mantine theme override here */
 });
 
 export default function App({ Component, pageProps }) {
@@ -70,8 +69,8 @@ export default function App({ Component, pageProps }) {
             modals={{ welcome: Welcome, endGame: EndGame, stats: Stats, settings: Settings }}
             modalProps={{ centered: true }}
           >
-            
-                <Component {...pageProps} />
+
+            <Component {...pageProps} />
           </ModalsProvider>
         </MantineProvider>
       </div>
