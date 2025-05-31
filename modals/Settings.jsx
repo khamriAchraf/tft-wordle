@@ -63,7 +63,7 @@ export default function Settings({ context, id, innerProps }) {
         <Text align="center" size="sm">
           Hard mode: Unit traits are hidden. You cannot search or sort by trait.
         </Text>
-        <Text color="orange" size="sm">
+        <Text color="#888" size="sm">
           Changing difficulty will reset the board and clear all statistics.
         </Text>
       </Group>

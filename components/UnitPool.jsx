@@ -1,5 +1,5 @@
 // src/components/UnitPool.jsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import remixStyles from "@/styles/UnitPool.module.css";
 import cyberStyles from "@/styles/cybercity/UnitPool.module.css";
 import { useBoard } from "../context/BoardContext";
@@ -7,16 +7,25 @@ import { traits as traitsRemix } from "../data/remix-rumble/traits";
 import { traits as traitsCyber } from "../data/cybercity/traits";
 import UnitPoolCard from "./UnitPoolCard";
 import { HiMiniChevronUpDown } from "react-icons/hi2";
-import { IoIosArrowDropleftCircle, IoMdArrowDropleft, IoMdReturnLeft } from "react-icons/io";
+import {
+  IoIosArrowDropleftCircle,
+  IoMdArrowDropleft,
+  IoMdReturnLeft,
+} from "react-icons/io";
 import { Tooltip } from "@mantine/core";
 import Link from "next/link";
 export default function UnitPool() {
   const { units, team, addUnit, hardMode, setKey } = useBoard();
   const traitData = setKey === "14" ? traitsCyber : traitsRemix;
 
-  const styles = setKey === '14' ? cyberStyles : remixStyles;
+  const styles = setKey === "14" ? cyberStyles : remixStyles;
   const [groupBy, setGroupBy] = useState("cost");
   const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    setSearchQuery("");
+    setGroupBy("cost");
+  }, [hardMode]);
 
   // Cost buckets
   const costBuckets = {};
@@ -42,13 +51,19 @@ export default function UnitPool() {
   // Search matches
   const query = searchQuery.trim().toLowerCase();
   const unitMatches = query
-    ? units.filter((u) => u.name.toLowerCase().includes(query) || u.id.toLowerCase().includes(query))
+    ? units.filter(
+        (u) =>
+          u.name.toLowerCase().includes(query) ||
+          u.id.toLowerCase().includes(query)
+      )
     : [];
   const traitMatches = query
     ? traitData.filter(
-      (t) =>
-        (t.name.toLowerCase().includes(query) || t.id.toLowerCase().includes(query)) && traitBuckets[t.id]?.length
-    )
+        (t) =>
+          (t.name.toLowerCase().includes(query) ||
+            t.id.toLowerCase().includes(query)) &&
+          traitBuckets[t.id]?.length
+      )
     : [];
 
   const addAllTrait = (traitId) => {
@@ -59,41 +74,42 @@ export default function UnitPool() {
     <div className={styles.panel}>
       <div className={styles.header}>
         <Tooltip label="Return to Set Selection">
-          <Link href="/"><button
-            className={styles.return}
-          >
-            <IoMdArrowDropleft className={styles.returnIcon} />
-          </button></Link>
-
+          <Link href="/">
+            <button className={styles.return}>
+              <IoMdArrowDropleft className={styles.returnIcon} />
+            </button>
+          </Link>
         </Tooltip>
 
-        <h1 className={styles.title}>Unit Pool</h1></div>
+        <h1 className={styles.title}>Unit Pool</h1>
+      </div>
 
-      {!hardMode && <div className={styles.poolHeader}>
-        {/* Search bar */}
-        <div className={styles.searchContainer}>
-          <input
-            type="text"
-            placeholder="Search unit or trait..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className={styles.searchInput}
-          />
+      {!hardMode && (
+        <div className={styles.poolHeader}>
+          {/* Search bar */}
+          <div className={styles.searchContainer}>
+            <input
+              type="text"
+              placeholder="Search unit or trait..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className={styles.searchInput}
+            />
+          </div>
+
+          <div className={styles.toggleContainer}>
+            <select
+              className={styles.toggleSelect}
+              value={groupBy}
+              onChange={(e) => setGroupBy(e.target.value)}
+            >
+              <option value="cost">Cost</option>
+              <option value="trait">Trait</option>
+            </select>
+            <HiMiniChevronUpDown className={styles.selectIcon} />
+          </div>
         </div>
-
-        <div className={styles.toggleContainer}>
-          <select
-            className={styles.toggleSelect}
-            value={groupBy}
-            onChange={(e) => setGroupBy(e.target.value)}
-          >
-            <option value="cost">Cost</option>
-            <option value="trait">Trait</option>
-          </select>
-          <HiMiniChevronUpDown className={styles.selectIcon} />
-        </div>
-      </div>}
-
+      )}
 
       <div className={styles.pool}>
         {/* Search results take priority */}
