@@ -11,14 +11,12 @@
 .left {
   width: 50%;
   height: 100%;
-  background-color: red;
   position: relative;
 }
 
 .right {
   width: 50%;
   height: 100%;
-  background-color: blue;
   position: relative;
 }
 
