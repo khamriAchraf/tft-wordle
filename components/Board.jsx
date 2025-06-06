@@ -4,42 +4,51 @@ import UnitPool from "./UnitPool";
 import MyBoard from "./MyBoard";
 import GameProgress from "./GameProgress";
 import styles from "@/styles/Board.module.css";
-import { Tabs } from "@mantine/core";
-import { useMediaQuery } from "@mantine/hooks";
+import { Button, Drawer, Tabs } from "@mantine/core";
+import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 
 const Board = ({ setHasAlerted }) => {
   const { units, team, addUnit, removeUnit, activeTraits, setKey } = useBoard();
   // Detect mobile screens
   const isMobile = useMediaQuery("(max-width: 768px)");
 
+  const [boardOpened, boardHandlers] = useDisclosure(false);
+  const [compOpened, compHandlers] = useDisclosure(false);
+
   // Mobile layout: tabs for main sections
   if (isMobile) {
     return (
-      <Tabs defaultValue="champions">
-        <Tabs.List grow>
-          <Tabs.Tab value="champions">Units</Tabs.Tab>
-          <Tabs.Tab value="board">Board</Tabs.Tab>
-          <Tabs.Tab value="progress">Composition</Tabs.Tab>
-        </Tabs.List>
+      <div defaultValue="champions">
+        <div className={styles.championPool}>
+          <UnitPool />
+        </div>
 
-        <Tabs.Panel value="champions" pt="xs">
-          <div className={styles.championPool}>
-            <UnitPool />
-          </div>
-        </Tabs.Panel>
-
-        <Tabs.Panel value="board" pt="xs">
-          <div className={styles.board}>
+        <Drawer
+          position="right"
+          opened={boardOpened}
+          onClose={boardHandlers.close}
+          title="My Board"
+        >
             <MyBoard setHasAlerted={setHasAlerted} />
-          </div>
-        </Tabs.Panel>
+        </Drawer>
 
-        <Tabs.Panel value="progress" pt="xs">
-          <div className={styles.gameProgress}>
+        <Button variant="default" onClick={boardHandlers.open} className={styles.myBoardButton}>
+          My Board
+        </Button>
+
+        <Drawer
+          position="bottom"
+          opened={compOpened}
+          onClose={compHandlers.close}
+          title="Composition"
+        >
             <GameProgress />
-          </div>
-        </Tabs.Panel>
-      </Tabs>
+        </Drawer>
+
+        <Button variant="default" onClick={compHandlers.open} className={styles.compButton}>
+          Composition
+        </Button>
+      </div>
     );
   }
 

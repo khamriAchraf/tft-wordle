@@ -50,3 +50,16 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+.compButton, .myBoardButton {
+  position: absolute;
+  bottom: 50px;
+}
+
+.compButton {
+  right: 50px;
+}
+
+.myBoardButton {
+  left: 50px;
+}

@@ -117,8 +117,7 @@
 }
 
 @media (max-width: 768px) {
-  .grid 
-  {
-    
+  .board {
+    background-color: #161616 !important;
   }
 }
