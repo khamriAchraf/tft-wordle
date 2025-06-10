@@ -117,7 +117,14 @@
 }
 
 @media (max-width: 768px) {
-  .board {
-    background-color: #161616 !important;
+  .slot {
+    width: 180px;
+    height: 128px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    row-gap: 10px;
   }
 }
