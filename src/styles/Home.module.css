@@ -89,6 +89,26 @@
   width: 100%;
 }
 
+.set14Badge,
+.set10Badge {
+  position: absolute !important;
+  top: 35% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  height: auto;
+  pointer-events: none;
+  background-color: transparent;
+  z-index: 99;
+}
+
+.set10Badge {
+  border: 2px solid#fd1892;
+}
+
+.set14Badge {
+  border: 2px solid#15d843;
+}
+
 @media (max-width: 768px) {
   .home {
     width: 100%;

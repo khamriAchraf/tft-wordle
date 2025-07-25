@@ -107,3 +107,16 @@
   opacity: 0.3;
   font-weight: bold;
 }
+
+@media (max-width: 768px) {
+  .slot {
+    width: 180px;
+    height: 128px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    row-gap: 10px;
+  }
+}

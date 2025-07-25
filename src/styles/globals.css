@@ -157,3 +157,11 @@ option {
   background-color: transparent !important;
   text-align: center !important;
 }
+
+.mantine-Drawer-body {
+  background-color: #020a14;
+}
+
+.mantine-Drawer-header {
+  background-color: #020a14;
+}

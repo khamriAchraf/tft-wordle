@@ -1,12 +1,16 @@
 import React from 'react'
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
+import { Badge } from '@mantine/core';
 
 
 const HomeLeft = () => {
+
     return (
         <div className={styles.left}>
             <Link href="/cybercity">
+                <Badge className={styles.set14Badge} size="xl">Set 14</Badge>
+
                 <img
                     className={styles.background}
                     src="/images/cybercity-bg.jpg"
@@ -18,6 +22,7 @@ const HomeLeft = () => {
                     alt=""
                 />
             </Link>
+
         </div>
     )
 }

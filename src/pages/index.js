@@ -19,7 +19,7 @@ const Home = () => {
         </Text>
       </div>
       <HomeLeft />
-      
+
       <HomeRight />
       <div className={styles.disclaimer}>
         <Text color="#888" size="sm">
