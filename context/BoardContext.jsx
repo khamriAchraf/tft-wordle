@@ -10,12 +10,24 @@ import unitsRemix from "../data/remix-rumble/units";
 import traitsRemix from "../data/remix-rumble/traits";
 import unitsCyber from "../data/cybercity/units";
 import traitsCyber from "../data/cybercity/traits";
+import unitsKo from "../data/ko-coliseum/units";
+import traitsKo from "../data/ko-coliseum/traits";
 
 const BoardContext = createContext();
 
 export function BoardProvider({ setKey = "10", mode = "daily", children }) {
-  const units = setKey === "14" ? unitsCyber : unitsRemix;
-  const traitData = setKey === "14" ? traitsCyber : traitsRemix;
+  let units = [];
+  let traitData = [];
+  if (setKey === "14") {
+    units = unitsCyber;
+    traitData = traitsCyber;
+  } else if (setKey === "10") {
+    units = unitsRemix;
+    traitData = traitsRemix;
+  } else if (setKey === "15") {
+    units = unitsKo;
+    traitData = traitsKo;
+  }
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const dateKey = today.toISOString().slice(0, 10); // "2025-05-14"

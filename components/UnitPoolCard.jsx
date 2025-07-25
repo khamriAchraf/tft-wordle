@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useBoard } from "../context/BoardContext";
 import remixStyles from "@/styles/UnitPoolCard.module.css";
 import cyberStyles from "@/styles/cybercity/UnitPoolCard.module.css";
+import koStyles from "@/styles/ko-coliseum/UnitPoolCard.module.css";
 
 const costBorderColors = {
   1: "#acacac",
@@ -14,7 +15,14 @@ const costBorderColors = {
 
 export default function UnitPoolCard({ unit }) {
   const { team, addUnit, removeUnit, hardMode, setKey } = useBoard();
-  const styles = setKey === '14' ? cyberStyles : remixStyles;
+  let styles;
+  if (setKey === '14') {
+    styles = cyberStyles;
+  } else if (setKey === '15') {
+    styles = koStyles;
+  } else {
+    styles = remixStyles;
+  }
   const selected = team.some((u) => u.id === unit.id);
 
   const handleClick = () => {

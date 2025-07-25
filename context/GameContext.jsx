@@ -6,14 +6,30 @@ import compsRemix from "../data/remix-rumble/comps";
 import unitsCyber from "../data/cybercity/units";
 import traitsCyber from "../data/cybercity/traits";
 import compsCyber from "../data/cybercity/comps";
+import unitsKo from "../data/ko-coliseum/units";
+import traitsKo from "../data/ko-coliseum/traits";
+import compsKo from "../data/ko-coliseum/comps";
 import { useBoard } from "./BoardContext";
 
 const GameContext = createContext();
 
 export function GameProvider({ setKey, mode, children }) {
-  const units = setKey === "14" ? unitsCyber : unitsRemix;
-  const traitData = setKey === "14" ? traitsCyber : traitsRemix;
-  const comps = setKey === "14" ? compsCyber : compsRemix;
+  let units = [];
+  let traitData = [];
+  let comps = [];
+  if (setKey === "14") {
+    units = unitsCyber;
+    traitData = traitsCyber;
+    comps = compsCyber;
+  } else if (setKey === "10") {
+    units = unitsRemix;
+    traitData = traitsRemix;
+    comps = compsRemix;
+  } else if (setKey === "15") {
+    units = unitsKo;
+    traitData = traitsKo;
+    comps = compsKo;
+  }
   // pull in current board state
   const { team, headliner, clearBoard } = useBoard();
 

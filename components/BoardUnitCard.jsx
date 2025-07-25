@@ -3,6 +3,7 @@ import React from "react";
 import { useBoard } from "../context/BoardContext";
 import remixStyles from "@/styles/BoardUnitCard.module.css";
 import cyberStyles from "@/styles/cybercity/BoardUnitCard.module.css";
+import koStyles from "@/styles/ko-coliseum/BoardUnitCard.module.css";
 import { traits as traitData } from "../data/remix-rumble/traits";
 import { useGame } from "../context/GameContext";
 
@@ -17,7 +18,14 @@ const costColors = {
 
 export default function BoardUnitCard({ unit }) {
   const { removeUnit, headliner, selectHeadliner, setKey } = useBoard();
-  const styles = setKey === '14' ? cyberStyles : remixStyles;
+  let styles;
+  if (setKey === '14') {
+    styles = cyberStyles;
+  } else if (setKey === '15') {
+    styles = koStyles;
+  } else {
+    styles = remixStyles;
+  }
   const { composition } = useGame();
   const { cost, name } = unit;
   const bgColor = costColors[cost] || "#000";

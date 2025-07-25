@@ -5,8 +5,10 @@ import { useBoard } from "../context/BoardContext";
 import TraitProgress from "./TraitProgress";
 import { traits as traitsRemix } from "../data/remix-rumble/traits";
 import { traits as traitsCyber } from "../data/cybercity/traits";
+import { traits as traitsKo } from "../data/ko-coliseum/traits";
 import remixStyles from "@/styles/GameProgress.module.css";
 import cyberStyles from "@/styles/cybercity/GameProgress.module.css";
+import koStyles from "@/styles/ko-coliseum/GameProgress.module.css";
 
 const tierOrder = {
   prismatic: 0,
@@ -27,8 +29,22 @@ const costColors = {
 
 export default function GameProgress() {
   const { compositionActiveTraits, costDistribution, setKey } = useGame();
-  const traitData = setKey === "14" ? traitsCyber : traitsRemix;
-  const styles = setKey === "14" ? cyberStyles : remixStyles;
+  let traitData;
+  if (setKey === "14") {
+    traitData = traitsCyber;
+  } else if (setKey === "15") {
+    traitData = traitsKo;
+  } else {
+    traitData = traitsRemix;
+  }
+  let styles;
+  if (setKey === "14") {
+    styles = cyberStyles;
+  } else if (setKey === "15") {
+    styles = koStyles;
+  } else {
+    styles = remixStyles;
+  }
   const { activeTraits, team } = useBoard();
 
   // Combine composition traits and any extra active traits

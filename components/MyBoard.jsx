@@ -4,6 +4,7 @@ import { useBoard } from "../context/BoardContext";
 import BoardUnitCard from "./BoardUnitCard";
 import remixStyles from "@/styles/MyBoard.module.css";
 import cyberStyles from "@/styles/cybercity/MyBoard.module.css";
+import koStyles from "@/styles/ko-coliseum/MyBoard.module.css";
 import { useGame } from "../context/GameContext";
 import { Text } from "@mantine/core";
 import { GiBroom } from "react-icons/gi";
@@ -18,7 +19,14 @@ export default function MyBoard({ setHasAlerted }) {
   const { team, removeUnit, mistakes, clearBoard, toggleHardMode, setKey } =
     useBoard();
   const { composition, pickRandomComposition, mode } = useGame();
-  const styles = setKey === "14" ? cyberStyles : remixStyles;
+  let styles;
+  if (setKey === "14") {
+    styles = cyberStyles;
+  } else if (setKey === "15") {
+    styles = koStyles;
+  } else {
+    styles = remixStyles;
+  }
   // Create an array of 12 slots, filling with team units or null
   const slots = Array.from({ length: 12 }, (_, i) => team[i] || null);
 
@@ -100,7 +108,7 @@ export default function MyBoard({ setHasAlerted }) {
               <div className={styles.placeholder}>
                 <img
                   className={styles.helmet}
-                  src={`/images/helmet${setKey === "14" ? "14" : ""}.png`}
+                  src={`/images/helmet${setKey !== 10 ? setKey : ""}.png`}
                   alt="Gold"
                 />
               </div>

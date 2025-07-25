@@ -7,6 +7,7 @@ import { Text } from "@mantine/core";
 import { BoardProvider } from "../../context/BoardContext";
 import HomeLeft from "../../components/HomeLeft";
 import HomeRight from "../../components/HomeRight";
+import HomeCenter from "../../components/HomeCenter";
 
 const Home = () => {
   const { router } = useRouter();
@@ -19,6 +20,8 @@ const Home = () => {
         </Text>
       </div>
       <HomeLeft />
+
+      <HomeCenter />
 
       <HomeRight />
       <div className={styles.disclaimer}>

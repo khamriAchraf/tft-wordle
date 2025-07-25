@@ -2,9 +2,11 @@
 import React, { useEffect, useState } from "react";
 import remixStyles from "@/styles/UnitPool.module.css";
 import cyberStyles from "@/styles/cybercity/UnitPool.module.css";
+import koStyles from "@/styles/ko-coliseum/UnitPool.module.css";
 import { useBoard } from "../context/BoardContext";
 import { traits as traitsRemix } from "../data/remix-rumble/traits";
 import { traits as traitsCyber } from "../data/cybercity/traits";
+import { traits as traitsKo } from "../data/ko-coliseum/traits";
 import UnitPoolCard from "./UnitPoolCard";
 import { HiMiniChevronUpDown } from "react-icons/hi2";
 import {
@@ -16,9 +18,22 @@ import { Tooltip } from "@mantine/core";
 import Link from "next/link";
 export default function UnitPool() {
   const { units, team, addUnit, hardMode, setKey } = useBoard();
-  const traitData = setKey === "14" ? traitsCyber : traitsRemix;
-
-  const styles = setKey === "14" ? cyberStyles : remixStyles;
+  let traitData;
+  if (setKey === "14") {
+    traitData = traitsCyber;
+  } else if (setKey === "15") {
+    traitData = traitsKo;
+  } else {
+    traitData = traitsRemix;
+  }
+  let styles;
+  if (setKey === "14") {
+    styles = cyberStyles;
+  } else if (setKey === "15") {
+    styles = koStyles;
+  } else {
+    styles = remixStyles;
+  }
   const [groupBy, setGroupBy] = useState("cost");
   const [searchQuery, setSearchQuery] = useState("");
 

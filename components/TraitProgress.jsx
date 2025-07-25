@@ -2,6 +2,7 @@
 import React from "react";
 import { traits as traitsRemix } from "../data/remix-rumble/traits";
 import { traits as traitsCyber } from "../data/cybercity/traits";
+import { traits as traitsKo } from "../data/ko-coliseum/traits";
 import styles from "@/styles/TraitProgress.module.css";
 import { Slider } from "@mantine/core";
 
@@ -13,7 +14,14 @@ export default function TraitProgress({
   dimmed,
   setKey,
 }) {
-  const traitData = setKey === "14" ? traitsCyber : traitsRemix;
+  let traitData;
+  if (setKey === "14") {
+    traitData = traitsCyber;
+  } else if (setKey === "15") {
+    traitData = traitsKo;
+  } else {
+    traitData = traitsRemix;
+  }
   const def = traitData?.find((t) => t.id === id);
   const breakpoints = def?.breakpoints || [];
   const tiers = def?.tiers || [];

@@ -1,0 +1,112 @@
+/* src/styles/MyBoard.module.css */
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.boardHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.boardControls {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+}
+
+.appControls {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.clearIcon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  color: #27242a;
+  position: relative;
+  top: 4px;
+}
+
+.clear {
+  background: #FFFF00;
+  border: 1px solid #040003;
+  padding: 2px 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.refreshButton {
+  display: flex;
+  align-items: center;
+  height: 100% !important;
+  gap: 8px;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+
+.refreshIcon {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0);
+}
+
+.clear:hover {
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
+  row-gap: 10px;
+}
+
+.slot {
+  width: 256px;
+  height: 128px;
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+
+  border: 1px solid #040003 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ec05f0;
+}
+
+.helmet {
+  height: 40px;
+  width: auto;
+  font-size: 1rem;
+  opacity: 1;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .slot {
+    width: 180px;
+    height: 128px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    row-gap: 10px;
+  }
+}

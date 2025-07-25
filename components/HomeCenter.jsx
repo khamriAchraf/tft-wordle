@@ -4,29 +4,27 @@ import Link from "next/link";
 import { Badge } from '@mantine/core';
 
 
-const HomeLeft = () => {
+const HomeCenter = () => {
 
     return (
         <div className={styles.left}>
-            <Link href="/ko-coliseum">
-                <Badge className={styles.set15Badge} size="xl">Set 15</Badge>
+            <Link href="/cybercity">
+                <Badge className={styles.set14Badge} size="xl">Set 14</Badge>
 
                 <img
                     className={styles.background}
-                    src="/images/ko.jpg"
+                    src="/images/cybercity-bg.jpg"
                     alt=""
                 />
                 <img
                     className={styles.leftLogo}
-                    src="/images/set-15-logo.png"
+                    src="/images/set-14-logo.png"
                     alt=""
                 />
             </Link>
 
         </div>
-
-        
     )
 }
 
-export default HomeLeft
+export default HomeCenter

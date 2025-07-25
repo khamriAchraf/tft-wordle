@@ -1,0 +1,14 @@
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fec54c;
+  background: linear-gradient(
+    0deg,
+    rgba(254, 197, 76, 1) 0%,
+    rgba(253, 69, 131, 1) 100%
+  );
+  width: 100vw;
+  height: 100vh;
+  z-index: -99;
+}

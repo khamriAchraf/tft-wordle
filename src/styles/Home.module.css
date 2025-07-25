@@ -90,7 +90,7 @@
 }
 
 .set14Badge,
-.set10Badge {
+.set10Badge, .set15Badge {
   position: absolute !important;
   top: 35% !important;
   left: 50% !important;
@@ -107,6 +107,10 @@
 
 .set14Badge {
   border: 2px solid#15d843;
+}
+
+.set15Badge {
+  border: 2px solid#fd78ff;
 }
 
 @media (max-width: 768px) {
