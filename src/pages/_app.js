@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>TFT Remix Rumble Puzzle</title>
+        <title>TFTYK</title>
         <link
           rel="preload"
           href="/images/remix.png"

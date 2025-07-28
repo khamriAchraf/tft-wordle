@@ -111,7 +111,7 @@ export default function Set14() {
   return (
     <>
       <Head>
-        <title>TFT Cybercity Puzzle</title>
+        <title>TFTYK | Cybercity</title>
       </Head>
       <main
         className={`${styles.main} ${geistSans.variable} ${geistMono.variable}`}

@@ -3,7 +3,9 @@ import React from "react";
 import { traits as traitsRemix } from "../data/remix-rumble/traits";
 import { traits as traitsCyber } from "../data/cybercity/traits";
 import { traits as traitsKo } from "../data/ko-coliseum/traits";
-import styles from "@/styles/TraitProgress.module.css";
+import stylesKo from "@/styles/ko-coliseum/TraitProgress.module.css";
+import stylesRemix from "@/styles/TraitProgress.module.css";
+import stylesCyber from "@/styles/cybercity/TraitProgress.module.css";
 import { Slider } from "@mantine/core";
 
 export default function TraitProgress({
@@ -14,6 +16,14 @@ export default function TraitProgress({
   dimmed,
   setKey,
 }) {
+  let styles;
+  if (setKey === "14") {
+    styles = stylesCyber;
+  } else if (setKey === "15") {
+    styles = stylesKo;
+  } else {
+    styles = stylesRemix;
+  }
   let traitData;
   if (setKey === "14") {
     traitData = traitsCyber;
@@ -32,7 +42,7 @@ export default function TraitProgress({
     if (target >= bp) tierIndex = idx;
   });
   const tierName = tierIndex >= 0 ? tiers[tierIndex] : "inactive";
-  const bgUrl = `/images/traits/${tierName}.png`;
+  const bgUrl = `/images/traits/${tierName}${setKey==="15"? "15" : ""}.png`;
   // Generate marks for every step 1..target
   const marks = Array.from({ length: target }, (_, i) => ({
     value: i + 1,
@@ -53,7 +63,7 @@ export default function TraitProgress({
         style={{ backgroundImage: `url(${bgUrl})` }}
       >
         <img
-          src={`/images/traits/set${setKey}/${id}.png`}
+          src={`/images/traits/set${setKey}/${id}${setKey==="15"? ".svg" : ".png"}`}
           alt={name}
           className={styles.icon}
         />

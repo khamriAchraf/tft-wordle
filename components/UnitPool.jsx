@@ -152,7 +152,7 @@ export default function UnitPool() {
               <div key={trait.id} className={styles.section}>
                 <div className={styles.header}>
                   <img
-                    src={`/images/traits/set${setKey}/${trait.id}.png`}
+                    src={`/images/traits/set${setKey}/${trait.id}${setKey==="15"? ".svg" : ".png"}`}
                     alt={trait.name}
                     className={styles.traitIcon}
                   />
@@ -216,7 +216,7 @@ export default function UnitPool() {
               <div className={styles.traitGroupHeader}>
                 <div className={styles.headerText}>
                   <img
-                    src={`/images/traits/set${setKey}/${trait.id}.png`}
+                    src={`/images/traits/set${setKey}/${trait.id}${setKey==="15"? ".svg" : ".png"}`}
                     alt={trait.name}
                     className={styles.traitIcon}
                   />

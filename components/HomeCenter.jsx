@@ -17,7 +17,7 @@ const HomeCenter = () => {
                     alt=""
                 />
                 <img
-                    className={styles.leftLogo}
+                    className={styles.centerLogo}
                     src="/images/set-14-logo.png"
                     alt=""
                 />

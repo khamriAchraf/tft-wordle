@@ -34,11 +34,15 @@
 }
 
 .background:hover + .leftLogo {
-  filter: brightness(25);
+  filter: grayscale(5);
+}
+
+.background:hover + .centerLogo {
+  filter: brightness(50);
 }
 
 .background:hover + .rightLogo {
-  filter: brightness(11);
+  filter: brightness(50);
 }
 
 .rightLogo {
@@ -53,6 +57,17 @@
 }
 
 .leftLogo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: auto;
+  pointer-events: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.centerLogo {
   position: absolute;
   top: 50%;
   left: 50%;

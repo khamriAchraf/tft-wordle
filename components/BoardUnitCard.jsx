@@ -9,11 +9,11 @@ import { useGame } from "../context/GameContext";
 
 // Map cost to name-bar background color
 const costColors = {
-  1: "#192735",
-  2: "#1d5229",
-  3: "#1e4c71",
-  4: "#950771",
-  5: "#a46f28",
+  1: "#acacac",
+  2: "#22c55e",
+  3: "#0090ff",
+  4: "#a855f7",
+  5: "#eab308",
 };
 
 export default function BoardUnitCard({ unit }) {
@@ -78,7 +78,7 @@ export default function BoardUnitCard({ unit }) {
                 style={{ backgroundImage: `url(/images/traits/${isHL ? 'headliner' : 'traitbg'}.png)` }}
               >
                 <img
-                  src={`/images/traits/set${setKey}/${tid}.png`}
+                  src={`/images/traits/set${setKey}/${tid}${setKey==="15"? ".svg" : ".png"}`}
                   alt={name}
                   className={`${styles.traitIcon}
                     }`}

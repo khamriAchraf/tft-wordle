@@ -111,7 +111,7 @@ export default function Set15() {
   return (
     <>
       <Head>
-        <title>TFT Ko-Coliseum</title>
+        <title>TFTYK | Ko-Coliseum</title>
       </Head>
       <main
         className={`${styles.main} ${geistSans.variable} ${geistMono.variable}`}

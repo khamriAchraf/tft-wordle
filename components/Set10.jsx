@@ -112,7 +112,7 @@ export default function Set10() {
   return (
     <>
       <Head>
-        <title>TFT Remix Rumble Puzzle</title>
+        <title>TFTYK | Remix Rumbleè</title>
       </Head>
       <main
         className={`${styles.main} ${geistSans.variable} ${geistMono.variable}`}

@@ -36,6 +36,8 @@ export default function UnitPoolCard({ unit }) {
     if (name.includes("KaiSa_TrueDamage")) return "KaisaTrueDamage";
     if (name.includes("AkaliKDA")) return "Akali";
     if (name.includes("AkaliKDA_TrueDamage")) return "AkaliTrueDamage";
+    if (setKey === "15" && name.includes("Jarvan IV")) return "jarvaniv";
+    if (setKey === "15" && name.includes("Rammus")) return "rammuspb";
     if (name.includes("Jarvan IV")) return "jarvan";
     if (name.includes("Nidalee")) return "nidaleecougar";
     return name
@@ -46,13 +48,15 @@ export default function UnitPoolCard({ unit }) {
   };
 
   const buildImgSource = () => {
-    return `https://raw.communitydragon.org/${
-      setKey === "14" ? "pbe" : "latest"
-    }/game/assets/characters/tft${setKey}_${formatUnitName(
-      unit.name
-    )}/hud/tft${setKey}_${formatUnitName(unit.name)}_square${
-      setKey === "14" ? ".tft_set14" : ""
-    }.png`;
+    if (setKey === '15') {
+      let url = `https://raw.communitydragon.org/pbe/game/assets/characters/tft15_${formatUnitName(unit.name)}/hud/tft15_${formatUnitName(unit.name)}_square.tft_set15.png`
+      return url;
+    }
+    return `https://raw.communitydragon.org/${setKey === "14" ? "pbe" : "latest"
+      }/game/assets/characters/tft${setKey}_${formatUnitName(
+        unit.name
+      )}/hud/tft${setKey}_${formatUnitName(unit.name)}_square${setKey === "14" ? ".tft_set14" : ""
+      }.png`;
   };
 
   return (
@@ -76,7 +80,7 @@ export default function UnitPoolCard({ unit }) {
           {unit.traits.map((tid) => (
             <img
               key={tid}
-              src={`/images/traits/set${setKey}/${tid}.png`}
+              src={`/images/traits/set${setKey}/${tid}${setKey === "15" ? ".svg" : ".png"}`}
               alt={tid}
               className={styles.traitIcon}
             />

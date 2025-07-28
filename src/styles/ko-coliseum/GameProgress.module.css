@@ -9,7 +9,8 @@
   margin-top: 1rem;
   gap: 1rem;
   background: transparent;
-  border-radius: 0.6rem;
+  border: none;
+  border-radius: 0;
 }
 
 .costGrid {
@@ -23,7 +24,6 @@
   gap: 16px;
   padding: 0.75rem;
   flex: auto;
-  border-right: 1px solid #444;
 }
 
 .item {
@@ -39,7 +39,7 @@
 }
 
 .label {
-  color: #ffffff;
+  color: #000;
   font-weight: 500;
   font-size: 14px;
 }
@@ -63,7 +63,7 @@
 }
 
 .ratio {
-  color: #a0a0a0;
+  color: #222;
   font-size: 12px;
   white-space: nowrap;
 }
@@ -76,7 +76,7 @@
 }
 
 .costItem {
-  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid;
   border-radius: 6px;
   padding: 8px;
   text-align: center;

@@ -20,11 +20,11 @@ const tierOrder = {
 };
 
 const costColors = {
-  1: "#192735",
-  2: "#1d5229",
-  3: "#1e4c71",
-  4: "#950771",
-  5: "#a46f28",
+  1: "#acacac",
+  2: "#22c55e",
+  3: "#0090ff",
+  4: "#a855f7",
+  5: "#eab308",
 };
 
 export default function GameProgress() {
@@ -118,8 +118,9 @@ export default function GameProgress() {
               key={cost}
               className={styles.costItem}
               style={{
-                backgroundColor: costColors[cost],
+                borderColor: costColors[cost],
                 opacity: costDistribution[cost] ? 1 : 0.3,
+                backgroundColor: setKey !== '15' ? costColors[cost] : "transparent",
               }}
             >
               <span className={styles.costLabel}>
