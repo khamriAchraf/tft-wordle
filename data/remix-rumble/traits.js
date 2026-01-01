@@ -204,3 +204,5 @@ export const traits = [
     image: "/images/traits/superfan.png",
   },
 ];
+
+export default traits;

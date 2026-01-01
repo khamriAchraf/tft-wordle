@@ -4,6 +4,7 @@ import { useBoard } from "../context/BoardContext";
 import remixStyles from "@/styles/UnitPoolCard.module.css";
 import cyberStyles from "@/styles/cybercity/UnitPoolCard.module.css";
 import koStyles from "@/styles/ko-coliseum/UnitPoolCard.module.css";
+import llStyles from "@/styles/lore-and-legends/UnitPoolCard.module.css";
 
 const costBorderColors = {
   1: "#acacac",
@@ -11,15 +12,18 @@ const costBorderColors = {
   3: "#0090ff",
   4: "#a855f7",
   5: "#eab308",
+  7: "#0d2d55",
 };
 
 export default function UnitPoolCard({ unit }) {
   const { team, addUnit, removeUnit, hardMode, setKey } = useBoard();
   let styles;
-  if (setKey === '14') {
+  if (setKey === "14") {
     styles = cyberStyles;
-  } else if (setKey === '15') {
+  } else if (setKey === "15") {
     styles = koStyles;
+  } else if (setKey === "16") {
+    styles = llStyles;
   } else {
     styles = remixStyles;
   }
@@ -48,15 +52,26 @@ export default function UnitPoolCard({ unit }) {
   };
 
   const buildImgSource = () => {
-    if (setKey === '15') {
-      let url = `https://raw.communitydragon.org/pbe/game/assets/characters/tft15_${formatUnitName(unit.name)}/hud/tft15_${formatUnitName(unit.name)}_square.tft_set15.png`
+    if (setKey === "15") {
+      let url = `https://raw.communitydragon.org/pbe/game/assets/characters/tft15_${formatUnitName(
+        unit.name
+      )}/hud/tft15_${formatUnitName(unit.name)}_square.tft_set15.png`;
       return url;
     }
-    return `https://raw.communitydragon.org/${setKey === "14" ? "pbe" : "latest"
-      }/game/assets/characters/tft${setKey}_${formatUnitName(
-        unit.name
-      )}/hud/tft${setKey}_${formatUnitName(unit.name)}_square${setKey === "14" ? ".tft_set14" : ""
-      }.png`;
+    if (setKey === "16") {
+      let url = `images/units/squares/TFT${setKey}_${unit.name
+        .replace(" ", "")
+        .replace(" ", "")
+        .replace("'", "")}.TFT_Set${setKey}.webp`;
+      return url;
+    }
+    return `https://raw.communitydragon.org/${
+      setKey === "14" ? "pbe" : "latest"
+    }/game/assets/characters/tft${setKey}_${formatUnitName(
+      unit.name
+    )}/hud/tft${setKey}_${formatUnitName(unit.name)}_square${
+      setKey === "14" ? ".tft_set14" : ""
+    }.png`;
   };
 
   return (
@@ -72,6 +87,13 @@ export default function UnitPoolCard({ unit }) {
         }}
       >
         <img src={buildImgSource()} className={styles.sprite} alt="" />
+        {unit.unlockable && (
+          <img
+            src={`/images/unlock.svg`}
+            alt="unlock icon"
+            className={styles.unlockIcon}
+          />
+        )}
       </div>
 
       {/* Trait icons */}
@@ -80,7 +102,9 @@ export default function UnitPoolCard({ unit }) {
           {unit.traits.map((tid) => (
             <img
               key={tid}
-              src={`/images/traits/set${setKey}/${tid}${setKey === "15" ? ".svg" : ".png"}`}
+              src={`/images/traits/set${setKey}/${tid}${
+                setKey === "15" ? ".svg" : ".png"
+              }`}
               alt={tid}
               className={styles.traitIcon}
             />

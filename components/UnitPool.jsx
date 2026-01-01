@@ -3,10 +3,12 @@ import React, { useEffect, useState } from "react";
 import remixStyles from "@/styles/UnitPool.module.css";
 import cyberStyles from "@/styles/cybercity/UnitPool.module.css";
 import koStyles from "@/styles/ko-coliseum/UnitPool.module.css";
+import llStyles from "@/styles/lore-and-legends/UnitPool.module.css";
 import { useBoard } from "../context/BoardContext";
-import { traits as traitsRemix } from "../data/remix-rumble/traits";
-import { traits as traitsCyber } from "../data/cybercity/traits";
-import { traits as traitsKo } from "../data/ko-coliseum/traits";
+import traitsRemix  from "../data/remix-rumble/traits";
+import traitsCyber  from "../data/cybercity/traits";
+import traitsKo from "../data/ko-coliseum/traits";
+import traitsLl from "../data/lore-and-legends/traits";
 import UnitPoolCard from "./UnitPoolCard";
 import { HiMiniChevronUpDown } from "react-icons/hi2";
 import {
@@ -19,21 +21,21 @@ import Link from "next/link";
 export default function UnitPool() {
   const { units, team, addUnit, hardMode, setKey } = useBoard();
   let traitData;
-  if (setKey === "14") {
-    traitData = traitsCyber;
-  } else if (setKey === "15") {
-    traitData = traitsKo;
-  } else {
-    traitData = traitsRemix;
-  }
   let styles;
   if (setKey === "14") {
+    traitData = traitsCyber;
     styles = cyberStyles;
   } else if (setKey === "15") {
-    styles = koStyles;
+    traitData = traitsKo;
+    styles = koStyles;}
+  else if (setKey === "16") {
+    traitData = traitsLl;
+    styles = llStyles;
   } else {
+    traitData = traitsRemix;
     styles = remixStyles;
   }
+  
   const [groupBy, setGroupBy] = useState("cost");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -184,7 +186,7 @@ export default function UnitPool() {
             <p className={styles.noResults}>No matching units or traits</p>
           )
         ) : groupBy === "cost" ? (
-          [1, 2, 3, 4, 5].map((cost) => (
+          [1, 2, 3, 4, 5, setKey==='16' && 7].map((cost) => (
             <div key={cost} className={styles.section}>
               <div className={styles.header}>
                 <img

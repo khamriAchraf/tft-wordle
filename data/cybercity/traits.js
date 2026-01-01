@@ -176,3 +176,5 @@ export const traits = [
     image: "/images/traits/vanguard.png",
   },
 ];
+
+export default traits;

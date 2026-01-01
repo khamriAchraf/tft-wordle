@@ -1,14 +1,22 @@
 // src/context/GameContext.jsx
 import React, { createContext, useContext, useState, useMemo } from "react";
+
 import unitsRemix from "../data/remix-rumble/units";
 import traitsRemix from "../data/remix-rumble/traits";
 import compsRemix from "../data/remix-rumble/comps";
+
 import unitsCyber from "../data/cybercity/units";
 import traitsCyber from "../data/cybercity/traits";
 import compsCyber from "../data/cybercity/comps";
+
 import unitsKo from "../data/ko-coliseum/units";
 import traitsKo from "../data/ko-coliseum/traits";
 import compsKo from "../data/ko-coliseum/comps";
+
+import unitsLl from "../data/lore-and-legends/units";
+import traitsLl from "../data/lore-and-legends/traits";
+import compsLl from "../data/lore-and-legends/comps";
+
 import { useBoard } from "./BoardContext";
 
 const GameContext = createContext();
@@ -29,6 +37,10 @@ export function GameProvider({ setKey, mode, children }) {
     units = unitsKo;
     traitData = traitsKo;
     comps = compsKo;
+  } else if (setKey === "16") {
+    units = unitsLl;
+    traitData = traitsLl;
+    comps = compsLl;
   }
   // pull in current board state
   const { team, headliner, clearBoard } = useBoard();
@@ -67,6 +79,7 @@ export function GameProvider({ setKey, mode, children }) {
   // build cost distribution of target
   const costDistribution = useMemo(() => {
     const dist = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+    
     composition.units.forEach((uid) => {
       const u = units.find((x) => x.id === uid);
       if (u) dist[u.cost] += 1;
@@ -92,12 +105,14 @@ export function GameProvider({ setKey, mode, children }) {
     }
     return true;
   }, [team, headliner, composition]);
-
+  
   // target trait totals
   const compositionActiveTraits = useMemo(() => {
+    console.log(composition)
     const counts = {};
     composition.units.forEach((uid) => {
       const u = units.find((x) => x.id === uid);
+      
       u.traits.forEach((t) => (counts[t] = (counts[t] || 0) + 1));
     });
     // headliner bonus only for set 10

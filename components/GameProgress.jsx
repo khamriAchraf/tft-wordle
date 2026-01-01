@@ -3,12 +3,14 @@ import React from "react";
 import { useGame } from "../context/GameContext";
 import { useBoard } from "../context/BoardContext";
 import TraitProgress from "./TraitProgress";
-import { traits as traitsRemix } from "../data/remix-rumble/traits";
-import { traits as traitsCyber } from "../data/cybercity/traits";
-import { traits as traitsKo } from "../data/ko-coliseum/traits";
+import traitsRemix from "../data/remix-rumble/traits";
+import traitsCyber from "../data/cybercity/traits";
+import traitsKo from "../data/ko-coliseum/traits";
+import  traitsLl from "../data/lore-and-legends/traits";
 import remixStyles from "@/styles/GameProgress.module.css";
 import cyberStyles from "@/styles/cybercity/GameProgress.module.css";
 import koStyles from "@/styles/ko-coliseum/GameProgress.module.css";
+import llStyles from "@/styles/lore-and-legends/GameProgress.module.css";
 
 const tierOrder = {
   prismatic: 0,
@@ -25,25 +27,25 @@ const costColors = {
   3: "#0090ff",
   4: "#a855f7",
   5: "#eab308",
+  7: "#0d2d55",
 };
 
 export default function GameProgress() {
   const { compositionActiveTraits, costDistribution, setKey } = useGame();
   let traitData;
-  if (setKey === "14") {
-    traitData = traitsCyber;
-  } else if (setKey === "15") {
-    traitData = traitsKo;
-  } else {
-    traitData = traitsRemix;
-  }
   let styles;
   if (setKey === "14") {
     styles = cyberStyles;
+    traitData = traitsCyber;
   } else if (setKey === "15") {
     styles = koStyles;
+    traitData = traitsKo;
+  } else if (setKey === "16") {
+    styles = llStyles;
+    traitData = traitsLl;
   } else {
     styles = remixStyles;
+    traitData = traitsRemix;
   }
   const { activeTraits, team } = useBoard();
 
@@ -52,7 +54,6 @@ export default function GameProgress() {
     ...Object.keys(compositionActiveTraits),
     ...Object.keys(activeTraits),
   ]);
-
 
   const entries = Array.from(allIds)
     .map((id) => {
@@ -95,6 +96,8 @@ export default function GameProgress() {
     return acc;
   }, {});
 
+  const supportedCosts = setKey=='16' ? [1,2,3,4,5,7] : [1,2,3,4,5]
+
   return (
     <div className={styles.gameContainer}>
       <div className={styles.grid}>
@@ -113,14 +116,15 @@ export default function GameProgress() {
       {/* Cost Distribution */}
       <div className={styles.costGridParent}>
         <div className={styles.costGrid}>
-          {[1, 2, 3, 4, 5].map((cost) => (
+          {supportedCosts.map((cost) => (
             <div
               key={cost}
               className={styles.costItem}
               style={{
                 borderColor: costColors[cost],
                 opacity: costDistribution[cost] ? 1 : 0.3,
-                backgroundColor: setKey !== '15' ? costColors[cost] : "transparent",
+                backgroundColor:
+                  setKey !== "15" ? costColors[cost] : "transparent",
               }}
             >
               <span className={styles.costLabel}>

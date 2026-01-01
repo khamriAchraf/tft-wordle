@@ -4,6 +4,7 @@ import { useBoard } from "../context/BoardContext";
 import remixStyles from "@/styles/BoardUnitCard.module.css";
 import cyberStyles from "@/styles/cybercity/BoardUnitCard.module.css";
 import koStyles from "@/styles/ko-coliseum/BoardUnitCard.module.css";
+import llStyles from "@/styles/Lore-and-legends/BoardUnitCard.module.css";
 import { traits as traitData } from "../data/remix-rumble/traits";
 import { useGame } from "../context/GameContext";
 
@@ -14,6 +15,7 @@ const costColors = {
   3: "#0090ff",
   4: "#a855f7",
   5: "#eab308",
+  7: "#0d2d55",
 };
 
 export default function BoardUnitCard({ unit }) {
@@ -23,6 +25,8 @@ export default function BoardUnitCard({ unit }) {
     styles = cyberStyles;
   } else if (setKey === '15') {
     styles = koStyles;
+  } else if (setKey === '16') {
+    styles = llStyles;
   } else {
     styles = remixStyles;
   }
@@ -31,7 +35,7 @@ export default function BoardUnitCard({ unit }) {
   const bgColor = costColors[cost] || "#000";
   // Full unit image filename in public folder
   const imgFilename = `images/units/TFT${setKey}_${name
-    .replace(" ", "")
+    .replace(" ", "").replace(" ","")
     .replace("'", "")}.TFT_Set${setKey}.png`;
 
   return (

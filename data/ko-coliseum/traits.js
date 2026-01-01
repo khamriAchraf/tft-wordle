@@ -197,3 +197,5 @@ export const traits = [
     image: "/images/traits/sorcerer.png",
   },
 ];
+
+export default traits;

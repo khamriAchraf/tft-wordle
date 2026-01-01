@@ -5,6 +5,7 @@ import BoardUnitCard from "./BoardUnitCard";
 import remixStyles from "@/styles/MyBoard.module.css";
 import cyberStyles from "@/styles/cybercity/MyBoard.module.css";
 import koStyles from "@/styles/ko-coliseum/MyBoard.module.css";
+import llStyles from "@/styles/lore-and-legends/MyBoard.module.css";
 import { useGame } from "../context/GameContext";
 import { Text } from "@mantine/core";
 import { GiBroom } from "react-icons/gi";
@@ -24,6 +25,8 @@ export default function MyBoard({ setHasAlerted }) {
     styles = cyberStyles;
   } else if (setKey === "15") {
     styles = koStyles;
+  } else if (setKey === "16") {
+    styles = llStyles;
   } else {
     styles = remixStyles;
   }
@@ -109,7 +112,7 @@ export default function MyBoard({ setHasAlerted }) {
                 <img
                   className={styles.helmet}
                   src={`/images/helmet${setKey !== 10 ? setKey : ""}.png`}
-                  alt="Gold"
+                  alt=""
                 />
               </div>
             )}

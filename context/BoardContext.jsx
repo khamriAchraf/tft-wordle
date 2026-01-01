@@ -8,10 +8,15 @@ import React, {
 } from "react";
 import unitsRemix from "../data/remix-rumble/units";
 import traitsRemix from "../data/remix-rumble/traits";
+
 import unitsCyber from "../data/cybercity/units";
 import traitsCyber from "../data/cybercity/traits";
+
 import unitsKo from "../data/ko-coliseum/units";
 import traitsKo from "../data/ko-coliseum/traits";
+
+import unitsLl from "../data/lore-and-legends/units";
+import traitsLl from "../data/lore-and-legends/traits";
 
 const BoardContext = createContext();
 
@@ -27,7 +32,11 @@ export function BoardProvider({ setKey = "10", mode = "daily", children }) {
   } else if (setKey === "15") {
     units = unitsKo;
     traitData = traitsKo;
+  } else if (setKey === "16") {
+    units = unitsLl;
+    traitData = traitsLl;
   }
+  
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const dateKey = today.toISOString().slice(0, 10); // "2025-05-14"
