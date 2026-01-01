@@ -7,7 +7,7 @@ import { Badge } from '@mantine/core';
 const HomeLeft = () => {
 
     return (
-        <div className={styles.left}>
+        <>
             <Link href="/ko-coliseum">
                 <Badge className={styles.set15Badge} size="xl">Set 15</Badge>
 
@@ -22,10 +22,7 @@ const HomeLeft = () => {
                     alt=""
                 />
             </Link>
-
-        </div>
-
-        
+        </>
     )
 }
 

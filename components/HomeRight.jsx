@@ -17,7 +17,7 @@ const HomeRight = () => {
     };
 
     return (
-        <div className={styles.right} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <>
             <Link href="/remix-rumble">
                 <Badge className={styles.set10Badge} size="xl">Set 10</Badge>
 
@@ -32,7 +32,7 @@ const HomeRight = () => {
                     alt=""
                 />
             </Link>
-        </div>
+        </>
     )
 }
 

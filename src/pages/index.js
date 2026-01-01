@@ -6,8 +6,9 @@ import Link from "next/link";
 import { Text } from "@mantine/core";
 import { BoardProvider } from "../../context/BoardContext";
 import HomeLeft from "../../components/HomeLeft";
-import HomeRight from "../../components/HomeRight";
 import HomeCenter from "../../components/HomeCenter";
+import HomeRight from "../../components/HomeRight";
+import HomeSection4 from "../../components/HomeSection4";
 
 const Home = () => {
   const { router } = useRouter();
@@ -19,11 +20,18 @@ const Home = () => {
           Welcome to TFTYK, Pick a set to start
         </Text>
       </div>
-      <HomeLeft />
-
-      <HomeCenter />
-
-      <HomeRight />
+      <div className={styles.sectionLarge}>
+        <HomeSection4 />
+      </div>
+      <div className={styles.section}>
+        <HomeCenter />
+      </div>
+      <div className={styles.section}>
+        <HomeRight />
+      </div>
+      <div className={styles.section}>
+        <HomeLeft />
+      </div>
       <div className={styles.disclaimer}>
         <Text color="#888" size="sm">
           This website is a fan-made project and is not affiliated with,
