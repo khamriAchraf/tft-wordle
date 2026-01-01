@@ -4,7 +4,7 @@ import { useBoard } from "../context/BoardContext";
 import remixStyles from "@/styles/BoardUnitCard.module.css";
 import cyberStyles from "@/styles/cybercity/BoardUnitCard.module.css";
 import koStyles from "@/styles/ko-coliseum/BoardUnitCard.module.css";
-import llStyles from "@/styles/Lore-and-legends/BoardUnitCard.module.css";
+import llStyles from "@/styles/lore-and-legends/BoardUnitCard.module.css";
 import { traits as traitData } from "../data/remix-rumble/traits";
 import { useGame } from "../context/GameContext";
 
