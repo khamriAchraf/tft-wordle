@@ -110,7 +110,6 @@ const compositions = [
       "seraphine"
     ],
   },
-
 ]
 
 export default compositions;

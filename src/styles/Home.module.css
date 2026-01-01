@@ -14,12 +14,30 @@
   position: relative;
   flex: 1;
   clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
-  margin-right: -4%;
+  margin-right: -5%;
+  margin-left: -5%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.section.expanded {
+  flex: 3;
+  clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+  margin-right: -7%;
 }
 
 .sectionLarge {
   height: 100%;
   position: relative;
+  flex: 1;
+  clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 0% 100%);
+  margin-right: -2%;
+  margin-left: -2%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.sectionLarge.expanded {
   flex: 3;
   clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 100%);
   margin-right: -7%;
@@ -35,10 +53,20 @@
 
 .background:hover {
   cursor: pointer;
-  filter: brightness(0.8);
+  filter: brightness(0.5);
 }
 
-.background:hover + .leftLogo {
+.section.expanded .background,
+.sectionLarge.expanded .background {
+  filter: brightness(0.9) grayscale(0);
+}
+
+.section.expanded .background:hover,
+.sectionLarge.expanded .background:hover {
+  filter: brightness(0.9) grayscale(0);
+}
+
+.background:hover + .leftLogo, .section.expanded .leftLogo {
   filter: grayscale(5);
 }
 
@@ -54,11 +82,33 @@
   filter: brightness(50);
 }
 
+
+.section.expanded .centerLogo,
+.section.expanded .rightLogo,
+.sectionLarge.expanded .section4Logo {
+  filter: brightness(50);
+}
+
+.section.expanded .leftLogo:hover,
+.section.expanded .centerLogo:hover,
+.section.expanded .rightLogo:hover,
+.sectionLarge.expanded .section4Logo:hover {
+  filter: brightness(1.2);
+}
+
+.sectionLarge.expanded + .rightLogo{
+  transform: translate(-70%, -50%);
+}
+
+.sectionLarge.expanded + .centerLogo{
+  transform: translate(-70%, -50%);
+}
+
 .rightLogo {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-60%, -50%);
   width: 150px;
   height: auto;
   pointer-events: none;
@@ -69,7 +119,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-60%, -50%);
   width: 150px;
   height: auto;
   pointer-events: none;
@@ -80,7 +130,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-60%, -50%);
   width: 150px;
   height: auto;
   pointer-events: none;
@@ -92,10 +142,45 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 200px;
+  width: 150px;
   height: auto;
   pointer-events: none;
   transition: all 0.2s ease-in-out;
+}
+
+.buttonGroup {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  pointer-events: auto;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.buttonGroup.visible {
+  opacity: 1;
+}
+
+.modeButton {
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: 2px solid #888;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  pointer-events: all;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+}
+
+.modeButton:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  border-color: #ccc;
 }
 
 .container {
@@ -129,7 +214,6 @@
   position: absolute !important;
   top: 35% !important;
   left: 50% !important;
-  transform: translate(-50%, -50%) !important;
   height: auto;
   pointer-events: none;
   background-color: transparent;
@@ -138,18 +222,30 @@
 
 .set10Badge {
   border: 2px solid#fd1892;
+  background-color: #fd1892;
+    transform: translate(-60%, -50%) !important;
+
 }
 
 .set14Badge {
-  border: 2px solid#15d843;
+  border: 2px solid#15d843; 
+  background-color: #15d843; 
+  transform: translate(-60%, -50%) !important;
+
 }
 
 .set15Badge {
-  border: 2px solid#fd78ff;
+  border: 2px solid#460043;
+  background-color: #460043;
+    transform: translate(-60%, -50%) !important;
+
 }
 
 .set16Badge {
-  border: 2px solid#ffd700;
+  border: 2px solid#955f19;
+  background-color: #955f19;
+    transform: translate(-50%, -50%) !important;
+
 }
 
 @media (max-width: 768px) {

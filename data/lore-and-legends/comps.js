@@ -1,15 +1,8 @@
-/**
- * A pool of target compositions for the game to choose from.
- * Each composition includes:
- *  - id:       unique string key
- *  - name:     human-readable label
- *  - units:    array of unit IDs (must match your units.js ids)
- */
 const compositions = [
   {
-    id: "azir-tibbers-annie-renekton-shyvana-seraphine-swain-neeko-vi",
-    name: "ARCANIST AZIR",
-    units: [
+    "id": "1",
+    "name": "ARCANIST AZIR",
+    "units": [
       "azir",
       "tibbers",
       "annie",
@@ -22,9 +15,9 @@ const compositions = [
     ]
   },
   {
-    id: "yunara-wukong-sett-kindred-fiddlesticks-luciansenna-taric-jhin-shen",
-    name: "IONIA YUNARA WUKONG",
-    units: [
+    "id": "2",
+    "name": "IONIA YUNARA WUKONG",
+    "units": [
       "yunara",
       "wukong",
       "sett",
@@ -37,9 +30,9 @@ const compositions = [
     ]
   },
   {
-    id: "tryndamere-ashe-sejuani-neeko-kindred-swain-draven-briar",
-    name: "QUICKSTRIKER TRYNDAMERE",
-    units: [
+    "id": "3",
+    "name": "QUICKSTRIKER TRYNDAMERE",
+    "units": [
       "tryndamere",
       "ashe",
       "sejuani",
@@ -51,9 +44,9 @@ const compositions = [
     ]
   },
   {
-    id: "kindred-skarner-luciansenna-fiddlesticks-shyvana-ambessa-swain-taric-draven",
-    name: "QUICKSTRIKER KINDRED",
-    units: [
+    "id": "4",
+    "name": "QUICKSTRIKER KINDRED",
+    "units": [
       "kindred",
       "skarner",
       "luciansenna",
@@ -66,9 +59,9 @@ const compositions = [
     ]
   },
   {
-    id: "missfortune-tahmkench-nautilus-luciansenna-fiddlesticks-ornn-shyvana-taric-wukong",
-    name: "BILGEWATER MISS FORTUNE TAHM KENCH",
-    units: [
+    "id": "5",
+    "name": "BILGEWATER MISS FORTUNE TAHM KENCH",
+    "units": [
       "missfortune",
       "tahmkench",
       "nautilus",
@@ -81,9 +74,9 @@ const compositions = [
     ]
   },
   {
-    id: "veigar-kennen-fizz-kobukoyuumi-poppy-teemo-lulu-rumble",
-    name: "YORDLE VEIGAR",
-    units: [
+    "id": "6",
+    "name": "YORDLE VEIGAR",
+    "units": [
       "veigar",
       "kennen",
       "fizz",
@@ -95,9 +88,9 @@ const compositions = [
     ]
   },
   {
-    id: "yunara-wukong-ryze-lissandra-taric-kennen-kobukoyuumi-sejuani-ashe",
-    name: "QUICKSTRIKER YUNARA",
-    units: [
+    "id": "7",
+    "name": "QUICKSTRIKER YUNARA",
+    "units": [
       "yunara",
       "wukong",
       "ryze",
@@ -110,9 +103,9 @@ const compositions = [
     ]
   },
   {
-    id: "vayne-garen-lux-kaisa-galio-swain-poppy-xinzhao-jarvaniv",
-    name: "DEMACIA VAYNE",
-    units: [
+    "id": "8",
+    "name": "DEMACIA VAYNE",
+    "units": [
       "vayne",
       "garen",
       "lux",
@@ -125,9 +118,9 @@ const compositions = [
     ]
   },
   {
-    id: "thex-seraphine-loris-luciansenna-braum-taric-orianna-vi-caitlyn",
-    name: "PILTOVER T-HEX SERAPHINE",
-    units: [
+    "id": "9",
+    "name": "PILTOVER T-HEX SERAPHINE",
+    "units": [
       "thex",
       "seraphine",
       "loris",
@@ -140,9 +133,9 @@ const compositions = [
     ]
   },
   {
-    id: "diana-taric-seraphine-swain-azir-shyvana-renekton-neeko-vi",
-    name: "TARGON DIANA  TARIC",
-    units: [
+    "id": "10",
+    "name": "TARGON DIANA  TARIC",
+    "units": [
       "diana",
       "taric",
       "seraphine",
@@ -155,9 +148,9 @@ const compositions = [
     ]
   },
   {
-    id: "lux-garen-galio-swain-ornn-zilean-poppy-xinzhao-jarvaniv-sona",
-    name: "DEMACIA LUX",
-    units: [
+    "id": "11",
+    "name": "DEMACIA LUX",
+    "units": [
       "lux",
       "garen",
       "galio",
@@ -171,9 +164,9 @@ const compositions = [
     ]
   },
   {
-    id: "kalista-thresh-braum-fiddlesticks-kindred-ornn-gwen-yorick-viego",
-    name: "SHADOW ISLES KALISTA",
-    units: [
+    "id": "12",
+    "name": "SHADOW ISLES KALISTA",
+    "units": [
       "kalista",
       "thresh",
       "braum",
@@ -186,9 +179,9 @@ const compositions = [
     ]
   },
   {
-    id: "sion-bard-aphelios-wukong-volibear-kobukoyuumi-illaoi-shen",
-    name: "BRUISER SION",
-    units: [
+    "id": "13",
+    "name": "BRUISER SION",
+    "units": [
       "sion",
       "bard",
       "aphelios",
@@ -200,9 +193,9 @@ const compositions = [
     ]
   },
   {
-    id: "thex-jarvaniv-seraphine-luciansenna-ornn-loris-orianna-vi-caitlyn",
-    name: "PILTOVER T-HEX JARVAN IV",
-    units: [
+    "id": "14",
+    "name": "PILTOVER T-HEX JARVAN IV",
+    "units": [
       "thex",
       "jarvaniv",
       "seraphine",
@@ -215,9 +208,9 @@ const compositions = [
     ]
   },
   {
-    id: "diana-swain-seraphine-azir-shyvana-renekton-taric-neeko-vi",
-    name: "ARCANIST SWAIN",
-    units: [
+    "id": "15",
+    "name": "ARCANIST SWAIN",
+    "units": [
       "diana",
       "swain",
       "seraphine",
@@ -230,9 +223,9 @@ const compositions = [
     ]
   },
   {
-    id: "thex-loris-seraphine-braum-luciansenna-ornn-orianna-vi-caitlyn",
-    name: "PILTOVER T-HEX",
-    units: [
+    "id": "16",
+    "name": "PILTOVER T-HEX",
+    "units": [
       "thex",
       "loris",
       "seraphine",
@@ -245,9 +238,9 @@ const compositions = [
     ]
   },
   {
-    id: "yunara-yasuo-wukong-yone-ahri-kennen-xinzhao-shen",
-    name: "IONIA YUNARA YASUO",
-    units: [
+    "id": "17",
+    "name": "IONIA YUNARA YASUO",
+    "units": [
       "yunara",
       "yasuo",
       "wukong",
@@ -259,9 +252,9 @@ const compositions = [
     ]
   },
   {
-    id: "yasuo-yone-wukong-sett-aatrox-belveth-aphelios-shen",
-    name: "IONIA YASUO",
-    units: [
+    "id": "18",
+    "name": "IONIA YASUO",
+    "units": [
       "yasuo",
       "yone",
       "wukong",
@@ -273,9 +266,9 @@ const compositions = [
     ]
   },
   {
-    id: "wukong-ryze-sett-ziggs-taric-drmundo-kennen-vi-caitlyn",
-    name: "BRUISER WUKONG SETT",
-    units: [
+    "id": "19",
+    "name": "BRUISER WUKONG SETT",
+    "units": [
       "wukong",
       "ryze",
       "sett",
@@ -288,9 +281,9 @@ const compositions = [
     ]
   },
   {
-    id: "skarner-yunara-sett-kindred-luciansenna-taric-wukong-jhin-shen",
-    name: "IONIA SKARNER",
-    units: [
+    "id": "20",
+    "name": "IONIA SKARNER",
+    "units": [
       "skarner",
       "yunara",
       "sett",
@@ -303,9 +296,9 @@ const compositions = [
     ]
   },
   {
-    id: "lissandra-braum-volibear-zilean-kobukoyuumi-sejuani-ashe-tryndamere-anivia",
-    name: "FRELJORD LISSANDRA",
-    units: [
+    "id": "21",
+    "name": "FRELJORD LISSANDRA",
+    "units": [
       "lissandra",
       "braum",
       "volibear",
@@ -318,9 +311,9 @@ const compositions = [
     ]
   },
   {
-    id: "kaisa-riftherald-belveth-baronnashor-volibear-malzahar-chogath-reksai-kogmaw",
-    name: "VOID KAI'SA",
-    units: [
+    "id": "22",
+    "name": "VOID KAI'SA",
+    "units": [
       "kaisa",
       "riftherald",
       "belveth",
@@ -333,9 +326,9 @@ const compositions = [
     ]
   },
   {
-    id: "draven-gangplank-nautilus-ambessa-seraphine-loris-twistedfate-briar",
-    name: "VANQUISHER DRAVEN",
-    units: [
+    "id": "23",
+    "name": "VANQUISHER DRAVEN",
+    "units": [
       "draven",
       "gangplank",
       "nautilus",
@@ -347,9 +340,9 @@ const compositions = [
     ]
   },
   {
-    id: "tryndamere-ashe-sejuani-braum-kindred-volibear-lissandra-anivia",
-    name: "FRELJORD TRYNDAMERE",
-    units: [
+    "id": "24",
+    "name": "FRELJORD TRYNDAMERE",
+    "units": [
       "tryndamere",
       "ashe",
       "sejuani",
@@ -361,9 +354,9 @@ const compositions = [
     ]
   },
   {
-    id: "braum-kindred-luciansenna-fiddlesticks-ornn-loris-sejuani-ashe-vi",
-    name: "WARDEN BRAUM",
-    units: [
+    "id": "25",
+    "name": "WARDEN BRAUM",
+    "units": [
       "braum",
       "kindred",
       "luciansenna",
@@ -376,9 +369,9 @@ const compositions = [
     ]
   },
   {
-    id: "fizz-kennen-ziggs-kobukoyuumi-poppy-teemo-tristana-lulu-rumble",
-    name: "YORDLE FIZZ",
-    units: [
+    "id": "26",
+    "name": "YORDLE FIZZ",
+    "units": [
       "fizz",
       "kennen",
       "ziggs",
@@ -391,9 +384,9 @@ const compositions = [
     ]
   },
   {
-    id: "sona-anivia-jarvaniv-lissandra-garen-kobukoyuumi-sejuani-rumble",
-    name: "INVOKER SONA",
-    units: [
+    "id": "27",
+    "name": "INVOKER SONA",
+    "units": [
       "sona",
       "anivia",
       "jarvaniv",
@@ -405,9 +398,9 @@ const compositions = [
     ]
   },
   {
-    id: "viego-kalista-thresh-yorick-braum-gwen-loris-nautilus",
-    name: "SHADOW ISLES VIEGO",
-    units: [
+    "id": "28",
+    "name": "SHADOW ISLES VIEGO",
+    "units": [
       "viego",
       "kalista",
       "thresh",
@@ -419,9 +412,9 @@ const compositions = [
     ]
   },
   {
-    id: "yunara-wukong-sett-kindred-ornn-ahri-kennen-xinzhao-shen",
-    name: "IONIA YUNARA",
-    units: [
+    "id": "29",
+    "name": "IONIA YUNARA",
+    "units": [
       "yunara",
       "wukong",
       "sett",
@@ -434,9 +427,9 @@ const compositions = [
     ]
   },
   {
-    id: "wukong-lissandra-ryze-volibear-taric-kennen-kobukoyuumi-sejuani-shen",
-    name: "BRUISER WUKONG",
-    units: [
+    "id": "30",
+    "name": "BRUISER WUKONG",
+    "units": [
       "wukong",
       "lissandra",
       "ryze",
@@ -449,9 +442,9 @@ const compositions = [
     ]
   },
   {
-    id: "swain-ambessa-mel-draven-azir-fiddlesticks-leblanc-sion-briar",
-    name: "NOXUS SWAIN",
-    units: [
+    "id": "31",
+    "name": "NOXUS SWAIN",
+    "units": [
       "swain",
       "ambessa",
       "mel",
@@ -464,9 +457,9 @@ const compositions = [
     ]
   },
   {
-    id: "belveth-aatrox-swain-ambessa-fiddlesticks-shyvana-gangplank-chogath-briar",
-    name: "SLAYER BEL'VETH",
-    units: [
+    "id": "32",
+    "name": "SLAYER BEL'VETH",
+    "units": [
       "belveth",
       "aatrox",
       "swain",
@@ -479,9 +472,9 @@ const compositions = [
     ]
   },
   {
-    id: "nasus-azir-annie-tibbers-shyvana-seraphine-swain-neeko-vi",
-    name: "SHURIMA NASUS",
-    units: [
+    "id": "33",
+    "name": "SHURIMA NASUS",
+    "units": [
       "nasus",
       "azir",
       "annie",
@@ -494,9 +487,9 @@ const compositions = [
     ]
   },
   {
-    id: "diana-azir-annie-tibbers-shyvana-seraphine-swain-neeko-vi",
-    name: "TARGON DIANA",
-    units: [
+    "id": "34",
+    "name": "TARGON DIANA",
+    "units": [
       "diana",
       "azir",
       "annie",
@@ -509,9 +502,9 @@ const compositions = [
     ]
   },
   {
-    id: "ryze-garen-sett-azir-nasus-taric-kennen-poppy-xinzhao",
-    name: "DEFENDER RYZE",
-    units: [
+    "id": "35",
+    "name": "DEFENDER RYZE",
+    "units": [
       "ryze",
       "garen",
       "sett",
@@ -524,9 +517,9 @@ const compositions = [
     ]
   },
   {
-    id: "annie-tibbers-swain-sylas-fiddlesticks-shyvana-lux-taric-neeko",
-    name: "ARCANIST ANNIE",
-    units: [
+    "id": "36",
+    "name": "ARCANIST ANNIE",
+    "units": [
       "annie",
       "tibbers",
       "swain",
@@ -539,9 +532,9 @@ const compositions = [
     ]
   },
   {
-    id: "ekko-singed-chogath-seraphine-swain-neeko-vi-blitzcrank",
-    name: "ZAUN EKKO",
-    units: [
+    "id": "37",
+    "name": "ZAUN EKKO",
+    "units": [
       "ekko",
       "singed",
       "chogath",
@@ -553,9 +546,9 @@ const compositions = [
     ]
   },
   {
-    id: "warwick-singed-drmundo-ziggs-kindred-seraphine-ekko-vi-blitzcrank",
-    name: "ZAUN WARWICK",
-    units: [
+    "id": "38",
+    "name": "ZAUN WARWICK",
+    "units": [
       "warwick",
       "singed",
       "drmundo",
@@ -568,9 +561,9 @@ const compositions = [
     ]
   },
   {
-    id: "yunara-swain-kindred-sett-fiddlesticks-luciansenna-shyvana-taric-ahri",
-    name: "QUICKSTRIKER YUNARA SWAIN",
-    units: [
+    "id": "39",
+    "name": "QUICKSTRIKER YUNARA SWAIN",
+    "units": [
       "yunara",
       "swain",
       "kindred",
@@ -583,9 +576,9 @@ const compositions = [
     ]
   },
   {
-    id: "aurelionsol-diana-taric-leona-fiddlesticks-skarner-zoe-aphelios",
-    name: "TARGON AURELION SOL",
-    units: [
+    "id": "40",
+    "name": "TARGON AURELION SOL",
+    "units": [
       "aurelionsol",
       "diana",
       "taric",
@@ -597,9 +590,9 @@ const compositions = [
     ]
   },
   {
-    id: "taric-kindred-luciansenna-sylas-fiddlesticks-shyvana-swain-darius-draven",
-    name: "TARGON TARIC",
-    units: [
+    "id": "41",
+    "name": "TARGON TARIC",
+    "units": [
       "taric",
       "kindred",
       "luciansenna",
@@ -612,9 +605,9 @@ const compositions = [
     ]
   },
   {
-    id: "tristana-teemo-kennen-fizz-kobukoyuumi-poppy-lulu-rumble",
-    name: "YORDLE TRISTANA",
-    units: [
+    "id": "42",
+    "name": "YORDLE TRISTANA",
+    "units": [
       "tristana",
       "teemo",
       "kennen",
@@ -626,9 +619,9 @@ const compositions = [
     ]
   },
   {
-    id: "jinx-drmundo-warwick-singed-luciansenna-ekko-vi-blitzcrank",
-    name: "ZAUN JINX",
-    units: [
+    "id": "43",
+    "name": "ZAUN JINX",
+    "units": [
       "jinx",
       "drmundo",
       "warwick",
@@ -640,9 +633,9 @@ const compositions = [
     ]
   },
   {
-    id: "ahri-yunara-wukong-kennen-xinzhao-yasuo-jhin-shen",
-    name: "IONIA AHRI",
-    units: [
+    "id": "44",
+    "name": "IONIA AHRI",
+    "units": [
       "ahri",
       "yunara",
       "wukong",
@@ -654,9 +647,9 @@ const compositions = [
     ]
   },
   {
-    id: "yunara-braum-lissandra-kindred-volibear-sejuani-ashe-tryndamere-anivia",
-    name: "QUICKSTRIKER YUNARA BRAUM",
-    units: [
+    "id": "45",
+    "name": "QUICKSTRIKER YUNARA BRAUM",
+    "units": [
       "yunara",
       "braum",
       "lissandra",
@@ -669,9 +662,9 @@ const compositions = [
     ]
   },
   {
-    id: "thex-missfortune-loris-braum-seraphine-orianna-vi-caitlyn",
-    name: "PILTOVER T-HEX MISS FORTUNE",
-    units: [
+    "id": "46",
+    "name": "PILTOVER T-HEX MISS FORTUNE",
+    "units": [
       "thex",
       "missfortune",
       "loris",
@@ -683,9 +676,9 @@ const compositions = [
     ]
   },
   {
-    id: "sion-volibear-yunara-drmundo-wukong-kobukoyuumi-bard-shen",
-    name: "BRUISER SION VOLIBEAR",
-    units: [
+    "id": "47",
+    "name": "BRUISER SION VOLIBEAR",
+    "units": [
       "sion",
       "volibear",
       "yunara",
@@ -697,9 +690,9 @@ const compositions = [
     ]
   },
   {
-    id: "missfortune-nautilus-fizz-tahmkench-gangplank-graves-twistedfate-illaoi",
-    name: "BILGEWATER MISS FORTUNE",
-    units: [
+    "id": "48",
+    "name": "BILGEWATER MISS FORTUNE",
+    "units": [
       "missfortune",
       "nautilus",
       "fizz",
@@ -711,9 +704,9 @@ const compositions = [
     ]
   },
   {
-    id: "ahri-milio-skarner-wukong-taric-kennen-kobukoyuumi-neeko",
-    name: "ARCANIST AHRI",
-    units: [
+    "id": "49",
+    "name": "ARCANIST AHRI",
+    "units": [
       "ahri",
       "milio",
       "skarner",
@@ -725,9 +718,9 @@ const compositions = [
     ]
   },
   {
-    id: "kalista-thresh-gwen-yorick-fiddlesticks-seraphine-loris-viego",
-    name: "SHADOW ISLES KALISTA  THRESH",
-    units: [
+    "id": "50",
+    "name": "SHADOW ISLES KALISTA  THRESH",
+    "units": [
       "kalista",
       "thresh",
       "gwen",
@@ -739,9 +732,9 @@ const compositions = [
     ]
   },
   {
-    id: "lissandra-skarner-milio-braum-nidalee-sejuani-neeko-qiyana",
-    name: "INVOKER LISSANDRA SKARNER",
-    units: [
+    "id": "51",
+    "name": "INVOKER LISSANDRA SKARNER",
+    "units": [
       "lissandra",
       "skarner",
       "milio",
@@ -753,9 +746,9 @@ const compositions = [
     ]
   },
   {
-    id: "draven-sion-ambessa-leblanc-mel-swain-darius-briar",
-    name: "NOXUS DRAVEN",
-    units: [
+    "id": "52",
+    "name": "NOXUS DRAVEN",
+    "units": [
       "draven",
       "sion",
       "ambessa",
@@ -767,9 +760,9 @@ const compositions = [
     ]
   },
   {
-    id: "aphelios-leona-aurelionsol-diana-ornn-braum-taric-zoe",
-    name: "TARGON APHELIOS",
-    units: [
+    "id": "53",
+    "name": "TARGON APHELIOS",
+    "units": [
       "aphelios",
       "leona",
       "aurelionsol",
@@ -781,9 +774,9 @@ const compositions = [
     ]
   },
   {
-    id: "vayne-jarvaniv-lux-garen-galio-swain-poppy-xinzhao-sona",
-    name: "DEMACIA VAYNE JARVAN IV",
-    units: [
+    "id": "54",
+    "name": "DEMACIA VAYNE JARVAN IV",
+    "units": [
       "vayne",
       "jarvaniv",
       "lux",
@@ -796,9 +789,9 @@ const compositions = [
     ]
   },
   {
-    id: "zoe-leona-diana-taric",
-    name: "TARGON ZOE",
-    units: [
+    "id": "55",
+    "name": "TARGON ZOE",
+    "units": [
       "zoe",
       "leona",
       "diana",
@@ -806,9 +799,9 @@ const compositions = [
     ]
   },
   {
-    id: "lissandra-sejuani-leblanc-swain-shyvana-kobukoyuumi-sion-anivia",
-    name: "INVOKER LISSANDRA",
-    units: [
+    "id": "56",
+    "name": "INVOKER LISSANDRA",
+    "units": [
       "lissandra",
       "sejuani",
       "leblanc",
@@ -820,9 +813,9 @@ const compositions = [
     ]
   },
   {
-    id: "nidalee-neeko-milio-skarner-braum-lissandra-sejuani-qiyana",
-    name: "IXTAL NIDALEE",
-    units: [
+    "id": "57",
+    "name": "IXTAL NIDALEE",
+    "units": [
       "nidalee",
       "neeko",
       "milio",
@@ -834,9 +827,9 @@ const compositions = [
     ]
   },
   {
-    id: "bard-neeko-milio-nidalee-skarner-orianna-vi-qiyana",
-    name: "IXTAL BARD",
-    units: [
+    "id": "58",
+    "name": "IXTAL BARD",
+    "units": [
       "bard",
       "neeko",
       "milio",
@@ -848,9 +841,9 @@ const compositions = [
     ]
   },
   {
-    id: "diana-leona-azir-seraphine-swain-taric-neeko-vi",
-    name: "TARGON LEONA",
-    units: [
+    "id": "59",
+    "name": "TARGON LEONA",
+    "units": [
       "diana",
       "leona",
       "azir",
@@ -862,9 +855,9 @@ const compositions = [
     ]
   },
   {
-    id: "skarner-milio-brock-neeko-tibbers-annie-swain-qiyana",
-    name: "IXTAL SKARNER",
-    units: [
+    "id": "60",
+    "name": "IXTAL SKARNER",
+    "units": [
       "skarner",
       "milio",
       "brock",
@@ -876,9 +869,9 @@ const compositions = [
     ]
   },
   {
-    id: "jhin-yasuo-shen-ahri-wukong-yunara-kennen-xinzhao",
-    name: "IONIA JHIN",
-    units: [
+    "id": "61",
+    "name": "IONIA JHIN",
+    "units": [
       "jhin",
       "yasuo",
       "shen",
@@ -891,4 +884,4 @@ const compositions = [
   }
 ];
 
-export default compositions;
+export default compositions

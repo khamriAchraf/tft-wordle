@@ -1,0 +1,53 @@
+.main {
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
+.puzzleCard {
+  background-color: #1a1a1a;
+  border-color: #444;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  height: 100%;
+}
+
+.puzzleCard:hover {
+  border-color: #ffd700;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(255, 215, 0, 0.2);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardContent {
+  text-align: center;
+}
+
+.compName {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+  color: #fff;
+}
+
+.unitCount {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin: 0.5rem 0 0 0;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 1rem 0;
+  }
+
+  .puzzleCard {
+    margin-bottom: 1rem;
+  }
+}

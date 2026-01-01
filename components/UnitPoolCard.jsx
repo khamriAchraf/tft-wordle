@@ -59,7 +59,7 @@ export default function UnitPoolCard({ unit }) {
       return url;
     }
     if (setKey === "16") {
-      let url = `images/units/squares/TFT${setKey}_${unit.name
+      let url = `/images/units/squares/TFT${setKey}_${unit.name
         .replace(" ", "")
         .replace(" ", "")
         .replace("'", "")}.TFT_Set${setKey}.webp`;
