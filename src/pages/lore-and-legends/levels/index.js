@@ -1,17 +1,20 @@
 import Head from 'next/head'
 import React from 'react'
-import styles from "@/styles/Home.module.css";
+import styles from "@/styles/Levels.module.css";
 import { Geist, Geist_Mono } from "next/font/google";
 import Set16LevelsBackground from '../../../../components/Set16LevelsBackground';
+import compositions from "../../../../data/lore-and-legends/comps";
+import { Badge, Card, Grid } from '@mantine/core';
+import Link from 'next/link';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+    variable: "--font-geist-sans",
+    subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+    variable: "--font-geist-mono",
+    subsets: ["latin"],
 });
 
 const index = () => {

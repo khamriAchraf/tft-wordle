@@ -64,7 +64,7 @@ export default function Puzzle() {
   return (
     <>
       <Head>
-        <title>TFTYK | Lore & Legends - {comp?.name || "Puzzle"}</title>
+        <title>TFTYK | Lore & Legends - Level {comp?.id}</title>
       </Head>
       <BoardProvider setKey="16" mode="endless">
         <GameProvider setKey="16" mode="endless">
