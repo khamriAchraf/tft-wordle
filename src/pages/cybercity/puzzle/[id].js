@@ -52,7 +52,7 @@ export default function Puzzle() {
         </Head>
         <div style={{ padding: "2rem", textAlign: "center" }}>
           <h1>Puzzle not found</h1>
-          <p>The puzzle you're looking for doesn't exist.</p>
+          
         </div>
       </>
     );
